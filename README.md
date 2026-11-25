@@ -41,6 +41,7 @@ index.html      앱 전체 (UI + 3개국어 + 24종 지식 DB + 매칭 엔진 + 
 manifest.json   PWA 매니페스트
 sw.js           오프라인 캐시
 icon-*.png      앱 아이콘 (192 / 512 / maskable / apple-touch)
+assets/oils/    도테라 코리아 공식 오일 병 사진 24종 (id.webp · 높이 300px · 투명 배경)
 server/         라이브 LLM 모드용 Supabase 스키마·Edge Function (선택)
 tools/          아이콘 생성, 정적 검증, 브라우저 E2E
 ```
@@ -63,11 +64,11 @@ var CONFIG = {
 ## 검증
 
 ```bash
-python3 tools/verify.py    # 구문·지식DB 무결성·i18n·PWA  ← 59항목
+python3 tools/verify.py    # 구문·지식DB 무결성·i18n·PWA  ← 62항목
 python3 tools/e2e.py       # 브라우저 E2E + 스크린샷        ← 31항목 (Chromium 필요)
 ```
 
-현재 상태: **verify 59/59 · e2e 31/31 통과, 콘솔 오류 0건.**
+현재 상태: **verify 62/62 · e2e 31/31 통과, 콘솔 오류 0건.**
 
 ## 브랜드 바꾸기
 
