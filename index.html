@@ -205,11 +205,17 @@ a{color:inherit}
   border:1px solid rgba(30,58,47,.07);border-radius:13px;
 }
 .oilrow .dot{
-  width:31px;height:31px;border-radius:10px;flex:0 0 auto;
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;font-family:var(--serif);font-size:14px;font-weight:600;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.35);
+  width:38px;height:44px;flex:0 0 auto;align-self:flex-start;
+  display:flex;align-items:flex-start;justify-content:center;padding-top:1px;
+  border-radius:9px;background:linear-gradient(160deg,#F4F0E7,#EAE3D4);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 0 0 1px rgba(30,58,47,.05);
+  overflow:hidden;
 }
+.oilrow .dot img{width:auto;height:44px;display:block;margin:0 auto;
+  filter:drop-shadow(0 4px 5px rgba(22,36,29,.22));}
+.oilrow .dot .mono{font-family:var(--serif);font-size:14px;font-weight:600;color:#4C6355;
+  display:none;align-items:center;justify-content:center;width:100%;height:42px}
+.oilrow .dot.noimg .mono{display:flex}
 .oilrow .oinfo{min-width:0;flex:1}
 .oilrow .oname{display:flex;align-items:center;gap:6px;margin-bottom:1px}
 .oilrow .oname b{font-family:var(--serif);font-size:14.5px;font-weight:600;color:var(--forest);letter-spacing:.01em;white-space:nowrap}
@@ -368,22 +374,35 @@ a{color:inherit}
 }
 .olcard:hover{transform:translateY(-2px);box-shadow:0 16px 28px -22px rgba(20,40,30,.7);border-color:rgba(197,160,89,.4)}
 .olcard .cap{
-  height:72px;border-radius:12px;position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
+  height:122px;border-radius:12px;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.olcard .cap:before{
+  content:"";position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
+  width:58%;height:15px;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(18,32,24,.34),rgba(18,32,24,0) 72%);
+  z-index:0;
 }
 .olcard .cap:after{
   content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.45),rgba(255,255,255,0) 60%);
+  background:radial-gradient(circle at 50% 6%,rgba(255,255,255,.5),rgba(255,255,255,0) 58%);
 }
-.olcard .cap span{
-  position:relative;z-index:1;
-  width:50px;height:50px;border-radius:50%;
+.olcard .cap img{
+  position:relative;z-index:1;display:block;height:110px;width:auto;margin-bottom:6px;
+  filter:drop-shadow(0 9px 11px rgba(16,30,22,.32)) drop-shadow(0 2px 3px rgba(16,30,22,.2));
+}
+.olcard .cap .mono{
+  display:none;position:relative;z-index:1;
+  width:50px;height:50px;border-radius:50%;margin-bottom:26px;
   border:1px solid rgba(255,255,255,.45);
-  display:flex;align-items:center;justify-content:center;
+  align-items:center;justify-content:center;
   font-family:var(--serif);font-size:22px;font-weight:500;
   color:rgba(255,255,255,.97);letter-spacing:.02em;text-shadow:0 2px 10px rgba(0,0,0,.16);
   background:rgba(255,255,255,.07);
 }
+.olcard .cap.noimg .mono{display:flex;margin-bottom:26px}
+.oil-hero .oh-cap .mono{display:none}
+.oil-hero .oh-cap.noimg .mono{display:block}
 .olcard .meta{min-width:0}
 .olcard .meta b{display:block;font-size:12.5px;font-weight:700;color:var(--forest);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .olcard .meta i{font-style:normal;display:block;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:#95A199;margin-top:2px}
@@ -429,10 +448,14 @@ a{color:inherit}
 }
 .oil-hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 0%,rgba(255,255,255,.35),transparent 60%)}
 .oil-hero .oh-cap{
-  width:54px;height:54px;border-radius:16px;flex:0 0 auto;z-index:1;
-  background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.45);
-  display:flex;align-items:center;justify-content:center;
+  width:58px;height:84px;border-radius:14px;flex:0 0 auto;z-index:1;
+  background:rgba(255,255,255,.20);border:1px solid rgba(255,255,255,.42);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
   font-family:var(--serif);font-size:26px;color:#fff;
+}
+.oil-hero .oh-cap img{
+  height:76px;width:auto;display:block;
+  filter:drop-shadow(0 5px 7px rgba(12,26,18,.34));
 }
 .oil-hero .oh-tx{z-index:1;min-width:0;color:#fff}
 .oil-hero .oh-tx b{display:block;font-family:var(--serif);font-size:22px;font-weight:500;line-height:1.15;letter-spacing:.01em}
@@ -465,7 +488,11 @@ a{color:inherit}
   border:1px solid rgba(30,58,47,.1);background:#fff;border-radius:999px;padding:4px 9px 4px 4px;
   font-size:10.5px;font-weight:600;color:#3F5A4B;
 }
-.pairstrip .pdot{width:17px;height:17px;border-radius:50%;display:inline-block}
+.pairstrip .pdot{
+  width:16px;height:26px;display:inline-flex;align-items:center;justify-content:center;
+}
+.pairstrip .pdot img{height:26px;width:auto;display:block;
+  filter:drop-shadow(0 1px 2px rgba(20,34,26,.28))}
 .btn-primary{
   display:flex;align-items:center;justify-content:center;gap:7px;width:100%;
   border:0;border-radius:15px;padding:14px;cursor:pointer;
@@ -2448,9 +2475,21 @@ function monogram(oil, lang) {
   var n = oil.name[lang] || oil.name.ko;
   return n.charAt(0);
 }
-function dotHTML(oil, lang) {
-  return '<div class="dot" style="background:linear-gradient(150deg,' + oil.tone[0] + ',' + oil.tone[1] + ')">' + esc(monogram(oil, lang)) + '</div>';
+/* 도테라 코리아 공식 제품 사진(assets/oils/{id}.webp) — 실패 시 글자 원으로 대체 */
+var OIL_IMG = 'assets/oils/';
+function oilThumb(oil) {
+  return '<img src="' + OIL_IMG + escAttr(oil.id) + '.webp" alt="" loading="lazy" decoding="async" data-oil="1">';
 }
+function dotHTML(oil, lang) {
+  return '<div class="dot">' + oilThumb(oil) + '<span class="mono">' + esc(monogram(oil, lang)) + '</span></div>';
+}
+/* 제품 사진 로드 실패 시 글자 원 폴백 */
+document.addEventListener('error', function (e) {
+  var t = e.target;
+  if (!t || t.tagName !== 'IMG' || !t.getAttribute('data-oil')) return;
+  if (t.parentNode) t.parentNode.className += ' noimg';
+  t.style.display = 'none';
+}, true);
 function scrollBottom() {
   window.setTimeout(function () {
     if (el.main) el.main.scrollTop = el.main.scrollHeight;
@@ -2622,7 +2661,7 @@ function renderLibrary() {
     out += '<button type="button" class="olcard" data-act="oil" data-id="' + escAttr(o.id) + '">' +
       '<span class="badge">' + esc(T(o.type === 'single' ? 'oil.single' : 'oil.blend')) + '</span>' +
       '<span class="cap" style="background:linear-gradient(150deg,' + o.tone[0] + ',' + o.tone[1] + ')">' +
-      '<span>' + esc(monogram(o, state.lang)) + '</span></span>' +
+      oilThumb(o) + '<span class="mono">' + esc(monogram(o, state.lang)) + '</span></span>' +
       '<span class="meta"><b>' + esc(o.name[state.lang]) + '</b><i>' + esc(o.latin) + '</i></span></button>';
   });
   el.libgrid.innerHTML = out;
@@ -2660,7 +2699,7 @@ function openOil(id) {
   });
 
   var html = '<div class="oil-hero" style="background:linear-gradient(150deg,' + o.tone[0] + ',' + o.tone[1] + ')">' +
-    '<div class="oh-cap">' + esc(monogram(o, L)) + '</div>' +
+    '<div class="oh-cap">' + oilThumb(o) + '<span class="mono">' + esc(monogram(o, L)) + '</span></div>' +
     '<div class="oh-tx"><b>' + esc(o.name[L]) + '</b><i>' + esc(o.latin) + '</i><em>' +
     esc(T(o.type === 'single' ? 'oil.single' : 'oil.blend', L)) + ' · ' + esc(names.join(' / ')) + '</em></div></div>';
 
@@ -2692,7 +2731,7 @@ function openOil(id) {
       var p = oilById(pid);
       if (!p) return;
       html += '<button type="button" data-act="oil" data-id="' + escAttr(p.id) + '">' +
-        '<span class="pdot" style="background:linear-gradient(150deg,' + p.tone[0] + ',' + p.tone[1] + ')"></span>' +
+        '<span class="pdot">' + oilThumb(p) + '</span>' +
         esc(p.name[L]) + '</button>';
     });
     html += '</div></div>';
@@ -2721,7 +2760,7 @@ function openSymptom(id) {
     var o = oilById(id2);
     if (!o) return;
     html += '<button type="button" data-act="oil" data-id="' + escAttr(o.id) + '">' +
-      '<span class="pdot" style="background:linear-gradient(150deg,' + o.tone[0] + ',' + o.tone[1] + ')"></span>' +
+      '<span class="pdot">' + oilThumb(o) + '</span>' +
       esc(o.name[L]) + '</button>';
   });
   html += '</div></div>';
