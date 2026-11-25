@@ -1,0 +1,2922 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>식물의 힘 · 도테라 AI 아로마 상담</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="24가지 도테라 에센셜 오일을 한국어·English·日本語로 상담하는 프리미엄 아로마 웰니스 가이드">
+<meta name="theme-color" content="#1E3A2F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="식물의 힘">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+KR:wght@300;400;600&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF7F2;
+  --ivory2:#F3EDE2;
+  --paper:#FFFFFF;
+  --forest:#1E3A2F;
+  --forest2:#14271D;
+  --sage:#5B7B6B;
+  --sage2:#8FA89A;
+  --gold:#C5A059;
+  --gold2:#E8D6B0;
+  --ink:#1F2721;
+  --muted:#6C7A70;
+  --line:rgba(30,58,47,.10);
+  --clay:#B4695B;
+  --r:22px;
+  --shadow:0 20px 48px -24px rgba(24,48,36,.45);
+  --serif:"Cormorant Garamond","Noto Serif KR","Noto Serif JP",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Hiragino Sans","Noto Sans JP",system-ui,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:#EBE4D6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overscroll-behavior:none;
+}
+button{font-family:inherit}
+a{color:inherit}
+
+/* ---------- stage ---------- */
+.stage{min-height:100vh;min-height:100dvh;display:flex;justify-content:center;align-items:stretch}
+.stage-brand{display:none}
+
+/* ---------- phone / app frame ---------- */
+.phone{
+  position:relative;
+  width:100%;
+  height:100vh;height:100dvh;
+  background:var(--ivory);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+.grain{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+}
+.app{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;min-height:0}
+
+/* ---------- topbar ---------- */
+.topbar{
+  display:flex;align-items:center;gap:11px;
+  padding:calc(14px + env(safe-area-inset-top)) 18px 10px;
+  flex:0 0 auto;
+}
+.brandmark{
+  width:40px;height:40px;border-radius:13px;flex:0 0 auto;
+  background:linear-gradient(150deg,#2C5443 0%,#1E3A2F 60%,#16291F 100%);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold2);
+  box-shadow:0 8px 18px -8px rgba(20,40,30,.75),inset 0 1px 0 rgba(255,255,255,.16);
+}
+.brandmark svg{width:22px;height:22px}
+.brandtext{display:flex;flex-direction:column;gap:1px;min-width:0}
+.brandtext strong{font-family:var(--serif);font-size:18.5px;font-weight:600;letter-spacing:.015em;color:var(--forest);line-height:1.1}
+.brandtext span{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sage);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lang{display:flex;gap:1px;padding:3px;margin-left:auto;background:rgba(30,58,47,.055);border-radius:999px;flex:0 0 auto}
+.lang button{
+  border:0;background:transparent;cursor:pointer;
+  font-size:10.5px;font-weight:700;letter-spacing:.05em;
+  color:#7A897F;padding:5px 8px;border-radius:999px;transition:.18s;
+}
+.lang button.on{background:#fff;color:var(--forest);box-shadow:0 1px 4px rgba(30,58,47,.16)}
+
+/* ---------- status strip ---------- */
+.status{
+  display:flex;align-items:center;gap:7px;
+  padding:0 18px 11px;flex:0 0 auto;
+}
+.pill{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10.5px;font-weight:600;letter-spacing:.02em;
+  padding:4px 9px;border-radius:999px;
+  border:1px solid var(--line);color:var(--sage);background:rgba(255,255,255,.6);
+}
+.pill.trial{border-color:rgba(197,160,89,.42);color:#8A6C2E;background:rgba(197,160,89,.11)}
+.pill.pro{margin-left:auto;border-color:rgba(30,58,47,.16);color:var(--forest);background:#fff;cursor:pointer;font-weight:700}
+.pill.pro svg{width:11px;height:11px}
+.quota{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted);font-weight:600}
+.quota b{font-variant-numeric:tabular-nums;color:var(--forest);font-size:11.5px}
+.quota .bar{width:34px;height:3px;border-radius:2px;background:rgba(30,58,47,.12);overflow:hidden}
+.quota .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--sage));transition:width .35s}
+
+/* ---------- main / views ---------- */
+.main{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;position:relative}
+.main::-webkit-scrollbar{width:0}
+.view{display:none;padding-bottom:14px}
+.view.on{display:block;animation:viewin .32s ease both}
+#view-chat.on{display:flex;flex-direction:column;min-height:100%}
+@keyframes viewin{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+/* ---------- chat hero ---------- */
+.hero{position:relative;padding:12px 20px 16px;overflow:hidden}
+.hero:before{
+  content:"";position:absolute;right:-70px;top:-80px;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,rgba(197,160,89,.20),rgba(197,160,89,0) 68%);
+  pointer-events:none;
+}
+.hero:after{
+  content:"";position:absolute;left:-50px;bottom:-90px;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,rgba(91,123,107,.13),rgba(91,123,107,0) 70%);
+  pointer-events:none;
+}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:9.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--gold);
+  font-weight:700;margin-bottom:9px;
+}
+.hero .eyebrow:before{content:"";width:14px;height:1px;background:var(--gold);opacity:.7}
+.hero h1{
+  position:relative;font-family:var(--serif);font-weight:400;
+  font-size:29px;line-height:1.22;letter-spacing:-.005em;
+  color:var(--forest);margin:0 0 9px;
+}
+.hero h1 em{font-style:italic;color:#A8853F}
+.hero p{position:relative;margin:0;font-size:12.5px;line-height:1.72;color:var(--muted);max-width:31em}
+
+/* ---------- chips ---------- */
+.chips{display:flex;gap:7px;overflow-x:auto;padding:2px 18px 13px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;cursor:pointer;white-space:nowrap;
+  border:1px solid rgba(30,58,47,.12);
+  background:rgba(255,255,255,.8);
+  color:#33503F;border-radius:999px;
+  padding:8px 13px;font-size:12px;font-weight:600;
+  transition:.18s;box-shadow:0 1px 2px rgba(30,58,47,.04);
+}
+.chip:active{transform:scale(.97)}
+.chip:hover{border-color:rgba(197,160,89,.55);background:#fff;color:var(--forest)}
+.chips-label{padding:0 20px 7px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#93A099;font-weight:700}
+
+/* ---------- messages ---------- */
+.thread{padding:2px 16px 4px;display:flex;flex-direction:column;gap:13px;margin-top:auto}
+.msg{display:flex;gap:8px;align-items:flex-start;animation:viewin .3s ease both}
+.msg .who{
+  width:26px;height:26px;border-radius:9px;flex:0 0 auto;margin-top:2px;
+  background:linear-gradient(150deg,#2C5443,#1E3A2F);
+  display:flex;align-items:center;justify-content:center;color:var(--gold2);
+  box-shadow:0 4px 10px -6px rgba(20,40,30,.8);
+}
+.msg .who svg{width:14px;height:14px}
+.bubble{
+  max-width:calc(100% - 40px);
+  border-radius:5px 18px 18px 18px;
+  padding:13px 14px;
+  font-size:13px;line-height:1.68;
+  background:var(--paper);color:var(--ink);
+  border:1px solid rgba(30,58,47,.075);
+  box-shadow:0 10px 26px -22px rgba(24,48,36,.9);
+}
+.msg.me{flex-direction:row-reverse}
+.msg.me .bubble{
+  background:linear-gradient(155deg,#2F5849,#1E3A2F 70%);
+  color:#F7F3EA;border:0;border-radius:18px 5px 18px 18px;
+  max-width:82%;box-shadow:0 12px 26px -18px rgba(20,40,30,.9);
+}
+.msg.me .who{display:none}
+.bubble p{margin:0 0 8px}
+.bubble p:last-child{margin-bottom:0}
+.bubble .lead{font-size:13px;color:#2A3B31}
+.ans-lang{
+  display:inline-flex;align-items:center;gap:5px;margin-bottom:8px;
+  font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A8552;
+  background:rgba(197,160,89,.10);border:1px solid rgba(197,160,89,.24);
+  padding:3px 7px;border-radius:6px;
+}
+
+/* oil rows inside answer */
+.oilrow{
+  display:flex;gap:9px;align-items:flex-start;
+  padding:9px 10px;margin:7px 0;
+  background:linear-gradient(180deg,#FBF9F5,#F7F3EC);
+  border:1px solid rgba(30,58,47,.07);border-radius:13px;
+}
+.oilrow .dot{
+  width:31px;height:31px;border-radius:10px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:var(--serif);font-size:14px;font-weight:600;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35);
+}
+.oilrow .oinfo{min-width:0;flex:1}
+.oilrow .oname{display:flex;align-items:center;gap:6px;margin-bottom:1px}
+.oilrow .oname b{font-family:var(--serif);font-size:14.5px;font-weight:600;color:var(--forest);letter-spacing:.01em;white-space:nowrap}
+.oilrow .latin{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#9CA79F;font-weight:700;margin-bottom:3px}
+.oilrow .whi{font-size:11.5px;line-height:1.55;color:#5C6B61}
+.tags{display:inline-flex;gap:3px;margin-left:auto}
+.tag{
+  font-size:8.5px;font-weight:800;letter-spacing:.05em;
+  padding:2px 5px;border-radius:4px;
+  background:rgba(91,123,107,.13);color:#3E5B4C;
+}
+.tag.off{background:rgba(30,58,47,.045);color:#C2CAC4}
+
+/* recipe + caution blocks */
+.block{border-radius:13px;padding:11px 12px;margin:9px 0 0}
+.block .bt{display:flex;align-items:center;gap:6px;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin-bottom:6px}
+.block.recipe{background:linear-gradient(160deg,rgba(197,160,89,.15),rgba(197,160,89,.055));border:1px solid rgba(197,160,89,.30)}
+.block.recipe .bt{color:#98793B}
+.block.caution{background:rgba(180,105,91,.055);border:1px solid rgba(180,105,91,.20)}
+.block.caution .bt{color:#A05A4C}
+.block ol{margin:0;padding-left:16px}
+.block li{font-size:11.5px;line-height:1.62;color:#4F5C53;margin-bottom:2px}
+.block ul{margin:0;padding-left:15px;list-style:none}
+.block ul li{position:relative;padding-left:2px}
+.block ul li:before{content:"";position:absolute;left:-10px;top:7px;width:3px;height:3px;border-radius:50%;background:#BE8676}
+.follows{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.follows button{
+  border:1px dashed rgba(30,58,47,.2);background:rgba(255,255,255,.7);
+  color:#4C6355;border-radius:999px;padding:5px 9px;font-size:10.5px;font-weight:600;cursor:pointer;
+}
+.follows button:hover{border-style:solid;border-color:rgba(197,160,89,.6)}
+.modebadge{
+  display:flex;align-items:flex-start;gap:5px;margin-top:10px;
+  font-size:9px;line-height:1.5;letter-spacing:.005em;font-weight:600;color:#A2ADA6;
+}
+.modebadge:before{content:"";width:4px;height:4px;border-radius:50%;background:var(--sage2);flex:0 0 auto;margin-top:5px}
+.modebadge b{font-weight:800;color:#8E9A93}
+
+/* typing */
+.typing{display:flex;gap:4px;padding:4px 2px}
+.typing i{width:5px;height:5px;border-radius:50%;background:var(--sage2);animation:bl 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.16s}
+.typing i:nth-child(3){animation-delay:.32s}
+@keyframes bl{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+
+/* ---------- composer ---------- */
+.composer{
+  flex:0 0 auto;padding:8px 14px 6px;
+  background:linear-gradient(to top,var(--ivory) 62%,rgba(250,247,242,0));
+  display:none;
+}
+.composer.on{display:block}
+.composer form{
+  display:flex;align-items:flex-end;gap:7px;
+  background:#fff;border:1px solid rgba(30,58,47,.13);border-radius:19px;
+  padding:5px 5px 5px 14px;
+  box-shadow:0 14px 30px -24px rgba(20,40,30,.85);
+  transition:border-color .2s,box-shadow .2s;
+}
+.composer form:focus-within{border-color:rgba(197,160,89,.65);box-shadow:0 14px 30px -22px rgba(20,40,30,.6)}
+.composer input{
+  flex:1;min-width:0;border:0;outline:0;background:transparent;
+  font:inherit;font-size:13px;color:var(--ink);padding:9px 0;
+}
+.composer input::placeholder{color:#A7B1AA}
+.send{
+  width:36px;height:36px;border-radius:13px;border:0;flex:0 0 auto;cursor:pointer;
+  background:linear-gradient(150deg,#30604E,#1E3A2F);color:#F3E6C8;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 14px -8px rgba(20,40,30,.9);transition:.18s;
+}
+.send:active{transform:scale(.94)}
+.send:disabled{opacity:.4}
+.send svg{width:17px;height:17px}
+
+/* ---------- disclaimer strip + tabbar ---------- */
+.discbar{
+  flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:5px;
+  padding:2px 16px 5px;background:var(--ivory);
+  font-size:9px;color:#939F98;letter-spacing:.006em;text-align:center;line-height:1.3;
+  cursor:pointer;
+}
+.discbar svg{width:9px;height:9px;flex:0 0 auto;opacity:.75}
+.tabbar{
+  flex:0 0 auto;display:flex;align-items:stretch;
+  padding:7px 10px calc(7px + env(safe-area-inset-bottom));
+  background:rgba(250,247,242,.94);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  border-top:1px solid var(--line);
+}
+.tab{
+  flex:1;border:0;background:none;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:5px 0 3px;color:#93A09A;font-size:9.5px;font-weight:700;letter-spacing:.03em;
+  transition:color .18s;position:relative;
+}
+.tab .tabic{
+  width:30px;height:24px;border-radius:9px;display:flex;align-items:center;justify-content:center;transition:.2s;
+}
+.tab .tabic svg{width:17px;height:17px}
+.tab.on{color:var(--forest)}
+.tab.on .tabic{background:rgba(30,58,47,.08)}
+.tab.on:after{content:"";position:absolute;bottom:-1px;width:16px;height:2px;border-radius:2px;background:var(--gold)}
+
+/* ---------- symptom cards ---------- */
+.sec-head{padding:14px 20px 12px}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:25px;color:var(--forest);margin:0 0 6px;letter-spacing:-.005em}
+.sec-head p{margin:0;font-size:12px;line-height:1.7;color:var(--muted);max-width:32em}
+.symlist{display:flex;flex-direction:column;gap:8px;padding:0 16px 6px}
+.symcard{
+  display:flex;align-items:center;gap:11px;
+  width:100%;text-align:left;cursor:pointer;
+  background:linear-gradient(180deg,#fff,#FCFAF6);
+  border:1px solid rgba(30,58,47,.085);border-radius:16px;
+  padding:12px 13px;
+  box-shadow:0 10px 22px -24px rgba(20,40,30,.9);
+  transition:.2s;
+}
+.symcard:hover{border-color:rgba(197,160,89,.45);transform:translateY(-1px);box-shadow:0 14px 26px -22px rgba(20,40,30,.7)}
+.symcard .sic{
+  width:36px;height:36px;border-radius:12px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(150deg,rgba(91,123,107,.16),rgba(197,160,89,.14));
+  color:#41604F;
+}
+.symcard .sic svg{width:19px;height:19px}
+.symcard .stx{flex:1;min-width:0}
+.symcard .stx b{display:block;font-size:13.5px;font-weight:700;color:var(--forest);letter-spacing:.005em;margin-bottom:1px}
+.symcard .stx span{display:block;font-size:11px;color:#7C8A81;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.symcard .arr{color:#C0C9C3;flex:0 0 auto}
+.symcard .arr svg{width:14px;height:14px}
+
+/* ---------- library ---------- */
+.searchwrap{padding:0 16px 10px;position:sticky;top:0;background:var(--ivory);z-index:3}
+.search{
+  display:flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid rgba(30,58,47,.12);border-radius:14px;
+  padding:0 12px;box-shadow:0 8px 20px -22px rgba(20,40,30,.9);
+}
+.search svg{width:15px;height:15px;color:#9FAAA3;flex:0 0 auto}
+.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:12.5px;padding:11px 0;color:var(--ink)}
+.search input::placeholder{color:#A7B1AA}
+.filters{display:flex;gap:5px;padding:0 16px 11px}
+.filters button{
+  border:1px solid rgba(30,58,47,.12);background:rgba(255,255,255,.7);color:#5C6B61;
+  border-radius:999px;padding:6px 11px;font-size:11px;font-weight:700;cursor:pointer;transition:.18s;
+}
+.filters button.on{background:var(--forest);border-color:var(--forest);color:#F4EEE1}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 16px 8px}
+.olcard{
+  position:relative;overflow:hidden;cursor:pointer;text-align:left;
+  background:#fff;border:1px solid rgba(30,58,47,.075);border-radius:16px;
+  padding:9px 9px 11px;
+  box-shadow:0 10px 22px -24px rgba(20,40,30,.9);
+  transition:.2s;display:flex;flex-direction:column;gap:7px;
+}
+.olcard:hover{transform:translateY(-2px);box-shadow:0 16px 28px -22px rgba(20,40,30,.7);border-color:rgba(197,160,89,.4)}
+.olcard .cap{
+  height:72px;border-radius:12px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.olcard .cap:after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.45),rgba(255,255,255,0) 60%);
+}
+.olcard .cap span{
+  position:relative;z-index:1;
+  width:50px;height:50px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.45);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:22px;font-weight:500;
+  color:rgba(255,255,255,.97);letter-spacing:.02em;text-shadow:0 2px 10px rgba(0,0,0,.16);
+  background:rgba(255,255,255,.07);
+}
+.olcard .meta{min-width:0}
+.olcard .meta b{display:block;font-size:12.5px;font-weight:700;color:var(--forest);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.olcard .meta i{font-style:normal;display:block;font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:#95A199;margin-top:2px}
+.olcard .badge{
+  position:absolute;top:14px;right:14px;z-index:2;
+  font-size:8px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
+  padding:2px 5px;border-radius:4px;background:rgba(255,255,255,.85);color:#4B6154;
+}
+.empty{padding:26px 20px;text-align:center;font-size:12px;color:#96A299;line-height:1.7}
+
+/* ---------- scrim / sheet ---------- */
+.scrim{
+  position:absolute;inset:0;z-index:40;
+  background:rgba(16,28,22,.42);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  opacity:0;pointer-events:none;transition:opacity .28s;
+}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{
+  position:absolute;left:0;right:0;bottom:0;z-index:41;
+  max-height:92%;display:flex;flex-direction:column;
+  background:var(--ivory);
+  border-radius:26px 26px 0 0;
+  box-shadow:0 -22px 50px -20px rgba(16,28,22,.55);
+  transform:translateY(101%);transition:transform .34s cubic-bezier(.22,.8,.2,1);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.sheet.on{transform:translateY(0)}
+.sheet .grab{width:36px;height:3px;border-radius:3px;background:rgba(30,58,47,.16);margin:9px auto 0;flex:0 0 auto}
+.sheet .sbody{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 18px calc(26px + env(safe-area-inset-bottom))}
+.sheet .sbody::-webkit-scrollbar{width:0}
+.sclose{
+  position:absolute;top:12px;right:14px;z-index:2;
+  width:28px;height:28px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(30,58,47,.07);color:#5C6B61;display:flex;align-items:center;justify-content:center;
+}
+.sclose svg{width:13px;height:13px}
+
+/* oil detail sheet */
+.oil-hero{
+  border-radius:18px;padding:18px 16px;margin:6px 0 14px;position:relative;overflow:hidden;
+  display:flex;align-items:center;gap:13px;
+}
+.oil-hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 0%,rgba(255,255,255,.35),transparent 60%)}
+.oil-hero .oh-cap{
+  width:54px;height:54px;border-radius:16px;flex:0 0 auto;z-index:1;
+  background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.45);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:26px;color:#fff;
+}
+.oil-hero .oh-tx{z-index:1;min-width:0;color:#fff}
+.oil-hero .oh-tx b{display:block;font-family:var(--serif);font-size:22px;font-weight:500;line-height:1.15;letter-spacing:.01em}
+.oil-hero .oh-tx i{font-style:normal;display:block;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;opacity:.8;margin-top:3px}
+.oil-hero .oh-tx em{font-style:normal;display:block;font-size:10.5px;opacity:.85;margin-top:4px}
+.uses{display:flex;gap:5px;margin-bottom:13px}
+.uses .u{
+  flex:1;text-align:center;padding:7px 4px;border-radius:10px;
+  border:1px solid rgba(30,58,47,.09);background:#fff;font-size:9.5px;font-weight:700;color:#BCC6BF;letter-spacing:.04em;
+}
+.uses .u b{display:block;font-family:var(--serif);font-size:15px;font-weight:600;margin-bottom:1px;color:#C4CDC7}
+.uses .u.on{background:linear-gradient(160deg,rgba(30,58,47,.055),rgba(197,160,89,.09));border-color:rgba(197,160,89,.35);color:#4C6355}
+.uses .u.on b{color:var(--forest)}
+.detail-sec{margin-bottom:14px}
+.detail-sec h4{
+  font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#93A099;font-weight:800;
+  margin:0 0 6px;
+}
+.detail-sec p{margin:0;font-size:12px;line-height:1.72;color:#46564B}
+.detail-sec .steps{margin:0;padding-left:16px}
+.detail-sec .steps li{font-size:11.5px;line-height:1.65;color:#4F5C53;margin-bottom:3px}
+.warnlist{margin:0;padding:0;list-style:none}
+.warnlist li{
+  position:relative;padding-left:14px;font-size:11.5px;line-height:1.6;color:#8A5B50;margin-bottom:3px;
+}
+.warnlist li:before{content:"!";position:absolute;left:0;top:0;font-weight:800;font-size:10px;color:#C08475}
+.pairstrip{display:flex;flex-wrap:wrap;gap:5px}
+.pairstrip button{
+  display:inline-flex;align-items:center;gap:5px;cursor:pointer;
+  border:1px solid rgba(30,58,47,.1);background:#fff;border-radius:999px;padding:4px 9px 4px 4px;
+  font-size:10.5px;font-weight:600;color:#3F5A4B;
+}
+.pairstrip .pdot{width:17px;height:17px;border-radius:50%;display:inline-block}
+.btn-primary{
+  display:flex;align-items:center;justify-content:center;gap:7px;width:100%;
+  border:0;border-radius:15px;padding:14px;cursor:pointer;
+  background:linear-gradient(150deg,#30604E,#1E3A2F);color:#F6EFDD;
+  font-size:13px;font-weight:700;letter-spacing:.01em;
+  box-shadow:0 14px 26px -18px rgba(20,40,30,.9);margin-top:6px;
+}
+.btn-primary svg{width:15px;height:15px}
+.btn-ghost{
+  display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
+  border:1px solid rgba(30,58,47,.16);border-radius:15px;padding:12px;cursor:pointer;
+  background:transparent;color:var(--forest);font-size:12.5px;font-weight:700;margin-top:8px;
+}
+
+/* symptoms sheet blend */
+.blendbox{
+  background:linear-gradient(160deg,rgba(197,160,89,.14),rgba(91,123,107,.08));
+  border:1px solid rgba(197,160,89,.28);border-radius:16px;padding:13px 14px;margin-bottom:12px;
+}
+.blendbox .bt{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#98793B;margin-bottom:7px}
+.blendbox ol{margin:0;padding-left:16px}
+.blendbox li{font-size:11.5px;line-height:1.65;color:#4F5C53;margin-bottom:3px}
+.blendbox .dose{
+  display:inline-block;margin-top:7px;font-size:10px;font-weight:700;color:#7A6740;
+  background:rgba(255,255,255,.65);border-radius:6px;padding:3px 7px;
+}
+
+/* ---------- pricing ---------- */
+.up-head{text-align:center;padding:6px 4px 14px}
+.up-head .crown{
+  width:44px;height:44px;border-radius:14px;margin:0 auto 9px;
+  background:linear-gradient(150deg,#C8A96B,#A8853F);display:flex;align-items:center;justify-content:center;color:#fff;
+  box-shadow:0 10px 20px -12px rgba(168,133,63,.9);
+}
+.up-head .crown svg{width:21px;height:21px}
+.up-head h3{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--forest);margin:0 0 5px}
+.up-head p{margin:0;font-size:11.5px;color:var(--muted);line-height:1.65}
+.plan{
+  border:1px solid rgba(30,58,47,.1);background:#fff;border-radius:16px;
+  padding:13px 14px;margin-bottom:9px;position:relative;
+}
+.plan.hi{border-color:rgba(197,160,89,.55);background:linear-gradient(170deg,#fffdf8,#fff);box-shadow:0 14px 30px -24px rgba(168,133,63,.9)}
+.plan .ptop{display:flex;align-items:baseline;gap:7px;margin-bottom:8px}
+.plan .ptop b{font-family:var(--serif);font-size:16.5px;font-weight:600;color:var(--forest)}
+.plan .ptop .price{margin-left:auto;font-size:12.5px;font-weight:800;color:var(--forest);font-variant-numeric:tabular-nums}
+.plan .ptop .price small{font-size:9.5px;font-weight:600;color:#93A099;margin-left:2px}
+.plan ul{margin:0;padding:0;list-style:none}
+.plan li{font-size:11px;line-height:1.75;color:#5C6B61;padding-left:14px;position:relative}
+.plan li:before{content:"";position:absolute;left:2px;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.6}
+.plan .now-tag{
+  position:absolute;top:-8px;right:12px;font-size:8.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--forest);color:#F2E9D3;padding:3px 7px;border-radius:5px;
+}
+.plan .hm{position:absolute;top:-8px;right:12px;font-size:8.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;background:linear-gradient(90deg,#C8A96B,#A8853F);color:#fff;padding:3px 7px;border-radius:5px}
+.up-note{font-size:10px;line-height:1.65;color:#98A39B;text-align:center;margin:11px 4px 0}
+
+/* toast */
+.toast{
+  position:absolute;left:50%;bottom:96px;transform:translate(-50%,10px);
+  background:rgba(24,42,33,.94);color:#F3EDE0;font-size:11.5px;font-weight:600;
+  padding:9px 14px;border-radius:11px;z-index:60;opacity:0;pointer-events:none;transition:.25s;
+  max-width:82%;text-align:center;line-height:1.5;
+}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- desktop ---------- */
+@media(min-width:940px){
+  body{
+    background:
+      radial-gradient(900px 620px at 12% 12%,rgba(197,160,89,.16),transparent 62%),
+      radial-gradient(760px 560px at 88% 82%,rgba(91,123,107,.22),transparent 60%),
+      linear-gradient(155deg,#E9E1D1,#DCD6C6 55%,#E4DCCB);
+  }
+  .stage{padding:26px;align-items:center;gap:56px}
+  .stage-brand{display:flex;flex-direction:column;max-width:400px;padding-right:8px}
+  .sb-mark{display:flex;align-items:center;gap:10px;margin-bottom:26px}
+  .sb-mark .mk{
+    width:44px;height:44px;border-radius:14px;background:linear-gradient(150deg,#2C5443,#1E3A2F);
+    display:flex;align-items:center;justify-content:center;color:var(--gold2);
+    box-shadow:0 14px 26px -16px rgba(20,40,30,.8);
+  }
+  .sb-mark .mk svg{width:23px;height:23px}
+  .sb-mark span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#5A6B5F;font-weight:700}
+  .stage-brand h2{
+    font-family:var(--serif);font-weight:400;font-size:44px;line-height:1.14;letter-spacing:-.01em;
+    color:#1B3529;margin:0 0 16px;
+  }
+  .stage-brand h2 em{font-style:italic;color:#A8853F}
+  .stage-brand > p{font-size:13.5px;line-height:1.8;color:#55655A;margin:0 0 24px;max-width:34ch}
+  .sb-list{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:13px}
+  .sb-list li{display:flex;gap:11px;align-items:flex-start;font-size:12.5px;line-height:1.6;color:#3F5046}
+  .sb-list .n{
+    width:22px;height:22px;border-radius:7px;flex:0 0 auto;margin-top:1px;
+    background:rgba(30,58,47,.08);color:#3E5B4C;font-size:10px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);
+  }
+  .sb-list b{display:block;font-size:12.5px;color:#22392C;font-weight:700;margin-bottom:1px}
+  .sb-foot{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7C8B80;font-weight:700}
+  .sb-foot .sh{width:30px;height:1px;background:rgba(30,58,47,.22)}
+  .phone{
+    width:420px;flex:0 0 420px;
+    height:min(880px,calc(100vh - 52px));height:min(880px,calc(100dvh - 52px));
+    border-radius:40px;
+    box-shadow:0 50px 90px -40px rgba(20,35,28,.62),0 0 0 1px rgba(255,255,255,.55),0 0 0 9px rgba(255,255,255,.28);
+  }
+  .app{border-radius:40px;overflow:hidden}
+}
+@media(min-width:940px) and (max-height:760px){
+  .stage-brand h2{font-size:36px}
+  .sb-list li:nth-child(3){display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;transition-duration:.001s!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M4.5 19.5C4.2 12.4 9.1 5.5 20 4.2c.9 10.4-6 15.8-13.6 15.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 18C8.6 14 12 10.6 16 8.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.2A8.5 8.5 0 1 1 8.8 4a7 7 0 0 0 11.2 11.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2.5 4.5 14H10l-1 7.5L18.5 10H13z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.2c3.2 3.7 6 6.7 6 10.1a6 6 0 0 1-12 0c0-3.4 2.8-6.4 6-10.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 14.4a2.6 2.6 0 0 0 2.5 2.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8.5h10.5a2.8 2.8 0 1 0-2.8-2.8M3 15.8h6.2a2.6 2.6 0 1 1-2.6 2.6M3 12.2h17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.2 19 6v5.2c0 4.4-3 8.3-7 9.9-4-1.6-7-5.5-7-9.9V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 11.7l2.2 2.2L15.3 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3.6l1.7 4.6 4.7 1.7-4.7 1.7L12 16.2l-1.7-4.6L5.6 9.9l4.7-1.7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.4 15.6l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.2-4.6-7.2-9.5A3.9 3.9 0 0 1 12 7.7a3.9 3.9 0 0 1 7.2 2.8C19.2 15.4 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15.7 15.7 20.5 20.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M4.5 12 20 4.5 14.5 20l-3-6.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11.5 13.8 20 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20.5 12.2c0 3.9-3.8 7-8.5 7-1 0-2-.1-2.9-.4L4.5 20l1.2-3.2A6.6 6.6 0 0 1 3.5 12.2c0-3.9 3.8-7 8.5-7s8.5 3.1 8.5 7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.2c2.6-1 5.6-1 8 .6V19c-2.4-1.6-5.4-1.6-8-.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 5.2c-2.6-1-5.6-1-8 .6V19c2.4-1.6 5.4-1.6 8-.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v5.5M12 7.8v.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="M4 17.5h16M4.6 17.5 3.2 7.8l4.6 3.1L12 4.6l4.2 6.3 4.6-3.1-1.4 9.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="stage">
+  <aside class="stage-brand">
+    <div class="sb-mark">
+      <div class="mk"><svg><use href="#i-leaf"></use></svg></div>
+      <span>Power of Plants Atelier</span>
+    </div>
+    <h2>매일의 컨디션을<br><em>향</em>으로 돌보다</h2>
+    <p>24가지 도테라 에센셜 오일을 데이터로 정리했습니다. 지금의 몸과 마음을 한 줄로 적으면, 오늘 필요한 조합과 레시피를 카드로 건네 드립니다.</p>
+    <ul class="sb-list">
+      <li><span class="n">1</span><div><b>증상에서 시작하는 상담</b>수면·두통·소화·호흡기 등 8가지 카테고리</div></li>
+      <li><span class="n">2</span><div><b>3개국어 그대로</b>한국어 · English · 日本語 자동 인식</div></li>
+      <li><span class="n">3</span><div><b>안전이 먼저</b>희석 비율과 주의사항을 답변마다 함께</div></li>
+    </ul>
+    <div class="sb-foot"><span class="sh"></span>Wellness guide, not medical advice</div>
+  </aside>
+
+  <div class="phone">
+    <div class="grain"></div>
+    <div class="app" id="app">
+
+      <header class="topbar">
+        <div class="brandmark"><svg><use href="#i-leaf"></use></svg></div>
+        <div class="brandtext">
+          <strong data-i18n="app.name">식물의 힘</strong>
+          <span data-i18n="app.tag">도테라 에센셜 오일 웰니스 가이드</span>
+        </div>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="ko">KR</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="ja">JP</button>
+        </div>
+      </header>
+
+      <div class="status">
+        <span class="pill trial" data-i18n="app.trial">체험판</span>
+        <span class="quota" id="quota">
+          <span data-i18n="quota.today">오늘 남은 무료</span>
+          <b id="quota-num">5/5</b>
+          <span class="bar"><i id="quota-bar" style="width:100%"></i></span>
+        </span>
+        <button type="button" class="pill pro" id="probtn">
+          <svg><use href="#i-crown"></use></svg><span data-i18n="app.pro">멤버십</span>
+        </button>
+      </div>
+
+      <main class="main" id="main">
+        <!-- ============ CHAT ============ -->
+        <section class="view on" id="view-chat">
+          <div class="hero">
+            <span class="eyebrow" data-i18n="chat.eyebrow">Aroma Consultation</span>
+            <h1 id="hero-h1" data-i18n-html="chat.h1"></h1>
+            <p data-i18n="chat.sub"></p>
+          </div>
+          <div class="chips-label" data-i18n="chat.chipsLabel">자주 찾는 고민</div>
+          <div class="chips" id="chips"></div>
+          <div class="thread" id="thread"></div>
+        </section>
+
+        <!-- ============ SYMPTOMS ============ -->
+        <section class="view" id="view-sym">
+          <div class="sec-head">
+            <h2 data-i18n="sym.h1">증상별 가이드</h2>
+            <p data-i18n="sym.sub"></p>
+          </div>
+          <div class="symlist" id="symlist"></div>
+          <p class="empty" style="padding-top:14px" data-i18n="sym.foot"></p>
+        </section>
+
+        <!-- ============ LIBRARY ============ -->
+        <section class="view" id="view-lib">
+          <div class="sec-head">
+            <h2 data-i18n="lib.h1">오일 백과</h2>
+            <p data-i18n="lib.sub"></p>
+          </div>
+          <div class="searchwrap">
+            <label class="search">
+              <svg><use href="#i-search"></use></svg>
+              <input type="search" id="libq" data-i18n-ph="lib.search" autocomplete="off">
+            </label>
+          </div>
+          <div class="filters" id="libfilters">
+            <button type="button" data-f="all" class="on" data-i18n="lib.all">전체</button>
+            <button type="button" data-f="single" data-i18n="lib.single">싱글</button>
+            <button type="button" data-f="blend" data-i18n="lib.blend">블렌드</button>
+          </div>
+          <div class="grid" id="libgrid"></div>
+          <p class="empty" id="libempty" hidden data-i18n="lib.empty"></p>
+        </section>
+      </main>
+
+      <div class="composer on" id="composer">
+        <form id="askform" autocomplete="off">
+          <input id="askinput" type="text" maxlength="220" data-i18n-ph="chat.ph">
+          <button class="send" type="submit" id="sendbtn" aria-label="Send">
+            <svg><use href="#i-send"></use></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="discbar" id="discbar">
+        <svg><use href="#i-info"></use></svg>
+        <span data-i18n="disc.strip">웰니스 활용 가이드 · 질병의 진단·치료를 대체하지 않습니다</span>
+      </div>
+
+      <nav class="tabbar">
+        <button type="button" class="tab on" data-view="chat">
+          <span class="tabic"><svg><use href="#i-chat"></use></svg></span>
+          <span data-i18n="nav.chat">AI 상담</span>
+        </button>
+        <button type="button" class="tab" data-view="sym">
+          <span class="tabic"><svg><use href="#i-drop"></use></svg></span>
+          <span data-i18n="nav.sym">증상 가이드</span>
+        </button>
+        <button type="button" class="tab" data-view="lib">
+          <span class="tabic"><svg><use href="#i-book"></use></svg></span>
+          <span data-i18n="nav.lib">오일 백과</span>
+        </button>
+      </nav>
+
+      <div class="scrim" id="scrim"></div>
+      <div class="sheet" id="sheet" role="dialog" aria-modal="true">
+        <div class="grab"></div>
+        <button type="button" class="sclose" id="sclose"><svg><use href="#i-close"></use></svg></button>
+        <div class="sbody" id="sbody"></div>
+      </div>
+      <div class="toast" id="toast"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   식물의 힘 (Power of Plants) — dōTERRA AI Aroma Consultation (trial build)
+   Single-file PWA. No build step. Works offline; no API key in the client.
+   -------------------------------------------------------------------------
+   Structure
+     1. CONFIG            — brand + endpoint for the future LLM proxy
+     2. I18N              — ko / en / ja UI strings
+     3. OILS              — 24-oil knowledge DB (14 singles + 10 blends)
+     4. SYMPTOMS          — 8 symptom categories + blend recipes
+     5. AromaEngine       — local matching engine (mode: 'demo')
+     6. askAromaAI()      — adapter: demo engine  <->  Supabase Edge Function
+     7. UI                — views, chat, sheets, quota, PWA
+   ========================================================================= */
+
+var CONFIG = {
+  /* Brand — change these three lines to rebrand the whole app */
+  brand: { ko: '식물의 힘', en: 'Power of Plants', ja: '植物の力', handle: '@erang_coach' },
+
+  /* When you deploy the Supabase Edge Function, put its URL here.
+     e.g. 'https://<project-ref>.supabase.co/functions/v1/aroma-ai'
+     While empty, the app runs the built-in local engine (mode: 'demo'). */
+  apiBase: '',
+
+  freePerDay: 5,
+  version: '1.0.0-trial'
+};
+
+var I18N = {
+  ko: {
+    'app.name': '식물의 힘',
+    'app.tag': '도테라 에센셜 오일 웰니스 가이드',
+    'app.trial': '체험판',
+    'app.pro': '멤버십',
+    'nav.chat': 'AI 상담',
+    'nav.sym': '증상 가이드',
+    'nav.lib': '오일 백과',
+    'quota.today': '오늘 남은 무료',
+    'chat.eyebrow': 'Aroma Consultation',
+    'chat.h1': '오늘, 어떤 <em>향</em>이<br>필요하세요?',
+    'chat.sub': '증상이나 기분을 편하게 적어 주세요. 24가지 도테라 오일 가운데 지금 필요한 조합과 레시피를 골라 드립니다.',
+    'chat.chipsLabel': '자주 찾는 고민',
+    'chat.ph': '예) 잠이 잘 안 와요',
+    'chat.send': '보내기',
+    'chat.greet': '안녕하세요, 식물의 힘입니다. 오늘의 컨디션을 한 줄로 들려주세요. 향으로 풀어 볼 수 있는 조합을 찾아 드릴게요.',
+    'chat.try': '이렇게 물어보세요',
+    'chat.typing': '향을 고르는 중',
+    'chat.langnote': '입력하신 언어로 답변했어요',
+    'chat.answerInKo': '한국어로 보기',
+    'ans.recipe': '함께 쓰는 레시피',
+    'ans.caution': '꼭 확인하세요',
+    'ans.more': '이어서 물어보기',
+    'ans.disclaimer': '웰니스 활용 가이드이며, 질병의 진단·치료를 대체하지 않습니다.',
+    'ans.demo': '체험판 로컬 지식 엔진',
+    'ans.ai': 'AI 생성 답변',
+    'sym.h1': '증상별 가이드',
+    'sym.sub': '카테고리를 고르면 추천 오일 조합과 블렌딩 레시피를 바로 보여 드립니다. 생활 속 향 습관으로 활용해 보세요.',
+    'sym.foot': '증상이 계속되거나 심해지면 의료기관에서 진료를 받으세요. 향은 그 곁을 돕는 작은 습관입니다.',
+    'sym.blend': '추천 블렌딩',
+    'sym.dose': '희석 · 사용량',
+    'sym.ask': '이 증상으로 AI에게 묻기',
+    'sym.oils': '어울리는 오일',
+    'lib.h1': '오일 백과',
+    'lib.sub': '도테라 코리아 기준 대표 오일 24종. 이름으로 찾고, 싱글과 블렌드를 나눠 볼 수 있습니다.',
+    'lib.search': '오일 이름 검색',
+    'lib.all': '전체',
+    'lib.single': '싱글',
+    'lib.blend': '블렌드',
+    'lib.empty': '검색 결과가 없습니다. 다른 이름으로 찾아보세요.',
+    'lib.count': '24종 수록',
+    'oil.eff': '핵심 효능',
+    'oil.how': '이렇게 사용해요',
+    'oil.recipe': '추천 레시피',
+    'oil.caution': '주의사항',
+    'oil.pairs': '함께 쓰면 좋은 오일',
+    'oil.ask': '이 오일로 상담하기',
+    'oil.names': '다른 언어 이름',
+    'oil.single': '싱글',
+    'oil.blend': '블렌드',
+    'use.A': '발향',
+    'use.T': '도포',
+    'use.I': '섭취',
+    'up.title': '식물의 힘 멤버십',
+    'up.sub': '매일의 컨디션에 맞춘 1:1 아로마 상담을 무제한으로.',
+    'up.free': '무료',
+    'up.plus': '플러스',
+    'up.pro': '프로',
+    'up.perMonth': '/월',
+    'up.freeDesc': ['하루 5회 상담', '오일 백과 24종', '3개국어 이용'],
+    'up.plusDesc': ['하루 30회 상담', '상담 기록 저장', '나만의 블렌딩 노트'],
+    'up.proDesc': ['무제한 상담', '계절·신규 오일 가이드 우선 공개', '1:1 맞춤 상담 우선 연결', '가족 계정 2개'],
+    'up.now': '현재 이용 중',
+    'up.hot': '추천',
+    'up.cta': '출시 알림 받기',
+    'up.note': '체험판에서는 결제가 이루어지지 않습니다. 가격과 혜택은 정식 출시 전 조정될 수 있어요.',
+    'limit.title': '오늘의 무료 상담을 모두 사용했어요',
+    'limit.body': '체험판은 하루 5회까지 무료입니다. 멤버십에서는 무제한 상담과 나만의 블렌딩 기록을 이용할 수 있어요.',
+    'limit.upgrade': '멤버십 미리보기',
+    'limit.reset': '체험판 횟수 초기화',
+    'toast.reset': '체험판 무료 횟수를 초기화했어요',
+    'toast.copied': '복사했어요',
+    'disc.strip': '웰니스 활용 가이드 · 질병의 진단·치료를 대체하지 않습니다',
+    'disc.title': '꼭 읽어 주세요',
+    'disc.body': [
+      '식물의 힘는 도테라 에센셜 오일을 생활 속 웰니스 습관으로 활용하는 방법을 안내하는 정보 서비스입니다. 의료 행위나 처방이 아니며, 질병의 진단·치료·예방을 대체하지 않습니다.',
+      '복용 중인 약이 있거나 임신·수유 중이거나, 지병이 있으신 경우에는 사용 전에 반드시 의사·약사 등 전문가와 상의하세요. 증상이 계속되거나 심해지면 의료기관에서 진료를 받으세요.',
+      '에센셜 오일은 반드시 캐리어 오일에 희석해 사용하고, 처음에는 팔 안쪽에 소량 테스트해 주세요. 눈·점막·상처 부위에는 사용하지 않습니다.',
+      '시트러스 계열(레몬·베르가못·오렌지 등)은 도포 후 12시간 동안 햇빛과 자외선을 피해야 합니다. 2세 이하 영유아와 반려동물이 있는 공간에서는 확산량을 줄여 주세요.',
+      '응급 상황에서는 즉시 119에 연락하세요. 이 앱의 상담 답변은 AI가 정리한 정보이며, 화면에 보이는 오일 지식 데이터를 근거로 합니다. 중요한 판단은 사람의 상담을 먼저 고려하세요. 제품명과 상표는 각 권리자의 소유이며, 본 앱은 도테라 코리아의 공식 앱이 아닌 개인 제작 가이드입니다.'
+    ]
+  },
+  en: {
+    'app.name': 'Power of Plants',
+    'app.tag': 'dōTERRA essential oil guide',
+    'app.trial': 'Trial',
+    'app.pro': 'Membership',
+    'nav.chat': 'Consult',
+    'nav.sym': 'Symptoms',
+    'nav.lib': 'Library',
+    'quota.today': 'Free today',
+    'chat.eyebrow': 'Aroma Consultation',
+    'chat.h1': 'Which <em>scent</em><br>does today need?',
+    'chat.sub': 'Tell me how you feel in one line. I will pick the blend and the recipe you need from 24 dōTERRA oils.',
+    'chat.chipsLabel': 'Popular concerns',
+    'chat.ph': 'e.g. I cannot fall asleep',
+    'chat.send': 'Send',
+    'chat.greet': 'Hello, this is Power of Plants. Tell me how today feels — I will find a scent ritual that fits.',
+    'chat.try': 'Try asking',
+    'chat.typing': 'Choosing scents',
+    'chat.langnote': 'Answered in the language you wrote in',
+    'chat.answerInKo': '한국어로 보기',
+    'ans.recipe': 'Recipe',
+    'ans.caution': 'Please note',
+    'ans.more': 'Ask next',
+    'ans.disclaimer': 'A wellness guide only — it does not replace diagnosis or treatment by a medical professional.',
+    'ans.demo': 'Trial local knowledge engine',
+    'ans.ai': 'AI-generated answer',
+    'sym.h1': 'By symptom',
+    'sym.sub': 'Pick a category to see a recommended blend and a recipe you can use at home.',
+    'sym.foot': 'If a symptom continues or worsens, please see a medical professional. Scent is a small habit that supports you alongside care.',
+    'sym.blend': 'Suggested blend',
+    'sym.dose': 'Dilution · Amount',
+    'sym.ask': 'Ask the AI about this',
+    'sym.oils': 'Oils that help',
+    'lib.h1': 'Oil library',
+    'lib.sub': '24 representative dōTERRA oils. Search by name, or browse singles and blends.',
+    'lib.search': 'Search oils',
+    'lib.all': 'All',
+    'lib.single': 'Singles',
+    'lib.blend': 'Blends',
+    'lib.empty': 'No oils found. Try another name.',
+    'lib.count': '24 oils',
+    'oil.eff': 'What it is known for',
+    'oil.how': 'How to use',
+    'oil.recipe': 'Recipe',
+    'oil.caution': 'Cautions',
+    'oil.pairs': 'Pairs well with',
+    'oil.ask': 'Ask about this oil',
+    'oil.names': 'Other names',
+    'oil.single': 'Single',
+    'oil.blend': 'Blend',
+    'use.A': 'Aroma',
+    'use.T': 'Topical',
+    'use.I': 'Internal',
+    'up.title': 'Power of Plants Membership',
+    'up.sub': 'Unlimited one-to-one aroma consultation for your daily condition.',
+    'up.free': 'Free',
+    'up.plus': 'Plus',
+    'up.pro': 'Pro',
+    'up.perMonth': '/mo',
+    'up.freeDesc': ['5 consultations a day', '24-oil library', 'All three languages'],
+    'up.plusDesc': ['30 consultations a day', 'Saved consultation history', 'Personal blending notes'],
+    'up.proDesc': ['Unlimited consultations', 'Early access to seasonal guides', 'Priority 1:1 consultation', 'Two family seats'],
+    'up.now': 'Current plan',
+    'up.hot': 'Recommended',
+    'up.cta': 'Notify me at launch',
+    'up.note': 'No payment is taken in this trial. Prices and benefits may change before launch.',
+    'limit.title': "You've used today's free consultations",
+    'limit.body': 'The trial includes 5 free consultations a day. Membership adds unlimited consultation and saved blending notes.',
+    'limit.upgrade': 'Preview membership',
+    'limit.reset': 'Reset trial count',
+    'toast.reset': 'Trial consultations reset',
+    'toast.copied': 'Copied',
+    'disc.strip': 'Wellness guide · not a substitute for diagnosis or treatment',
+    'disc.title': 'Please read',
+    'disc.body': [
+      'Power of Plants is an information service that explains how to use dōTERRA essential oils as everyday wellness habits. It is not medical practice or prescription, and does not replace diagnosis, treatment or prevention of disease.',
+      'If you take medication, are pregnant or breastfeeding, or have a medical condition, consult a doctor or pharmacist before use. If symptoms persist or worsen, seek medical care.',
+      'Always dilute essential oils in a carrier oil and patch-test a small amount on the inner arm first. Never apply to eyes, mucous membranes or broken skin.',
+      'Citrus oils (lemon, bergamot, orange and others) are photosensitive: avoid sun and UV for 12 hours after topical use. Keep diffusion light around infants under two and pets.',
+      'In an emergency call your local emergency number. Answers in this app are generated by AI from the oil knowledge shown on screen — for anything important, talk to a person first. Product names and trademarks belong to their owners; this app is an independently made guide, not an official dōTERRA Korea app.'
+    ]
+  },
+  ja: {
+    'app.name': '植物の力',
+    'app.tag': 'ドテラ エッセンシャルオイル ガイド',
+    'app.trial': '体験版',
+    'app.pro': 'メンバーシップ',
+    'nav.chat': 'AI相談',
+    'nav.sym': '症状ガイド',
+    'nav.lib': 'オイル図鑑',
+    'quota.today': '本日の無料',
+    'chat.eyebrow': 'Aroma Consultation',
+    'chat.h1': '今日は、どんな<em>香り</em>が<br>必要ですか。',
+    'chat.sub': '症状や気分をそのまま書いてください。24種類のドテラオイルから、今必要な組み合わせとレシピをお選びします。',
+    'chat.chipsLabel': 'よくあるお悩み',
+    'chat.ph': '例）なかなか眠れない',
+    'chat.send': '送信',
+    'chat.greet': 'こんにちは、植物の力です。今日のコンディションを一言で聞かせてください。香りで整える組み合わせをご提案します。',
+    'chat.try': 'こんなふうに聞いてみてください',
+    'chat.typing': '香りを選んでいます',
+    'chat.langnote': '入力された言語でお答えしました',
+    'chat.answerInKo': '한국어로 보기',
+    'ans.recipe': 'おすすめレシピ',
+    'ans.caution': 'ご確認ください',
+    'ans.more': '続けて聞く',
+    'ans.disclaimer': 'ウェルネス活用ガイドであり、病気の診断・治療に代わるものではありません。',
+    'ans.demo': '体験版ローカル知識エンジン',
+    'ans.ai': 'AI生成の回答',
+    'sym.h1': '症状別ガイド',
+    'sym.sub': 'カテゴリーを選ぶと、おすすめのオイルの組み合わせとブレンドレシピが表示されます。',
+    'sym.foot': '症状が続く、または悪化する場合は医療機関を受診してください。香りはその傍らで寄り添う小さな習慣です。',
+    'sym.blend': 'おすすめブレンド',
+    'sym.dose': '希釈・使用量',
+    'sym.ask': 'この症状についてAIに聞く',
+    'sym.oils': '合うオイル',
+    'lib.h1': 'オイル図鑑',
+    'lib.sub': 'ドテラコリア基準の代表オイル24種。名前で検索し、シングルとブレンドで絞り込めます。',
+    'lib.search': 'オイル名で検索',
+    'lib.all': 'すべて',
+    'lib.single': 'シングル',
+    'lib.blend': 'ブレンド',
+    'lib.empty': '該当するオイルがありません。別の名前でお試しください。',
+    'lib.count': '24種収録',
+    'oil.eff': '主なはたらき',
+    'oil.how': '使い方',
+    'oil.recipe': 'おすすめレシピ',
+    'oil.caution': '注意事項',
+    'oil.pairs': '相性のよいオイル',
+    'oil.ask': 'このオイルで相談する',
+    'oil.names': '他の言語の名前',
+    'oil.single': 'シングル',
+    'oil.blend': 'ブレンド',
+    'use.A': '芳香',
+    'use.T': '塗布',
+    'use.I': '摂取',
+    'up.title': '植物の力 メンバーシップ',
+    'up.sub': '毎日のコンディションに寄り添う1:1アロマ相談を無制限で。',
+    'up.free': '無料',
+    'up.plus': 'プラス',
+    'up.pro': 'プロ',
+    'up.perMonth': '/月',
+    'up.freeDesc': ['1日5回の相談', 'オイル図鑑24種', '3言語すべて'],
+    'up.plusDesc': ['1日30回の相談', '相談履歴の保存', 'マイブレンドノート'],
+    'up.proDesc': ['相談無制限', '季節・新オイルガイドの先行公開', '1:1相談の優先接続', '家族アカウント2つ'],
+    'up.now': '利用中',
+    'up.hot': 'おすすめ',
+    'up.cta': 'リリース通知を受け取る',
+    'up.note': '体験版では決済は行われません。価格と特典は正式リリース前に変更される場合があります。',
+    'limit.title': '本日の無料相談を使い切りました',
+    'limit.body': '体験版は1日5回まで無料です。メンバーシップでは無制限の相談とブレンド記録をご利用いただけます。',
+    'limit.upgrade': 'メンバーシップを見る',
+    'limit.reset': '体験版の回数をリセット',
+    'toast.reset': '体験版の回数をリセットしました',
+    'toast.copied': 'コピーしました',
+    'disc.strip': 'ウェルネス活用ガイド · 病気の診断・治療に代わるものではありません',
+    'disc.title': '必ずお読みください',
+    'disc.body': [
+      '植物の力は、ドテラのエッセンシャルオイルを暮らしのウェルネス習慣として活用する方法をお伝えする情報サービスです。医療行為や処方ではなく、病気の診断・治療・予防に代わるものではありません。',
+      '服薬中、妊娠中・授乳中、持病がある方は、使用前に医師・薬剤師などの専門家にご相談ください。症状が続く、または悪化する場合は医療機関を受診してください。',
+      'エッセンシャルオイルは必ずキャリアオイルで希釈し、最初は腕の内側で少量のパッチテストを行ってください。目・粘膜・傷口には使用しません。',
+      'シトラス系（レモン・ベルガモット・オレンジなど）は塗布後12時間、日光と紫外線を避けてください。2歳以下の乳幼児やペットのいる空間では拡散量を控えめに。',
+      '緊急時は地域の救急番号に連絡してください。このアプリの回答は、画面に表示されるオイル知識をもとにAIが生成しています。大切な判断は人へのご相談を優先してください。製品名と商標は各権利者に帰属します。本アプリはドテラコリア公式アプリではなく、個人が制作したガイドです。'
+    ]
+  }
+};
+
+/* =========================================================================
+   3. OILS — 도테라 코리아 기준 대표 오일 24종 (싱글 14 + 블렌드 10)
+   type: 'single' | 'blend'   uses: A(발향) T(도포) I(섭취)
+   ========================================================================= */
+var OILS = [
+  {
+    id: 'lavender', type: 'single', tone: ['#B9A6C8', '#7A6693'],
+    name: { ko: '라벤더', en: 'Lavender', ja: 'ラベンダー' },
+    latin: 'Lavandula angustifolia',
+    eff: {
+      ko: '플로럴한 향으로 긴장을 풀고 편안한 수면 분위기를 만듭니다. 피부 진정과 휴식 리추얼에 가장 널리 쓰이는 오일입니다.',
+      en: 'A floral oil that eases tension and sets the mood for restful sleep. The most widely used oil for skin soothing and evening rituals.',
+      ja: 'フローラルな香りで緊張をほどき、心地よい睡眠の空気をつくります。肌の鎮静や休息のルーティンに最も広く使われるオイルです。'
+    },
+    kw: {
+      ko: ['잠', '불면', '수면', '숙면', '긴장', '불안', '스트레스', '진정', '피부', '화상', '벌레', '두통', '휴식', '명상', '라벤더'],
+      en: ['sleep', 'insomnia', 'calm', 'relax', 'stress', 'anxiety', 'tension', 'skin', 'burn', 'insect', 'headache', 'rest', 'lavender'],
+      ja: ['眠れない', '不眠', '睡眠', '緊張', '不安', 'ストレス', '鎮静', '肌', 'やけど', '虫', '頭痛', 'リラックス', 'ラベンダー']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['디퓨저에 3방울 — 취침 30분 전 침실에', '캐리어 오일에 희석해 목 뒤와 발바닥에 부드럽게'],
+      en: ['3 drops in the diffuser, 30 minutes before bed', 'Diluted on the back of the neck and soles of the feet'],
+      ja: ['ディフューザーに3滴、就寝30分前の寝室に', 'キャリアオイルで希釈し、首の後ろと足裏にやさしく']
+    },
+    recipe: {
+      ko: { t: '딥 슬립 디퓨저', s: ['라벤더 3방울 + 시더우드 1방울', '취침 30분 전부터 20분간 확산'] },
+      en: { t: 'Deep Sleep Diffuser', s: ['3 drops lavender + 1 drop cedarwood', 'Diffuse for 20 minutes, starting 30 minutes before bed'] },
+      ja: { t: 'ディープスリープ ディフューザー', s: ['ラベンダー3滴＋シダーウッド1滴', '就寝30分前から20分間拡散'] }
+    },
+    cautions: {
+      ko: ['저혈압이 있으시면 다량 사용을 피하세요', '2세 이하 영유아에게는 직접 도포하지 마세요'],
+      en: ['Avoid heavy use if you have low blood pressure', 'Do not apply directly to infants under two'],
+      ja: ['低血圧の方は多用を避けてください', '2歳以下の乳幼児への直接塗布は避けてください']
+    },
+    pairs: ['serenity', 'cedarwood', 'frankincense']
+  },
+  {
+    id: 'peppermint', type: 'single', tone: ['#8FC7BF', '#3F8B84'],
+    name: { ko: '페퍼민트', en: 'Peppermint', ja: 'ペパーミント' },
+    latin: 'Mentha piperita',
+    eff: {
+      ko: '시원한 감각으로 머리를 맑게 하고, 긴장으로 굳은 목·어깨를 상쾌하게 정돈합니다.',
+      en: 'A cooling oil that clears the head and refreshes tight shoulders and neck.',
+      ja: '清涼感で頭をすっきりさせ、緊張でこわばった首や肩を爽やかに整えます。'
+    },
+    kw: {
+      ko: ['두통', '머리', '긴장', '속', '소화', '멀미', '집중', '피로', '상쾌', '시원', '뻐근', '근육', '페퍼민트'],
+      en: ['headache', 'head', 'tension', 'digestion', 'nausea', 'focus', 'fatigue', 'fresh', 'cool', 'muscle', 'peppermint'],
+      ja: ['頭痛', '頭', '緊張', '消化', '吐き気', '集中', '疲れ', '爽やか', '筋肉', 'ペパーミント']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['관자놀이와 목 뒤에 희석해 1방울 소량', '디퓨저 2~3방울로 공기를 상쾌하게'],
+      en: ['A diluted drop on the temples and back of the neck', '2-3 drops in the diffuser for fresh air'],
+      ja: ['こめかみと首の後ろに希釈して少量', 'ディフューザーに2〜3滴で空気を爽やかに']
+    },
+    recipe: {
+      ko: { t: '헤드 클리어 롤온', s: ['페퍼민트 2방울 + 라벤더 1방울 + 캐리어 오일 10mL', '관자놀이와 목 뒤에 소량씩'] },
+      en: { t: 'Head Clear Roll-on', s: ['2 drops peppermint + 1 drop lavender + 10mL carrier oil', 'A small amount on the temples and nape'] },
+      ja: { t: 'ヘッドクリア ロールオン', s: ['ペパーミント2滴＋ラベンダー1滴＋キャリアオイル10mL', 'こめかみと首の後ろに少量ずつ'] }
+    },
+    cautions: {
+      ko: ['2세 이하 영유아의 얼굴·가슴 부근에는 사용하지 마세요', '고혈압·담석이 있으시면 전문가와 상의하세요'],
+      en: ['Keep away from the face and chest of children under two', 'Consult a professional if you have high blood pressure or gallstones'],
+      ja: ['2歳以下の乳幼児の顔や胸の周りには使わないでください', '高血圧・胆石のある方は専門家にご相談ください']
+    },
+    pairs: ['past-tense', 'eucalyptus', 'lemon']
+  },
+  {
+    id: 'lemon', type: 'single', tone: ['#F0DC8E', '#CFAF45'],
+    name: { ko: '레몬', en: 'Lemon', ja: 'レモン' },
+    latin: 'Citrus limon',
+    eff: {
+      ko: '상쾌한 시트러스 향으로 기분을 환기하고, 물 한 잔에 더해 산뜻한 아침 습관을 만들어 줍니다.',
+      en: 'A bright citrus oil that lifts the mood and turns a glass of water into a fresh morning habit.',
+      ja: '爽やかなシトラスの香りで気分を切り替え、一杯の水とともに軽やかな朝の習慣をつくります。'
+    },
+    kw: {
+      ko: ['피로', '기분', '환기', '청소', '정화', '소화', '속', '아침', '집중', '레몬', '상쾌', '물'],
+      en: ['fatigue', 'mood', 'refresh', 'clean', 'purify', 'digestion', 'morning', 'focus', 'lemon', 'fresh', 'water'],
+      ja: ['疲れ', '気分', '換気', '掃除', '浄化', '消化', '朝', '集中', 'レモン', '爽やか', '水']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['물 250mL에 1방울(유리컵 사용)', '디퓨저 3방울로 공간을 환기'],
+      en: ['1 drop in 250mL of water in a glass', '3 drops in the diffuser to refresh a room'],
+      ja: ['水250mLに1滴（ガラスのコップで）', 'ディフューザーに3滴で空間を換気']
+    },
+    recipe: {
+      ko: { t: '모닝 클렌징 워터', s: ['물 250mL + 레몬 1방울', '아침 공복에 천천히 한 모금씩'] },
+      en: { t: 'Morning Cleansing Water', s: ['250mL water + 1 drop lemon', 'Sip slowly on an empty stomach in the morning'] },
+      ja: { t: 'モーニング クレンジングウォーター', s: ['水250mL＋レモン1滴', '朝の空腹時にゆっくり少しずつ'] }
+    },
+    cautions: {
+      ko: ['도포 후 12시간은 햇빛과 자외선을 피하세요(광독성)', '치아 보호를 위해 반드시 물에 희석해 드세요'],
+      en: ['Photosensitive: avoid sun and UV for 12 hours after topical use', 'Always dilute in water to protect tooth enamel'],
+      ja: ['塗布後12時間は日光と紫外線を避けてください（光毒性）', '歯を守るため必ず水で希釈してください']
+    },
+    pairs: ['wild-orange', 'peppermint', 'purify']
+  },
+  {
+    id: 'tea-tree', type: 'single', tone: ['#9DBFA6', '#4F7A63'],
+    name: { ko: '티트리', en: 'Tea Tree', ja: 'ティートゥリー' },
+    latin: 'Melaleuca alternifolia',
+    eff: {
+      ko: '깨끗한 피부와 두피, 손톱 주변 관리에 즐겨 쓰이는 클리어링 오일입니다.',
+      en: 'A cleansing oil often used for clear-looking skin, scalp and nails.',
+      ja: '清潔な肌や頭皮、爪まわりのケアによく使われるクレンジングオイルです。'
+    },
+    kw: {
+      ko: ['피부', '트러블', '여드름', '두피', '비듬', '손톱', '발', '냄새', '정화', '티트리', '상처'],
+      en: ['skin', 'blemish', 'acne', 'scalp', 'dandruff', 'nail', 'foot', 'odor', 'purify', 'tea tree', 'wound'],
+      ja: ['肌', '肌荒れ', 'ニキビ', '頭皮', 'ふけ', '爪', '足', '匂い', '浄化', 'ティートゥリー', '傷']
+    },
+    uses: ['A', 'T'],
+    how: {
+      ko: ['캐리어 오일에 1%로 희석해 해당 부위에', '디퓨저 2방울로 공기를 정화'],
+      en: ['Diluted to 1% in carrier oil, applied to the area', '2 drops in the diffuser to freshen air'],
+      ja: ['キャリアオイルで1%に希釈して該当部位に', 'ディフューザーに2滴で空気を浄化']
+    },
+    recipe: {
+      ko: { t: '스킨 클리어 스팟', s: ['티트리 1방울 + 라벤더 1방울 + 캐리어 오일 10mL', '면봉으로 국소 부위에만 콕'] },
+      en: { t: 'Skin Clear Spot', s: ['1 drop tea tree + 1 drop lavender + 10mL carrier oil', 'Dab on the spot only, with a cotton swab'] },
+      ja: { t: 'スキンクリア スポット', s: ['ティートゥリー1滴＋ラベンダー1滴＋キャリアオイル10mL', '綿棒で局所にのみ'] }
+    },
+    cautions: {
+      ko: ['민감한 피부는 반드시 희석해 사용하세요', '반려동물이 있는 공간에서는 확산량을 줄이세요'],
+      en: ['Always dilute for sensitive skin', 'Diffuse lightly in rooms with pets'],
+      ja: ['敏感な肌は必ず希釈して使用してください', 'ペットのいる空間では拡散量を控えめに']
+    },
+    pairs: ['lavender', 'frankincense', 'purify']
+  },
+  {
+    id: 'frankincense', type: 'single', tone: ['#D9C39A', '#9C7C4C'],
+    name: { ko: '프랑킨센스', en: 'Frankincense', ja: 'フランキンセンス' },
+    latin: 'Boswellia carterii',
+    eff: {
+      ko: '수지의 깊은 향으로 마음을 가라앉히고 피부에 윤기와 편안함을 더합니다. 명상과 저녁 리추얼의 중심 오일입니다.',
+      en: 'A resinous oil that settles the mind and brings a soft glow to skin. A centrepiece for meditation and evening rituals.',
+      ja: '樹脂の深い香りで心を落ち着け、肌にうるおいと穏やかさを添えます。瞑想や夜のルーティンの中心となるオイルです。'
+    },
+    kw: {
+      ko: ['명상', '집중', '차분', '불안', '피부', '주름', '탄력', '기침', '호흡', '균형', '프랑킨센스', '기도'],
+      en: ['meditation', 'focus', 'calm', 'anxiety', 'skin', 'wrinkle', 'firm', 'cough', 'breath', 'balance', 'frankincense'],
+      ja: ['瞑想', '集中', '落ち着き', '不安', '肌', 'しわ', '弾力', '咳', '呼吸', 'バランス', 'フランキンセンス']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['아침·저녁 스킨케어에 1방울 섞어', '손바닥에 1방울을 묻혀 코로 깊게 3회 호흡'],
+      en: ['One drop mixed into morning and evening skincare', 'One drop on the palms, then three deep breaths'],
+      ja: ['朝晩のスキンケアに1滴混ぜて', '手のひらに1滴、鼻から3回深く呼吸']
+    },
+    recipe: {
+      ko: { t: '그라운딩 리추얼', s: ['프랑킨센스 2방울 + 밸런스 1방울', '손바닥에 펴 바르고 3회 깊게 호흡'] },
+      en: { t: 'Grounding Ritual', s: ['2 drops frankincense + 1 drop Balance', 'Spread on the palms and take three deep breaths'] },
+      ja: { t: 'グラウンディング リチュアル', s: ['フランキンセンス2滴＋バランス1滴', '手のひらに広げ、3回深く呼吸'] }
+    },
+    cautions: {
+      ko: ['특별한 주의는 없지만 민감한 피부는 희석하세요', '임신 중에는 사용 전 전문가와 상의하세요'],
+      en: ['No special cautions, but dilute for sensitive skin', 'Consult a professional before use during pregnancy'],
+      ja: ['特別な注意はありませんが敏感な肌は希釈を', '妊娠中は使用前に専門家へご相談ください']
+    },
+    pairs: ['balance', 'lavender', 'cedarwood']
+  },
+  {
+    id: 'wild-orange', type: 'single', tone: ['#F3BE86', '#DC8637'],
+    name: { ko: '오렌지', en: 'Wild Orange', ja: 'ワイルドオレンジ' },
+    latin: 'Citrus sinensis',
+    eff: {
+      ko: '밝은 오렌지 향으로 기분을 끌어올리고 공간을 산뜻하게 만듭니다. 무기력한 오후에 특히 잘 어울립니다.',
+      en: 'A bright orange oil that lifts the mood and freshens a room, especially on a sluggish afternoon.',
+      ja: '明るいオレンジの香りで気分を上げ、空間を爽やかにします。気力が出ない午後に特に合います。'
+    },
+    kw: {
+      ko: ['기분', '우울', '활력', '의욕', '아침', '스트레스', '오렌지', '에너지', '환기'],
+      en: ['mood', 'low', 'energy', 'motivation', 'morning', 'stress', 'orange', 'uplift', 'refresh'],
+      ja: ['気分', '落ち込み', '活力', 'やる気', '朝', 'ストレス', 'オレンジ', '元気', '換気']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['디퓨저 3~4방울로 거실·사무실에', '손바닥에 1방울을 묻혀 향을 음미'],
+      en: ['3-4 drops in the diffuser for living room or office', 'A drop on the palms to enjoy the scent'],
+      ja: ['ディフューザーに3〜4滴、リビングやオフィスに', '手のひらに1滴で香りを楽しむ']
+    },
+    recipe: {
+      ko: { t: '선샤인 디퓨저', s: ['오렌지 3방울 + 시트러스블리스 1방울', '오전 시간 30분간 확산'] },
+      en: { t: 'Sunshine Diffuser', s: ['3 drops wild orange + 1 drop Citrus Bliss', 'Diffuse for 30 minutes in the morning'] },
+      ja: { t: 'サンシャイン ディフューザー', s: ['ワイルドオレンジ3滴＋シトラスブリス1滴', '午前中に30分間拡散'] }
+    },
+    cautions: {
+      ko: ['광독성이 있어 도포 후 12시간 햇빛을 피하세요'],
+      en: ['Photosensitive: avoid sun for 12 hours after topical use'],
+      ja: ['光毒性があるため塗布後12時間は日光を避けてください']
+    },
+    pairs: ['lemon', 'citrus-bliss', 'bergamot']
+  },
+  {
+    id: 'eucalyptus', type: 'single', tone: ['#A8C8BB', '#4F8478'],
+    name: { ko: '유칼립투스', en: 'Eucalyptus', ja: 'ユーカリ' },
+    latin: 'Eucalyptus radiata',
+    eff: {
+      ko: '숨을 시원하게 트이게 하는 상쾌한 향으로 환절기 공간 관리와 샤워 타임에 잘 어울립니다.',
+      en: 'A fresh, clearing scent for seasonal air care and shower rituals.',
+      ja: '呼吸をすっと通す爽やかな香り。季節の変わり目の空気管理やバスタイムによく合います。'
+    },
+    kw: {
+      ko: ['호흡', '기침', '코', '막힘', '환절기', '겨울', '공기', '상쾌', '유칼립투스', '목'],
+      en: ['breath', 'cough', 'nose', 'congestion', 'seasonal', 'winter', 'air', 'fresh', 'eucalyptus', 'throat'],
+      ja: ['呼吸', '咳', '鼻', '鼻づまり', '季節', '冬', '空気', '爽やか', 'ユーカリ', '喉']
+    },
+    uses: ['A', 'T'],
+    how: {
+      ko: ['가슴과 등 위쪽에 희석해 도포', '샤워실 바닥에 2방울 — 스팀과 함께'],
+      en: ['Diluted on the chest and upper back', '2 drops on the shower floor with the steam'],
+      ja: ['胸と背中上部に希釈して塗布', 'シャワールームの床に2滴、スチームと一緒に']
+    },
+    recipe: {
+      ko: { t: '브리딩 스팀', s: ['유칼립투스 2방울 + 이지에어 2방울', '뜨거운 물에 떨어뜨려 3분간 증기를 마시기'] },
+      en: { t: 'Breathing Steam', s: ['2 drops eucalyptus + 2 drops Breathe', 'Add to hot water and breathe the steam for 3 minutes'] },
+      ja: { t: 'ブリージング スチーム', s: ['ユーカリ2滴＋イージーエア2滴', '熱湯に落とし、3分間蒸気を吸う'] }
+    },
+    cautions: {
+      ko: ['6세 이하 어린이에게는 사용하지 마세요', '고혈압이 있으시면 소량만 사용하세요'],
+      en: ['Do not use with children under six', 'Use sparingly if you have high blood pressure'],
+      ja: ['6歳以下の子どもには使用しないでください', '高血圧の方は少量にとどめてください']
+    },
+    pairs: ['breathe', 'peppermint', 'tea-tree']
+  },
+  {
+    id: 'rosemary', type: 'single', tone: ['#A9C0A2', '#587B51'],
+    name: { ko: '로즈마리', en: 'Rosemary', ja: 'ローズマリー' },
+    latin: 'Rosmarinus officinalis',
+    eff: {
+      ko: '허브의 또렷한 향으로 집중을 돕고 두피를 산뜻하게 관리합니다. 공부·업무 공간의 리프레시에 좋습니다.',
+      en: 'A clear herbal scent for focus and a fresh scalp — good for study and work spaces.',
+      ja: 'ハーブの澄んだ香りで集中を助け、頭皮を爽やかに整えます。勉強や仕事の空間のリフレッシュに。'
+    },
+    kw: {
+      ko: ['집중', '기억', '공부', '머리', '두피', '탈모', '피로', '로즈마리', '리프레시', '업무'],
+      en: ['focus', 'memory', 'study', 'head', 'scalp', 'hair', 'fatigue', 'rosemary', 'refresh', 'work'],
+      ja: ['集中', '記憶', '勉強', '頭', '頭皮', '髪', '疲れ', 'ローズマリー', 'リフレッシュ', '仕事']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['디퓨저 2방울 + 레몬 1방울로 작업 공간에', '두피에 희석해 3분간 마사지'],
+      en: ['2 drops + 1 drop lemon in the diffuser at your desk', 'Diluted into the scalp for a 3-minute massage'],
+      ja: ['ディフューザーに2滴＋レモン1滴、作業スペースに', '頭皮に希釈して3分マッサージ']
+    },
+    recipe: {
+      ko: { t: '포커스 디퓨저', s: ['로즈마리 2방울 + 페퍼민트 1방울', '공부·업무 시작 전 20분간'] },
+      en: { t: 'Focus Diffuser', s: ['2 drops rosemary + 1 drop peppermint', '20 minutes before study or work begins'] },
+      ja: { t: 'フォーカス ディフューザー', s: ['ローズマリー2滴＋ペパーミント1滴', '勉強・仕事の開始前に20分間'] }
+    },
+    cautions: {
+      ko: ['고혈압·간질 병력이 있으시면 사용을 피하세요', '임신 중에는 사용하지 마세요'],
+      en: ['Avoid with high blood pressure or a history of seizures', 'Do not use during pregnancy'],
+      ja: ['高血圧・てんかんの既往がある方は避けてください', '妊娠中は使用しないでください']
+    },
+    pairs: ['peppermint', 'lemon', 'cypress']
+  },
+  {
+    id: 'bergamot', type: 'single', tone: ['#C7D98A', '#87A642'],
+    name: { ko: '베르가못', en: 'Bergamot', ja: 'ベルガモット' },
+    latin: 'Citrus bergamia',
+    eff: {
+      ko: '햇살 같은 시트러스와 플로럴의 균형으로 긴장을 풀고 기분을 가볍게 합니다.',
+      en: 'A balance of citrus and floral that releases tension and lightens the mood.',
+      ja: 'シトラスとフローラルの均衡で緊張をほどき、気分を軽くします。'
+    },
+    kw: {
+      ko: ['스트레스', '불안', '기분', '우울', '긴장', '잠', '베르가못', '차분'],
+      en: ['stress', 'anxiety', 'mood', 'low', 'tension', 'sleep', 'bergamot', 'calm'],
+      ja: ['ストレス', '不安', '気分', '落ち込み', '緊張', '睡眠', 'ベルガモット', '落ち着き']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['디퓨저 3방울로 저녁 시간에', '가슴 위쪽에 희석해 도포'],
+      en: ['3 drops in the diffuser in the evening', 'Diluted on the upper chest'],
+      ja: ['夕方のディフューザーに3滴', '胸の上部に希釈して塗布']
+    },
+    recipe: {
+      ko: { t: '이브닝 캄', s: ['베르가못 2방울 + 세레니티 2방울', '저녁 8시 이후 20분간'] },
+      en: { t: 'Evening Calm', s: ['2 drops bergamot + 2 drops Serenity', '20 minutes after 8pm'] },
+      ja: { t: 'イブニング カーム', s: ['ベルガモット2滴＋セレニティ2滴', '夜8時以降に20分間'] }
+    },
+    cautions: {
+      ko: ['광독성이 강해 도포 후 12시간 자외선을 피하세요', '민감한 피부는 1% 이하로 희석하세요'],
+      en: ['Strongly photosensitive: avoid UV for 12 hours after topical use', 'Dilute to 1% or less for sensitive skin'],
+      ja: ['光毒性が強いため塗布後12時間は紫外線を避けてください', '敏感な肌は1%以下に希釈を']
+    },
+    pairs: ['serenity', 'lavender', 'wild-orange']
+  },
+  {
+    id: 'geranium', type: 'single', tone: ['#E3B3B7', '#B06F75'],
+    name: { ko: '제라늄', en: 'Geranium', ja: 'ゼラニウム' },
+    latin: 'Pelargonium graveolens',
+    eff: {
+      ko: '로즈에 가까운 부드러운 향으로 마음의 균형을 돕고 피부 컨디션을 부드럽게 돌봅니다.',
+      en: 'A soft, rose-like scent that helps restore balance and cares gently for skin.',
+      ja: 'ローズに近い柔らかな香りで心のバランスを助け、肌のコンディションをやさしく整えます。'
+    },
+    kw: {
+      ko: ['균형', '호르몬', '생리', '피부', '건조', '붓기', '제라늄', '기분', '여성', '컨디션'],
+      en: ['balance', 'hormone', 'cycle', 'skin', 'dry', 'swelling', 'geranium', 'mood', 'condition'],
+      ja: ['バランス', 'ホルモン', '生理', '肌', '乾燥', 'むくみ', 'ゼラニウム', '気分', 'コンディション']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['얼굴·목에 1% 희석해 도포', '디퓨저에 2방울 + 오렌지 1방울'],
+      en: ['Diluted to 1% on face and neck', '2 drops in the diffuser + 1 drop wild orange'],
+      ja: ['顔と首に1%希釈で塗布', 'ディフューザーに2滴＋オレンジ1滴']
+    },
+    recipe: {
+      ko: { t: '밸런스 터치 오일', s: ['제라늄 2방울 + 캐리어 오일 10mL', '아랫배와 허리 주변에 부드럽게 마사지'] },
+      en: { t: 'Balance Touch Oil', s: ['2 drops geranium + 10mL carrier oil', 'Massage gently over the lower belly and back'] },
+      ja: { t: 'バランス タッチオイル', s: ['ゼラニウム2滴＋キャリアオイル10mL', '下腹部と腰まわりにやさしくマッサージ'] }
+    },
+    cautions: {
+      ko: ['임신 중에는 사용 전 전문가와 상의하세요', '민감한 피부는 1% 이하로 희석하세요'],
+      en: ['Consult a professional before use during pregnancy', 'Dilute to 1% or less for sensitive skin'],
+      ja: ['妊娠中は使用前に専門家へご相談ください', '敏感な肌は1%以下に希釈を']
+    },
+    pairs: ['balance', 'ylang-ylang', 'lavender']
+  },
+  {
+    id: 'ylang-ylang', type: 'single', tone: ['#F0DCA8', '#BF9655'],
+    name: { ko: '일랑일랑', en: 'Ylang Ylang', ja: 'イランイラン' },
+    latin: 'Cananga odorata',
+    eff: {
+      ko: '달콤한 플로럴 향으로 긴장을 풀고 마음에 여유를 만듭니다. 저녁의 분위기를 바꾸는 향입니다.',
+      en: 'A sweet floral that softens tension and leaves room to breathe. It changes the mood of an evening.',
+      ja: '甘いフローラルの香りで緊張をほどき、心に余白をつくります。夜の空気を変える香りです。'
+    },
+    kw: {
+      ko: ['긴장', '불안', '수면', '기분', '로맨스', '심장', '두근', '일랑일랑', '이완'],
+      en: ['tension', 'anxiety', 'sleep', 'mood', 'romance', 'heart', 'flutter', 'ylang ylang', 'relax'],
+      ja: ['緊張', '不安', '睡眠', '気分', 'ロマンス', '心臓', '動悸', 'イランイラン', 'リラックス']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['향이 강해 디퓨저에 1~2방울만', '목과 어깨에 희석해 도포'],
+      en: ['Strong: just 1-2 drops in the diffuser', 'Diluted on the neck and shoulders'],
+      ja: ['香りが強いのでディフューザーに1〜2滴', '首と肩に希釈して塗布']
+    },
+    recipe: {
+      ko: { t: '하트 오프닝 블렌드', s: ['일랑일랑 1방울 + 베르가못 2방울 + 오렌지 1방울', '저녁 디퓨저로 20분간'] },
+      en: { t: 'Heart Opening Blend', s: ['1 drop ylang ylang + 2 drops bergamot + 1 drop wild orange', '20 minutes in the evening diffuser'] },
+      ja: { t: 'ハートオープニング ブレンド', s: ['イランイラン1滴＋ベルガモット2滴＋オレンジ1滴', '夜のディフューザーで20分間'] }
+    },
+    cautions: {
+      ko: ['향이 강해 두통이 있으신 분은 소량만 사용하세요', '저혈압이 있으시면 다량 사용을 피하세요'],
+      en: ['Very aromatic: use small amounts if prone to headaches', 'Avoid heavy use if you have low blood pressure'],
+      ja: ['香りが強いので頭痛のある方は少量に', '低血圧の方は多用を避けてください']
+    },
+    pairs: ['bergamot', 'wild-orange', 'lavender']
+  },
+  {
+    id: 'cedarwood', type: 'single', tone: ['#C9A98C', '#855F41'],
+    name: { ko: '시더우드', en: 'Cedarwood', ja: 'シダーウッド' },
+    latin: 'Juniperus virginiana',
+    eff: {
+      ko: '숲을 닮은 따뜻한 목향으로 마음을 단단하게 붙잡아 주고 잠자리를 편안하게 합니다.',
+      en: 'A warm woody scent like a quiet forest — steadying for the mind and comforting at bedtime.',
+      ja: '森を思わせる温かな木の香り。心をしっかり支え、眠りを穏やかにします。'
+    },
+    kw: {
+      ko: ['수면', '잠', '불면', '집중', '차분', '두피', '시더우드', '그라운딩', '숲'],
+      en: ['sleep', 'insomnia', 'focus', 'calm', 'scalp', 'cedarwood', 'grounding', 'forest'],
+      ja: ['睡眠', '眠れない', '集中', '落ち着き', '頭皮', 'シダーウッド', 'グラウンディング', '森']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['베개 옆 티슈에 1방울', '디퓨저 2방울 + 라벤더 2방울'],
+      en: ['1 drop on a tissue beside the pillow', '2 drops + 2 drops lavender in the diffuser'],
+      ja: ['枕元のティッシュに1滴', 'ディフューザーに2滴＋ラベンダー2滴']
+    },
+    recipe: {
+      ko: { t: '포레스트 슬립', s: ['시더우드 2방울 + 라벤더 2방울 + 세레니티 1방울', '침실 디퓨저로 20분, 이후 전원 끄기'] },
+      en: { t: 'Forest Sleep', s: ['2 drops cedarwood + 2 drops lavender + 1 drop Serenity', '20 minutes in the bedroom, then switch off'] },
+      ja: { t: 'フォレスト スリープ', s: ['シダーウッド2滴＋ラベンダー2滴＋セレニティ1滴', '寝室で20分、その後は電源を切る'] }
+    },
+    cautions: {
+      ko: ['임신 중에는 다량 사용을 피하세요', '민감한 피부는 희석해 사용하세요'],
+      en: ['Avoid heavy use during pregnancy', 'Dilute for sensitive skin'],
+      ja: ['妊娠中は多用を避けてください', '敏感な肌は希釈して使用してください']
+    },
+    pairs: ['lavender', 'serenity', 'frankincense']
+  },
+  {
+    id: 'oregano', type: 'single', tone: ['#C6B49B', '#7C6749'],
+    name: { ko: '오레가노', en: 'Oregano', ja: 'オレガノ' },
+    latin: 'Origanum vulgare',
+    eff: {
+      ko: '강한 허브 향의 오일로 환절기 컨디션 관리에 아주 소량만 사용합니다. ‘향의 항생제’라 불릴 만큼 힘이 있습니다.',
+      en: 'A powerful herbal oil used in tiny amounts through seasonal changes. It is famously strong.',
+      ja: '力強いハーブのオイル。季節の変わり目のコンディション管理にほんの少量だけ使います。'
+    },
+    kw: {
+      ko: ['면역', '환절기', '감기', '기운', '오레가노', '목', '체력', '방어'],
+      en: ['immunity', 'seasonal', 'cold', 'energy', 'oregano', 'throat', 'stamina', 'defence'],
+      ja: ['免疫', '季節', '風邪', '気力', 'オレガノ', '喉', '体力', '防御']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['캐리어 오일에 1% 이하로 희석해 발바닥에', '섭취 시에는 반드시 빈 캡슐을 사용'],
+      en: ['Diluted to 1% or less on the soles of the feet', 'Always use an empty capsule if taken internally'],
+      ja: ['キャリアオイルで1%以下に希釈して足裏に', '摂取する場合は必ず空のカプセルを使用']
+    },
+    recipe: {
+      ko: { t: '윈터 실드', s: ['오레가노 1방울 + 온가드 2방울 + 캐리어 오일 10mL', '발바닥에 소량, 하루 1회'] },
+      en: { t: 'Winter Shield', s: ['1 drop oregano + 2 drops On Guard + 10mL carrier oil', 'A small amount on the feet, once a day'] },
+      ja: { t: 'ウィンター シールド', s: ['オレガノ1滴＋オンガード2滴＋キャリアオイル10mL', '足裏に少量、1日1回'] }
+    },
+    cautions: {
+      ko: ['매우 강한 오일이므로 반드시 희석하세요', '임신 중·6세 이하 어린이에게는 사용하지 마세요', '내복은 10일 이내로 짧게 사용하세요'],
+      en: ['A very strong oil: always dilute', 'Do not use during pregnancy or with children under six', 'Limit internal use to 10 days or fewer'],
+      ja: ['非常に強いオイルなので必ず希釈してください', '妊娠中・6歳以下には使用しないでください', '摂取は10日以内の短期間に']
+    },
+    pairs: ['on-guard', 'tea-tree', 'lemon']
+  },
+  {
+    id: 'cypress', type: 'single', tone: ['#A6BFA6', '#48704B'],
+    name: { ko: '사이프레스', en: 'Cypress', ja: 'サイプレス' },
+    latin: 'Cupressus sempervirens',
+    eff: {
+      ko: '숲의 물기 있는 향으로 다리의 무거운 느낌을 정돈하고, 변화의 시기를 부드럽게 건너가도록 돕습니다.',
+      en: 'A green, watery forest scent that refreshes heavy legs and eases transitions.',
+      ja: '森の潤いのある香り。脚の重さを整え、変化の時期を穏やかに渡るのを助けます。'
+    },
+    kw: {
+      ko: ['다리', '붓기', '무거움', '순환', '변화', '이별', '사이프레스', '정리', '종아리'],
+      en: ['legs', 'swelling', 'heavy', 'circulation', 'change', 'farewell', 'cypress', 'tidy', 'calf'],
+      ja: ['脚', 'むくみ', '重だるい', '巡り', '変化', '別れ', 'サイプレス', '整理', 'ふくらはぎ']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['다리에 아래에서 위로 희석 도포', '디퓨저 2방울 + 레몬 1방울'],
+      en: ['Diluted upward strokes on the legs', '2 drops + 1 drop lemon in the diffuser'],
+      ja: ['脚に下から上へ希釈して塗布', 'ディフューザーに2滴＋レモン1滴']
+    },
+    recipe: {
+      ko: { t: '레그 리프레시', s: ['사이프레스 3방울 + 캐리어 오일 10mL', '종아리에서 허벅지로 5분간'] },
+      en: { t: 'Leg Refresh', s: ['3 drops cypress + 10mL carrier oil', 'Five minutes from calf to thigh'] },
+      ja: { t: 'レッグ リフレッシュ', s: ['サイプレス3滴＋キャリアオイル10mL', 'ふくらはぎから太ももへ5分間'] }
+    },
+    cautions: {
+      ko: ['임신 중에는 사용을 피하세요', '고혈압이 있으시면 전문가와 상의하세요'],
+      en: ['Avoid during pregnancy', 'Consult a professional if you have high blood pressure'],
+      ja: ['妊娠中は使用を避けてください', '高血圧の方は専門家にご相談ください']
+    },
+    pairs: ['geranium', 'lemon', 'rosemary']
+  },
+  {
+    id: 'on-guard', type: 'blend', tone: ['#E2C3A0', '#AE7046'],
+    name: { ko: '온가드', en: 'On Guard', ja: 'オンガード' },
+    latin: 'Protective Blend',
+    eff: {
+      ko: '오렌지·정향·계피·유칼립투스·로즈마리가 어우러진 대표 보호 블렌드. 환절기 손 씻기와 공간 관리에 즐겨 씁니다.',
+      en: 'Wild orange, clove, cinnamon, eucalyptus and rosemary — the classic protective blend for seasonal hand and air care.',
+      ja: 'オレンジ・クローブ・シナモン・ユーカリ・ローズマリーの定番プロテクティブブレンド。季節の手洗いや空間管理に。'
+    },
+    kw: {
+      ko: ['면역', '환절기', '감기', '손', '위생', '공기', '온가드', '보호', '겨울', '방어'],
+      en: ['immunity', 'seasonal', 'cold', 'hands', 'hygiene', 'air', 'on guard', 'protect', 'winter', 'defence'],
+      ja: ['免疫', '季節', '風邪', '手', '衛生', '空気', 'オンガード', '保護', '冬', '防御']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['디퓨저 3방울로 현관·거실에', '물에 희석해 손 씻기 루틴에'],
+      en: ['3 drops in the entryway or living room diffuser', 'Diluted in water as part of hand washing'],
+      ja: ['ディフューザーに3滴、玄関やリビングに', '水で希釈して手洗いの習慣に']
+    },
+    recipe: {
+      ko: { t: '시즌 디펜스 디퓨저', s: ['온가드 3방울 + 레몬 2방울', '환절기 아침 20분간'] },
+      en: { t: 'Season Defence Diffuser', s: ['3 drops On Guard + 2 drops lemon', '20 minutes each morning through the change of season'] },
+      ja: { t: 'シーズン ディフェンス ディフューザー', s: ['オンガード3滴＋レモン2滴', '季節の変わり目の朝に20分間'] }
+    },
+    cautions: {
+      ko: ['정향·계피 성분으로 피부 자극이 있을 수 있어 반드시 희석하세요', '임신 중·영유아에게는 사용하지 마세요'],
+      en: ['Clove and cinnamon can irritate skin: always dilute', 'Do not use during pregnancy or with infants'],
+      ja: ['クローブ・シナモンで肌刺激があるため必ず希釈を', '妊娠中・乳幼児には使用しないでください']
+    },
+    pairs: ['oregano', 'lemon', 'tea-tree']
+  },
+  {
+    id: 'deep-blue', type: 'blend', tone: ['#A7BEDC', '#4A6C96'],
+    name: { ko: '딥블루', en: 'Deep Blue', ja: 'ディープブルー' },
+    latin: 'Soothing Blend',
+    eff: {
+      ko: '페퍼민트·윈터그린 계열의 시원한 감각으로 운동 후나 오래 앉아 굳은 부위를 산뜻하게 돌봅니다.',
+      en: 'A cool, tingling blend of peppermint and wintergreen for muscles after activity or long hours at a desk.',
+      ja: 'ペパーミントやウィンターグリーンの清涼感。運動後や長時間のデスクワークでこわばった部位を爽やかにケアします。'
+    },
+    kw: {
+      ko: ['근육', '뻐근', '결림', '운동', '관절', '허리', '어깨', '무릎', '딥블루', '쿨링', '담'],
+      en: ['muscle', 'sore', 'stiff', 'workout', 'joint', 'back', 'shoulder', 'knee', 'deep blue', 'cooling'],
+      ja: ['筋肉', 'こわばり', 'コリ', '運動', '関節', '腰', '肩', '膝', 'ディープブルー', 'クール']
+    },
+    uses: ['A', 'T'],
+    how: {
+      ko: ['해당 부위에 소량 도포(얼굴 제외)', '운동 후 5~10분간 가볍게 마사지'],
+      en: ['A small amount on the area, never the face', 'A light 5-10 minute massage after exercise'],
+      ja: ['該当部位に少量塗布（顔は除く）', '運動後に5〜10分軽くマッサージ']
+    },
+    recipe: {
+      ko: { t: '포스트 워크아웃', s: ['딥블루 3방울 + 캐리어 오일 10mL', '뻐근한 부위에 5분간 마사지'] },
+      en: { t: 'Post Workout', s: ['3 drops Deep Blue + 10mL carrier oil', 'Massage the sore area for five minutes'] },
+      ja: { t: 'ポスト ワークアウト', s: ['ディープブルー3滴＋キャリアオイル10mL', 'こわばった部位に5分マッサージ'] }
+    },
+    cautions: {
+      ko: ['얼굴과 상처 부위에는 사용하지 마세요', '6세 이하 어린이에게는 사용하지 마세요'],
+      en: ['Do not use on the face or broken skin', 'Do not use with children under six'],
+      ja: ['顔や傷口には使用しないでください', '6歳以下の子どもには使用しないでください']
+    },
+    pairs: ['peppermint', 'aroma-touch', 'lavender']
+  },
+  {
+    id: 'breathe', type: 'blend', tone: ['#B4D3D9', '#578E9C'],
+    name: { ko: '이지에어', en: 'Breathe', ja: 'イージーエア' },
+    latin: 'Respiratory Blend',
+    eff: {
+      ko: '유칼립투스·페퍼민트·레몬·라벤더 계열로 숨을 깊게 들이쉬기 좋은 공기를 만듭니다.',
+      en: 'Eucalyptus, peppermint, lemon and lavender create air that invites a deeper breath.',
+      ja: 'ユーカリ・ペパーミント・レモン・ラベンダーで、深く息を吸いたくなる空気をつくります。'
+    },
+    kw: {
+      ko: ['호흡', '코', '막힘', '기침', '환절기', '숨', '이지에어', '에어', '가슴', '건조'],
+      en: ['breath', 'nose', 'congestion', 'cough', 'seasonal', 'lungs', 'breathe', 'chest', 'dry'],
+      ja: ['呼吸', '鼻', '鼻づまり', '咳', '季節', '息', 'イージーエア', '胸', '乾燥']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['가슴과 목 앞쪽에 희석해 도포', '손바닥에 1방울 묻혀 코로 3회 깊게'],
+      en: ['Diluted on the chest and front of the throat', 'A drop on the palms, then three deep breaths through the nose'],
+      ja: ['胸と喉の前に希釈して塗布', '手のひらに1滴、鼻から3回深く']
+    },
+    recipe: {
+      ko: { t: '클리어 브리딩 루틴', s: ['이지에어 2방울 + 유칼립투스 2방울 + 캐리어 오일 10mL', '가슴 위쪽에 얇게 펴 바르기'] },
+      en: { t: 'Clear Breathing Routine', s: ['2 drops Breathe + 2 drops eucalyptus + 10mL carrier oil', 'Apply thinly over the upper chest'] },
+      ja: { t: 'クリア ブリージング ルーティン', s: ['イージーエア2滴＋ユーカリ2滴＋キャリアオイル10mL', '胸の上部に薄く伸ばす'] }
+    },
+    cautions: {
+      ko: ['6세 이하 어린이의 얼굴에는 사용하지 마세요', '임신 중에는 전문가와 상의하세요'],
+      en: ['Keep away from the faces of children under six', 'Consult a professional during pregnancy'],
+      ja: ['6歳以下の子どもの顔には使わないでください', '妊娠中は専門家にご相談ください']
+    },
+    pairs: ['eucalyptus', 'peppermint', 'on-guard']
+  },
+  {
+    id: 'digest-zen', type: 'blend', tone: ['#D8C79E', '#94793F'],
+    name: { ko: '다이제스트젠', en: 'DigestZen', ja: 'ダイジェストゼン' },
+    latin: 'Digestive Blend',
+    eff: {
+      ko: '페퍼민트·생강·회향 계열의 향으로 식사 후 더부룩한 느낌을 편안하게 정돈합니다.',
+      en: 'Peppermint, ginger and fennel notes settle the heavy feeling after a meal.',
+      ja: 'ペパーミント・ジンジャー・フェンネルの香りで、食後の重たい感じを穏やかに整えます。'
+    },
+    kw: {
+      ko: ['소화', '속', '더부룩', '배', '체함', '메스꺼움', '식사', '다이제스트젠', '위', '복부'],
+      en: ['digestion', 'stomach', 'bloating', 'belly', 'indigestion', 'nausea', 'meal', 'digestzen', 'abdomen'],
+      ja: ['消化', '胃', '胃もたれ', 'お腹', '食べ過ぎ', '吐き気', '食事', 'ダイジェストゼン', '腹部']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['복부에 시계 방향으로 희석 도포', '손바닥에 1방울 묻혀 향을 맡기'],
+      en: ['Diluted in clockwise circles on the abdomen', 'A drop on the palms, then inhale'],
+      ja: ['腹部に時計回りに希釈して塗布', '手のひらに1滴、香りを吸い込む']
+    },
+    recipe: {
+      ko: { t: '애프터 밀 터치', s: ['다이제스트젠 3방울 + 캐리어 오일 10mL', '명치 아래에서 시계 방향으로 3분'] },
+      en: { t: 'After Meal Touch', s: ['3 drops DigestZen + 10mL carrier oil', 'Three minutes in clockwise circles below the ribs'] },
+      ja: { t: 'アフターミール タッチ', s: ['ダイジェストゼン3滴＋キャリアオイル10mL', 'みぞおちの下から時計回りに3分'] }
+    },
+    cautions: {
+      ko: ['임신 중·6세 이하 어린이에게는 사용하지 마세요', '속이 쓰릴 때는 반드시 희석해서만 사용하세요'],
+      en: ['Do not use during pregnancy or with children under six', 'If you have heartburn, use diluted only'],
+      ja: ['妊娠中・6歳以下には使用しないでください', '胸やけがある場合は必ず希釈して使用を']
+    },
+    pairs: ['peppermint', 'lemon', 'wild-orange']
+  },
+  {
+    id: 'serenity', type: 'blend', tone: ['#C3B4DA', '#75658F'],
+    name: { ko: '세레니티', en: 'Serenity', ja: 'セレニティ' },
+    latin: 'Restful Blend',
+    eff: {
+      ko: '라벤더·시더우드·로즈 계열의 향으로 하루의 긴장을 풀고 편안한 잠자리를 돕습니다.',
+      en: 'Lavender, cedarwood and rose notes let the day go and prepare a soft landing for sleep.',
+      ja: 'ラベンダー・シダーウッド・ローズの香りで一日の緊張をほどき、穏やかな眠りへ導きます。'
+    },
+    kw: {
+      ko: ['잠', '불면', '수면', '숙면', '긴장', '휴식', '세레니티', '밤', '마음', '불안'],
+      en: ['sleep', 'insomnia', 'rest', 'tension', 'relax', 'serenity', 'night', 'mind', 'anxiety'],
+      ja: ['睡眠', '眠れない', '休息', '緊張', 'リラックス', 'セレニティ', '夜', '心', '不安']
+    },
+    uses: ['A', 'T'],
+    how: {
+      ko: ['취침 전 발바닥에 1방울', '베개 옆 티슈에 1방울'],
+      en: ['A drop on the soles of the feet at bedtime', 'A drop on a tissue beside the pillow'],
+      ja: ['就寝前に足裏へ1滴', '枕元のティッシュに1滴']
+    },
+    recipe: {
+      ko: { t: '나이트 캄 루틴', s: ['세레니티 2방울 + 라벤더 2방울', '침실 디퓨저 20분, 이후 전원 끄기'] },
+      en: { t: 'Night Calm Routine', s: ['2 drops Serenity + 2 drops lavender', '20 minutes in the bedroom, then switch off'] },
+      ja: { t: 'ナイトカーム ルーティン', s: ['セレニティ2滴＋ラベンダー2滴', '寝室で20分、その後は電源を切る'] }
+    },
+    cautions: {
+      ko: ['어린이에게는 소량만, 2세 이하 직접 도포 금지', '사용 후 운전·기계 조작에 주의하세요'],
+      en: ['Small amounts only for children; no direct application under two', 'Avoid driving after use'],
+      ja: ['子どもは少量のみ、2歳以下への直接塗布は避けて', '使用後の運転・機械操作にご注意ください']
+    },
+    pairs: ['lavender', 'cedarwood', 'bergamot']
+  },
+  {
+    id: 'balance', type: 'blend', tone: ['#B9C9A8', '#62804F'],
+    name: { ko: '밸런스', en: 'Balance', ja: 'バランス' },
+    latin: 'Grounding Blend',
+    eff: {
+      ko: '스프루스·프랑킨센스·블루 캐모마일 계열로 들뜬 마음을 차분하게 가라앉히고 중심을 잡아 줍니다.',
+      en: 'Spruce, frankincense and blue chamomile settle a busy mind and bring you back to centre.',
+      ja: 'スプルース・フランキンセンス・ブルーカモミールで高ぶった心を静め、中心を取り戻します。'
+    },
+    kw: {
+      ko: ['불안', '긴장', '차분', '집중', '균형', '밸런스', '그라운딩', '마음', '들뜸'],
+      en: ['anxiety', 'tension', 'calm', 'focus', 'balance', 'grounding', 'mind', 'restless'],
+      ja: ['不安', '緊張', '落ち着き', '集中', 'バランス', 'グラウンディング', '心', 'そわそわ']
+    },
+    uses: ['A', 'T'],
+    how: {
+      ko: ['발바닥 중앙에 1방울', '목 뒤에 희석해 도포'],
+      en: ['A drop on the centre of each sole', 'Diluted on the back of the neck'],
+      ja: ['足裏の中央に1滴', '首の後ろに希釈して塗布']
+    },
+    recipe: {
+      ko: { t: '모닝 그라운딩', s: ['밸런스 2방울 + 프랑킨센스 1방울', '발바닥에 바르고 3회 깊게 호흡'] },
+      en: { t: 'Morning Grounding', s: ['2 drops Balance + 1 drop frankincense', 'Apply to the feet and take three deep breaths'] },
+      ja: { t: 'モーニング グラウンディング', s: ['バランス2滴＋フランキンセンス1滴', '足裏に塗り、3回深く呼吸'] }
+    },
+    cautions: {
+      ko: ['저혈압이 있으시면 소량만 사용하세요', '민감한 피부는 희석해 사용하세요'],
+      en: ['Use small amounts if you have low blood pressure', 'Dilute for sensitive skin'],
+      ja: ['低血圧の方は少量にとどめてください', '敏感な肌は希釈して使用してください']
+    },
+    pairs: ['frankincense', 'lavender', 'cypress']
+  },
+  {
+    id: 'aroma-touch', type: 'blend', tone: ['#DCC6B6', '#9E7A60'],
+    name: { ko: '아로마터치', en: 'AromaTouch', ja: 'アロマタッチ' },
+    latin: 'Massage Blend',
+    eff: {
+      ko: '키프로스·페퍼민트·마요라나·라벤더 계열로 전신 마사지와 휴식 시간에 어울리는 릴랙스 블렌드입니다.',
+      en: 'Cypress, peppermint, marjoram and lavender — a relaxing blend for full-body massage and rest.',
+      ja: 'サイプレス・ペパーミント・マジョラム・ラベンダーの、全身マッサージや休息に合うリラックスブレンド。'
+    },
+    kw: {
+      ko: ['마사지', '이완', '휴식', '긴장', '피로', '아로마터치', '온몸', '어깨'],
+      en: ['massage', 'relax', 'rest', 'tension', 'fatigue', 'aromatouch', 'body', 'shoulder'],
+      ja: ['マッサージ', 'リラックス', '休息', '緊張', '疲れ', 'アロマタッチ', '全身', '肩']
+    },
+    uses: ['A', 'T'],
+    how: {
+      ko: ['캐리어 오일에 2%로 섞어 마사지', '목·어깨 위주로 부드럽게'],
+      en: ['Blended at 2% in carrier oil for massage', 'Gently around neck and shoulders'],
+      ja: ['キャリアオイルに2%で混ぜてマッサージ', '首と肩を中心にやさしく']
+    },
+    recipe: {
+      ko: { t: '홈 스파 마사지', s: ['아로마터치 4방울 + 캐리어 오일 10mL', '어깨와 등 10분간'] },
+      en: { t: 'Home Spa Massage', s: ['4 drops AromaTouch + 10mL carrier oil', 'Ten minutes on shoulders and back'] },
+      ja: { t: 'ホームスパ マッサージ', s: ['アロマタッチ4滴＋キャリアオイル10mL', '肩と背中を10分'] }
+    },
+    cautions: {
+      ko: ['피부가 예민한 경우 1%로 낮춰 사용하세요', '임신 중에는 전문가와 상의하세요'],
+      en: ['Lower to 1% for sensitive skin', 'Consult a professional during pregnancy'],
+      ja: ['肌が敏感な場合は1%に下げてください', '妊娠中は専門家にご相談ください']
+    },
+    pairs: ['deep-blue', 'lavender', 'balance']
+  },
+  {
+    id: 'citrus-bliss', type: 'blend', tone: ['#F6D79B', '#DB9440'],
+    name: { ko: '시트러스블리스', en: 'Citrus Bliss', ja: 'シトラスブリス' },
+    latin: 'Invigorating Blend',
+    eff: {
+      ko: '와일드오렌지·레몬·베르가못·그레이프프루트의 밝은 향으로 무기력한 오후를 환기합니다.',
+      en: 'Wild orange, lemon, bergamot and grapefruit brighten a sluggish afternoon.',
+      ja: 'ワイルドオレンジ・レモン・ベルガモット・グレープフルーツの明るい香りで、気だるい午後を切り替えます。'
+    },
+    kw: {
+      ko: ['기분', '활력', '피로', '의욕', '오후', '집중', '시트러스', '환기', '에너지'],
+      en: ['mood', 'energy', 'fatigue', 'motivation', 'afternoon', 'focus', 'citrus', 'refresh', 'uplift'],
+      ja: ['気分', '活力', '疲れ', 'やる気', '午後', '集中', 'シトラス', '換気', '元気']
+    },
+    uses: ['A', 'T', 'I'],
+    how: {
+      ko: ['디퓨저 3~4방울', '손목에 희석해 향을 음미'],
+      en: ['3-4 drops in the diffuser', 'Diluted on the wrists to enjoy the scent'],
+      ja: ['ディフューザーに3〜4滴', '手首に希釈して香りを楽しむ']
+    },
+    recipe: {
+      ko: { t: '애프터눈 부스트', s: ['시트러스블리스 3방울 + 페퍼민트 1방울', '오후 2시 전후 20분간'] },
+      en: { t: 'Afternoon Boost', s: ['3 drops Citrus Bliss + 1 drop peppermint', '20 minutes around 2pm'] },
+      ja: { t: 'アフタヌーン ブースト', s: ['シトラスブリス3滴＋ペパーミント1滴', '午後2時前後に20分間'] }
+    },
+    cautions: {
+      ko: ['광독성이 있어 도포 후 12시간 자외선을 피하세요'],
+      en: ['Photosensitive: avoid UV for 12 hours after topical use'],
+      ja: ['光毒性があるため塗布後12時間は紫外線を避けてください']
+    },
+    pairs: ['wild-orange', 'lemon', 'peppermint']
+  },
+  {
+    id: 'purify', type: 'blend', tone: ['#CFE0C7', '#779E67'],
+    name: { ko: '퓨리파이', en: 'Purify', ja: 'ピュリファイ' },
+    latin: 'Cleansing Blend',
+    eff: {
+      ko: '레몬·라임·시트로넬라·티트리 계열로 공간의 무거운 냄새를 가볍게 정리합니다.',
+      en: 'Lemon, lime, citronella and tea tree lighten stale air and lingering smells.',
+      ja: 'レモン・ライム・シトロネラ・ティートゥリーで、空間の重たい匂いを軽く整えます。'
+    },
+    kw: {
+      ko: ['공기', '냄새', '정화', '청소', '환기', '빨래', '방', '주방', '퓨리파이'],
+      en: ['air', 'odor', 'smell', 'purify', 'clean', 'laundry', 'room', 'kitchen'],
+      ja: ['空気', '匂い', '浄化', '掃除', '換気', '洗濯', '部屋', 'キッチン', 'ピュリファイ']
+    },
+    uses: ['A', 'T'],
+    how: {
+      ko: ['디퓨저 3방울로 공간 정화', '물에 희석해 표면을 닦기'],
+      en: ['3 drops in the diffuser to cleanse a room', 'Diluted in water to wipe surfaces'],
+      ja: ['ディフューザーに3滴で空間を浄化', '水で希釈して表面を拭く']
+    },
+    recipe: {
+      ko: { t: '프레시 룸 스프레이', s: ['퓨리파이 10방울 + 물 100mL (유리 용기)', '커튼과 소파 위로 가볍게 뿌리기'] },
+      en: { t: 'Fresh Room Spray', s: ['10 drops Purify + 100mL water in glass', 'Lightly mist curtains and the sofa'] },
+      ja: { t: 'フレッシュ ルームスプレー', s: ['ピュリファイ10滴＋水100mL（ガラス容器）', 'カーテンやソファに軽く吹きかける'] }
+    },
+    cautions: {
+      ko: ['가구·가죽에 원액을 떨어뜨리지 마세요', '광독성 성분이 있어 피부 도포 후 햇빛을 피하세요'],
+      en: ['Never drip the neat oil on furniture or leather', 'Photosensitive after topical use'],
+      ja: ['家具や革に原液を垂らさないでください', '光毒性があるため塗布後は日光を避けて']
+    },
+    pairs: ['lemon', 'tea-tree', 'on-guard']
+  },
+  {
+    id: 'past-tense', type: 'blend', tone: ['#C2CBDD', '#64738F'],
+    name: { ko: '패스트텐스', en: 'PastTense', ja: 'パストテンス' },
+    latin: 'Tension Blend',
+    eff: {
+      ko: '페퍼민트·라벤더·프랑킨센스·카모마일 계열로 바쁜 날의 머리와 목 주변을 상쾌하게 돌봅니다.',
+      en: 'Peppermint, lavender, frankincense and chamomile refresh the head and neck on a busy day.',
+      ja: 'ペパーミント・ラベンダー・フランキンセンス・カモミールで、忙しい日の頭と首まわりを爽やかに。'
+    },
+    kw: {
+      ko: ['두통', '머리', '긴장', '목', '어깨', '스트레스', '패스트텐스', '편두통'],
+      en: ['headache', 'head', 'tension', 'neck', 'shoulder', 'stress', 'pasttense', 'migraine'],
+      ja: ['頭痛', '頭', '緊張', '首', '肩', 'ストレス', 'パストテンス', '偏頭痛']
+    },
+    uses: ['A', 'T'],
+    how: {
+      ko: ['관자놀이와 목 뒤에 소량 도포(눈가 제외)', '디퓨저에 2방울'],
+      en: ['A small amount on temples and nape, away from the eyes', '2 drops in the diffuser'],
+      ja: ['こめかみと首の後ろに少量（目の周りは除く）', 'ディフューザーに2滴']
+    },
+    recipe: {
+      ko: { t: '텐션 릴리프 롤온', s: ['패스트텐스 2방울 + 페퍼민트 1방울 + 캐리어 오일 10mL', '목 뒤와 어깨에 소량씩'] },
+      en: { t: 'Tension Relief Roll-on', s: ['2 drops PastTense + 1 drop peppermint + 10mL carrier oil', 'A small amount on the nape and shoulders'] },
+      ja: { t: 'テンション リリーフ ロールオン', s: ['パストテンス2滴＋ペパーミント1滴＋キャリアオイル10mL', '首の後ろと肩に少量ずつ'] }
+    },
+    cautions: {
+      ko: ['눈 주변과 점막에는 사용하지 마세요', '6세 이하 어린이에게는 사용하지 마세요'],
+      en: ['Keep away from eyes and mucous membranes', 'Do not use with children under six'],
+      ja: ['目の周りや粘膜には使用しないでください', '6歳以下の子どもには使用しないでください']
+    },
+    pairs: ['peppermint', 'deep-blue', 'lavender']
+  }
+];
+
+var OIL_BY_ID = {};
+(function () { for (var i = 0; i < OILS.length; i++) { OIL_BY_ID[OILS[i].id] = OILS[i]; } })();
+
+function oilById(id) { return OIL_BY_ID[id] || null; }
+
+/* =========================================================================
+   4. SYMPTOMS — 8 증상 카테고리 (라우팅 키워드 + 추천 블렌딩 + 희석 가이드)
+   ========================================================================= */
+var SYMPTOMS = [
+  {
+    id: 'sleep', icon: 'i-moon', oils: ['lavender', 'serenity', 'cedarwood'],
+    tone: ['#8E7BA8', '#4B3F63'],
+    name: { ko: '수면·휴식', en: 'Sleep & Rest', ja: '睡眠・休息' },
+    desc: {
+      ko: '잠자리에 드는 시간, 하루의 긴장을 내려놓는 향',
+      en: 'Scents that let the day go at bedtime',
+      ja: '眠りにつく時間、一日の緊張を手放す香り'
+    },
+    prompt: { ko: '잠이 잘 안 와요', en: 'I cannot fall asleep', ja: 'なかなか眠れません' },
+    kw: {
+      ko: ['잠', '불면', '수면', '숙면', '잠들', '뒤척', '새벽', '피곤', '피로', '휴식', '잠이'],
+      en: ['sleep', 'insomnia', 'rest', 'tired', 'awake', 'bedtime', 'night', 'fatigue'],
+      ja: ['眠れない', '不眠', '睡眠', '寝つき', '夜中', '疲れ', '休息', '寝る']
+    },
+    blend: {
+      ko: { t: '딥 슬립 블렌드', s: ['라벤더 3방울 + 세레니티 2방울 + 시더우드 1방울', '디퓨저는 취침 30분 전 20분간, 베개에는 티슈에 1방울'], dose: '디퓨저 6방울 · 도포 시 2% 희석' },
+      en: { t: 'Deep Sleep Blend', s: ['3 lavender + 2 Serenity + 1 cedarwood', 'Diffuse 20 minutes, 30 minutes before bed; one drop on a tissue by the pillow'], dose: '6 drops for diffusion · 2% diluted for skin' },
+      ja: { t: 'ディープスリープ ブレンド', s: ['ラベンダー3滴＋セレニティ2滴＋シダーウッド1滴', '就寝30分前から20分間拡散、枕元のティッシュに1滴'], dose: '拡散6滴・塗布は2%希釈' }
+    },
+    cautions: {
+      ko: ['어린이 방에서는 확산량을 절반으로 줄이세요', '수면 관련 약을 복용 중이면 전문가와 상의하세요'],
+      en: ['Halve the amount when diffusing in a child\u2019s room', 'If you take sleep medication, consult a professional'],
+      ja: ['子どもの部屋では拡散量を半分に', '睡眠薬を服用中の方は専門家にご相談ください']
+    },
+    follow: {
+      ko: ['낮에 졸릴 때 쓰는 향은?', '아이 방에도 쓸 수 있나요?', '잠들기 전 루틴을 더 알려줘'],
+      en: ['What helps with daytime sleepiness?', 'Can I use this in a child\u2019s room?', 'Give me a fuller bedtime routine'],
+      ja: ['昼間の眠気には？', '子どもの部屋でも使えますか？', '就寝前のルーティンをもっと知りたい']
+    }
+  },
+  {
+    id: 'tension', icon: 'i-zap', oils: ['peppermint', 'past-tense', 'deep-blue'],
+    tone: ['#7C93B8', '#3F547A'],
+    name: { ko: '두통·긴장', en: 'Head Tension', ja: '頭痛・緊張' },
+    desc: {
+      ko: '굳은 목·어깨와 무거운 머리를 위한 쿨링 케어',
+      en: 'Cooling care for a tight neck and a heavy head',
+      ja: 'こわばった首・肩と重い頭のためのクーリングケア'
+    },
+    prompt: { ko: '머리가 무겁고 목이 뻐근해요', en: 'My head feels heavy and my neck is tight', ja: '頭が重くて首がこっています' },
+    kw: {
+      ko: ['두통', '머리', '편두통', '긴장', '목', '어깨', '뻐근', '결림', '눈', '스트레스', '지끈'],
+      en: ['headache', 'head', 'migraine', 'tension', 'neck', 'shoulder', 'stiff', 'sore', 'stress'],
+      ja: ['頭痛', '頭', '偏頭痛', '緊張', '首', '肩', 'こり', 'こわばり', 'ストレス']
+    },
+    blend: {
+      ko: { t: '헤드 & 넥 릴리프', s: ['페퍼민트 2방울 + 패스트텐스 2방울 + 캐리어 오일 10mL', '관자놀이·목 뒤·어깨에 소량, 눈가와 상처는 피해 주세요'], dose: '도포 2% · 디퓨저 4방울' },
+      en: { t: 'Head & Neck Relief', s: ['2 peppermint + 2 PastTense + 10mL carrier oil', 'A little on temples, nape and shoulders — away from eyes and broken skin'], dose: '2% topical · 4 drops to diffuse' },
+      ja: { t: 'ヘッド＆ネック リリーフ', s: ['ペパーミント2滴＋パストテンス2滴＋キャリアオイル10mL', 'こめかみ・首の後ろ・肩に少量。目の周りと傷は避けて'], dose: '塗布2%・拡散4滴' }
+    },
+    cautions: {
+      ko: ['눈과 점막에는 절대 닿지 않게 하세요', '두통이 반복되거나 심해지면 의료기관에서 진료를 받으세요'],
+      en: ['Keep strictly away from eyes and mucous membranes', 'If headaches repeat or worsen, see a medical professional'],
+      ja: ['目や粘膜には絶対に触れないように', '頭痛が繰り返す・悪化する場合は医療機関を受診してください']
+    },
+    follow: {
+      ko: ['일할 때 쓰기 좋은 향은?', '잠들기 전에도 써도 되나요?', '아이에게는 쓸 수 있나요?'],
+      en: ['What scent works for long work hours?', 'Can I use this before bed?', 'Is it okay for children?'],
+      ja: ['仕事中に合う香りは？', '寝る前にも使えますか？', '子どもに使えますか？']
+    }
+  },
+  {
+    id: 'digestion', icon: 'i-drop', oils: ['digest-zen', 'peppermint', 'lemon'],
+    tone: ['#C2A87E', '#7E6234'],
+    name: { ko: '소화·속불편', en: 'Digestion', ja: '消化・胃の不快感' },
+    desc: {
+      ko: '식사 후 더부룩한 속을 편안하게 돌보는 향',
+      en: 'Comfort for a heavy, uneasy stomach after meals',
+      ja: '食後の重たい胃を穏やかにケアする香り'
+    },
+    prompt: { ko: '소화가 안 되고 속이 더부룩해요', en: 'I feel bloated and my digestion is slow', ja: '消化が悪くて胃がもたれます' },
+    kw: {
+      ko: ['소화', '속', '더부룩', '체함', '배', '복부', '메스꺼움', '식사', '위', '과식'],
+      en: ['digestion', 'stomach', 'bloating', 'belly', 'indigestion', 'nausea', 'meal', 'overeat'],
+      ja: ['消化', '胃', '胃もたれ', 'お腹', '食べ過ぎ', '吐き気', '食事', '腹部']
+    },
+    blend: {
+      ko: { t: '애프터 밀 컴포트', s: ['다이제스트젠 3방울 + 캐리어 오일 10mL', '명치 아래에서 시계 방향으로 3분간 부드럽게'], dose: '도포 2~3% · 내복 시 빈 캡슐 1방울' },
+      en: { t: 'After-meal Comfort', s: ['3 DigestZen + 10mL carrier oil', 'Gentle clockwise circles below the ribs for three minutes'], dose: '2-3% topical · 1 drop in a capsule if taken internally' },
+      ja: { t: 'アフターミール コンフォート', s: ['ダイジェストゼン3滴＋キャリアオイル10mL', 'みぞおちの下から時計回りに3分やさしく'], dose: '塗布2〜3%・摂取は空カプセルに1滴' }
+    },
+    cautions: {
+      ko: ['임신 중·6세 이하 어린이에게는 사용하지 마세요', '속쓰림이 있을 때는 반드시 희석해서만 사용하세요'],
+      en: ['Do not use during pregnancy or with children under six', 'If you have heartburn, use diluted only'],
+      ja: ['妊娠中・6歳以下には使わないでください', '胸やけがある場合は必ず希釈して使用を']
+    },
+    follow: {
+      ko: ['과식한 날에 좋은 향은?', '아침 공복에 쓸 수 있나요?', '디퓨저로도 효과가 있나요?'],
+      en: ['What helps after overeating?', 'Can I use this on an empty stomach?', 'Does diffusing work too?'],
+      ja: ['食べ過ぎた日には？', '空腹時に使えますか？', 'ディフューザーでも意味がありますか？']
+    }
+  },
+  {
+    id: 'breathing', icon: 'i-wind', oils: ['breathe', 'eucalyptus', 'on-guard'],
+    tone: ['#7FAEB8', '#3D6C77'],
+    name: { ko: '호흡기·환절기', en: 'Breathing & Season', ja: '呼吸器・季節の変わり目' },
+    desc: {
+      ko: '숨을 깊게, 공기를 가볍게 — 환절기 공간 관리',
+      en: 'Deeper breath, lighter air through seasonal change',
+      ja: '深い呼吸と軽い空気——季節の変わり目の空間管理'
+    },
+    prompt: { ko: '환절기라 코가 막히고 숨이 답답해요', en: 'My nose is stuffy and breathing feels tight', ja: '季節の変わり目で鼻が詰まり息苦しいです' },
+    kw: {
+      ko: ['호흡', '숨', '코', '막힘', '기침', '가래', '환절기', '목', '건조', '알레르기', '답답'],
+      en: ['breath', 'breathing', 'nose', 'stuffy', 'congestion', 'cough', 'seasonal', 'throat', 'dry', 'allergy'],
+      ja: ['呼吸', '息', '鼻', '鼻づまり', '咳', '痰', '季節', '喉', '乾燥', 'アレルギー']
+    },
+    blend: {
+      ko: { t: '클리어 브리딩 루틴', s: ['이지에어 2방울 + 유칼립투스 2방울 + 캐리어 오일 10mL', '가슴 위쪽과 목 앞쪽에 얇게, 하루 2~3회'], dose: '도포 2% · 디퓨저 4방울' },
+      en: { t: 'Clear Breathing Routine', s: ['2 Breathe + 2 eucalyptus + 10mL carrier oil', 'Thin layer over the upper chest and throat, two or three times a day'], dose: '2% topical · 4 drops to diffuse' },
+      ja: { t: 'クリア ブリージング ルーティン', s: ['イージーエア2滴＋ユーカリ2滴＋キャリアオイル10mL', '胸の上部と喉の前に薄く、1日2〜3回'], dose: '塗布2%・拡散4滴' }
+    },
+    cautions: {
+      ko: ['6세 이하 어린이의 얼굴에는 사용하지 마세요', '고열이나 호흡곤란이 있으면 빨리 진료를 받으세요'],
+      en: ['Keep away from the faces of children under six', 'With fever or difficulty breathing, seek medical care promptly'],
+      ja: ['6歳以下の子どもの顔には使わないでください', '発熱や呼吸困難がある場合は早めに受診を']
+    },
+    follow: {
+      ko: ['샤워할 때 쓸 수 있는 방법은?', '아이 방에 디퓨저로 써도 되나요?', '건조한 실내에 좋은 조합은?'],
+      en: ['How can I use this in the shower?', 'Can I diffuse it in a child\u2019s room?', 'What blend suits dry indoor air?'],
+      ja: ['シャワー時に使う方法は？', '子どもの部屋で拡散してもいい？', '乾燥した室内に合う組み合わせは？']
+    }
+  },
+  {
+    id: 'vitality', icon: 'i-shield', oils: ['on-guard', 'oregano', 'lemon'],
+    tone: ['#B58A5E', '#6E4B2A'],
+    name: { ko: '면역·활력', en: 'Immunity & Vitality', ja: '免疫・活力' },
+    desc: {
+      ko: '환절기를 건너는 힘, 매일의 작은 방어 습관',
+      en: 'Everyday defences for the change of season',
+      ja: '季節を渡る力、毎日の小さな防御習慣'
+    },
+    prompt: { ko: '요즘 기운이 없고 환절기라 걱정돼요', en: 'I feel run down through this change of season', ja: '最近元気が出ず、季節の変わり目が心配です' },
+    kw: {
+      ko: ['면역', '기운', '체력', '활력', '피곤', '환절기', '감기', '방어', '지침', '무기력'],
+      en: ['immunity', 'energy', 'stamina', 'run down', 'seasonal', 'cold', 'defence', 'exhausted', 'low energy'],
+      ja: ['免疫', '気力', '体力', '活力', '疲れ', '季節', '風邪', '防御', 'だるい']
+    },
+    blend: {
+      ko: { t: '시즌 디펜스 루틴', s: ['온가드 3방울 + 레몬 2방울 (디퓨저)', '발바닥에는 온가드 1방울을 캐리어 오일에 희석해'], dose: '디퓨저 5방울 · 도포 2% · 오레가노는 1% 이하' },
+      en: { t: 'Season Defence Routine', s: ['3 On Guard + 2 lemon in the diffuser', 'For feet, dilute 1 drop On Guard in carrier oil'], dose: '5 drops to diffuse · 2% topical · oregano at 1% or less' },
+      ja: { t: 'シーズン ディフェンス ルーティン', s: ['オンガード3滴＋レモン2滴（拡散）', '足裏にはオンガード1滴をキャリアオイルで希釈して'], dose: '拡散5滴・塗布2%・オレガノは1%以下' }
+    },
+    cautions: {
+      ko: ['오레가노는 매우 강한 오일이라 반드시 1% 이하로 희석하세요', '임신 중·영유아에게는 온가드·오레가노를 사용하지 마세요', '고열이 지속되면 의료기관을 방문하세요'],
+      en: ['Oregano is very strong: always dilute to 1% or less', 'Avoid On Guard and oregano during pregnancy and with infants', 'If fever persists, see a medical professional'],
+      ja: ['オレガノは非常に強いので必ず1%以下に希釈を', '妊娠中・乳幼児にはオンガード・オレガノを使わないで', '高熱が続く場合は医療機関を受診してください']
+    },
+    follow: {
+      ko: ['아이도 쓸 수 있는 순한 조합은?', '손 씻기 루틴을 알려줘', '겨울철에 더 좋은 오일은?'],
+      en: ['Is there a gentler blend for children?', 'Give me a hand-washing routine', 'Which oils suit winter best?'],
+      ja: ['子ども向けのやさしい組み合わせは？', '手洗いのルーティンを教えて', '冬に特によいオイルは？']
+    }
+  },
+  {
+    id: 'skin', icon: 'i-sparkle', oils: ['lavender', 'tea-tree', 'frankincense'],
+    tone: ['#C99AA0', '#7E4C53'],
+    name: { ko: '피부·진정', en: 'Skin Soothing', ja: '肌・鎮静' },
+    desc: {
+      ko: '예민해진 피부를 위한 가장 부드러운 향',
+      en: 'The gentlest scents for reactive skin',
+      ja: '敏感になった肌のための、いちばんやさしい香り'
+    },
+    prompt: { ko: '피부가 붉고 예민해졌어요', en: 'My skin is red and sensitive', ja: '肌が赤く敏感になっています' },
+    kw: {
+      ko: ['피부', '트러블', '여드름', '건조', '붉', '가려', '진정', '두피', '상처', '벌레', '각질'],
+      en: ['skin', 'blemish', 'acne', 'dry', 'red', 'itch', 'soothe', 'scalp', 'wound', 'insect'],
+      ja: ['肌', '肌荒れ', 'ニキビ', '乾燥', '赤み', 'かゆみ', '鎮静', '頭皮', '傷', '虫']
+    },
+    blend: {
+      ko: { t: '스킨 카밍 터치', s: ['라벤더 2방울 + 티트리 1방울 + 캐리어 오일 10mL', '세안 후 토너 다음 단계에 2~3방울 부드럽게'], dose: '얼굴 1% 희석 · 국소 부위만' },
+      en: { t: 'Skin Calming Touch', s: ['2 lavender + 1 tea tree + 10mL carrier oil', 'Two or three drops after toner, patted in gently'], dose: '1% for face · spot use only' },
+      ja: { t: 'スキンカーミング タッチ', s: ['ラベンダー2滴＋ティートゥリー1滴＋キャリアオイル10mL', '洗顔・化粧水のあとに2〜3滴をやさしくなじませる'], dose: '顔は1%希釈・局所のみ' }
+    },
+    cautions: {
+      ko: ['사용 전 팔 안쪽에 소량 테스트해 주세요', '티트리는 민감한 피부에 반드시 희석해서 사용하세요', '상처가 깊거나 번지면 진료를 받으세요'],
+      en: ['Patch-test a small amount on the inner arm first', 'Always dilute tea tree for sensitive skin', 'If a wound is deep or spreading, seek medical care'],
+      ja: ['使用前に腕の内側で少量パッチテストを', 'ティートゥリーは敏感な肌では必ず希釈して', '深い傷や広がる傷は医療機関を受診してください']
+    },
+    follow: {
+      ko: ['아이 피부에도 쓸 수 있나요?', '두피에 쓰는 방법을 알려줘', '건조한 겨울 피부에 좋은 오일은?'],
+      en: ['Is this okay for a child\u2019s skin?', 'How do I use it on the scalp?', 'Which oils suit dry winter skin?'],
+      ja: ['子どもの肌にも使えますか？', '頭皮への使い方を教えて', '乾燥する冬の肌に合うオイルは？']
+    }
+  },
+  {
+    id: 'focus', icon: 'i-target', oils: ['peppermint', 'rosemary', 'citrus-bliss'],
+    tone: ['#8FA98F', '#46664B'],
+    name: { ko: '집중·리프레시', en: 'Focus & Refresh', ja: '集中・リフレッシュ' },
+    desc: {
+      ko: '나른한 오후, 머리를 맑게 켜 두는 향',
+      en: 'Scents that keep a clear head through a slow afternoon',
+      ja: '気だるい午後、頭をすっきり保つ香り'
+    },
+    prompt: { ko: '집중이 안 되고 머리가 멍해요', en: 'I cannot focus and my head feels foggy', ja: '集中できず頭がぼんやりします' },
+    kw: {
+      ko: ['집중', '집중력', '공부', '업무', '머리', '나른', '졸려', '오후', '리프레시', '멍'],
+      en: ['focus', 'concentration', 'study', 'work', 'head', 'sleepy', 'afternoon', 'refresh', 'foggy'],
+      ja: ['集中', '集中力', '勉強', '仕事', '頭', '眠い', '午後', 'すっきり', 'ぼんやり']
+    },
+    blend: {
+      ko: { t: '클리어 헤드 디퓨저', s: ['로즈마리 2방울 + 페퍼민트 1방울 + 레몬 1방울', '작업 시작 10분 전부터 30분간, 창문을 열고'], dose: '디퓨저 4방울 · 롤온은 2% 희석' },
+      en: { t: 'Clear Head Diffuser', s: ['2 rosemary + 1 peppermint + 1 lemon', 'Start 10 minutes before work, run 30 minutes with a window open'], dose: '4 drops to diffuse · 2% for a roll-on' },
+      ja: { t: 'クリアヘッド ディフューザー', s: ['ローズマリー2滴＋ペパーミント1滴＋レモン1滴', '作業開始10分前から30分間、窓を開けて'], dose: '拡散4滴・ロールオンは2%希釈' }
+    },
+    cautions: {
+      ko: ['레몬은 광독성이 있어 피부 도포 후 햇빛을 피하세요', '향이 너무 강하면 방울 수를 절반으로 줄이세요'],
+      en: ['Lemon is photosensitive: avoid sun after topical use', 'If the scent is too strong, halve the drops'],
+      ja: ['レモンは光毒性があるため塗布後は日光を避けて', '香りが強すぎる場合は滴数を半分に']
+    },
+    follow: {
+      ko: ['시험 전날 밤에 좋은 향은?', '오후에 졸릴 때 쓰는 방법은?', '집중력을 높이는 루틴을 알려줘'],
+      en: ['What works the night before an exam?', 'How do I handle afternoon slumps?', 'Give me a focus ritual'],
+      ja: ['試験前夜に合う香りは？', '午後の眠気対策は？', '集中のルーティンを教えて']
+    }
+  },
+  {
+    id: 'emotion', icon: 'i-heart', oils: ['bergamot', 'wild-orange', 'balance', 'ylang-ylang'],
+    tone: ['#B99BC0', '#6C4F78'],
+    name: { ko: '감정·밸런스', en: 'Mood & Balance', ja: '感情・バランス' },
+    desc: {
+      ko: '기분의 파도 위에서 중심을 잠는 향',
+      en: 'Scents that hold your centre through a wave of feeling',
+      ja: '気分の波の上で中心を保つ香り'
+    },
+    prompt: { ko: '요즘 마음이 불안하고 기분 기복이 커요', en: 'I feel anxious and my mood keeps swinging', ja: '最近不安で気分の坂が大きいです' },
+    kw: {
+      ko: ['감정', '불안', '우울', '스트레스', '기분', '짜증', '마음', '멘탈', '외로', '지쳐', '기복'],
+      en: ['mood', 'anxious', 'anxiety', 'sad', 'stress', 'irritable', 'mind', 'lonely', 'burnout', 'emotional'],
+      ja: ['感情', '不安', '落ち込み', 'ストレス', '気分', 'イライラ', '心', '孤独', '疲れ', 'ムラ']
+    },
+    blend: {
+      ko: { t: '하트 벨런스 블렌드', s: ['베르가못 2방울 + 세레니티 1방울 + 오렌지 1방울', '손바닥에 묻혀 가슴 위에 올리고 3회 깊게 호흡'], dose: '디퓨저 4방울 · 도포 2% · 베르가못은 광독성 주의' },
+      en: { t: 'Heart Balance Blend', s: ['2 bergamot + 1 Serenity + 1 wild orange', 'Rub between palms, rest on the chest, take three deep breaths'], dose: '4 drops to diffuse · 2% topical · bergamot is photosensitive' },
+      ja: { t: 'ハートバランス ブレンド', s: ['ベルガモット2滴＋セレニティ1滴＋オレンジ1滴', '手のひらになじませ胸に当て、3回深く呼吸'], dose: '拡散4滴・塗布2%・ベルガモットは光毒性に注意' }
+    },
+    cautions: {
+      ko: ['베르가못·오렌지는 도포 후 12시간 자외선을 피하세요', '불안이나 우울이 지속되면 전문가 상담을 받아 보세요'],
+      en: ['Avoid UV for 12 hours after applying bergamot or orange', 'If anxiety or low mood persists, please talk to a professional'],
+      ja: ['ベルガモット・オレンジの塗布後12時間は紫外線を避けて', '不安や落ち込みが続く場合は専門家にご相談を']
+    },
+    follow: {
+      ko: ['지친 저녁에 좋은 향은?', '포장한 마음을 풀 때는?', '요가나 명상에 어울리는 조합은?'],
+      en: ['What suits a drained evening?', 'What helps when I feel wound up?', 'Which blend suits yoga or meditation?'],
+      ja: ['疲れた夜に合う香りは？', '張り詰めた気持ちをほぐすには？', 'ヨガや瞑想に合う組み合わせは？']
+    }
+  }
+];
+
+/* =========================================================================
+   5. AromaEngine — 질문 언어 자동 감지 + 3개국어 로컬 지식 매칭
+   mode: 'demo' (브라우저에서 바로 동작, 서버·API 키 불필요)
+   ========================================================================= */
+var AromaEngine = (function () {
+  var LANGS = ['ko', 'en', 'ja'];
+
+  var COPY = {
+    ko: {
+      greet: '안녕하세요, 식물의 힘입니다. 오늘의 컨디션을 한 줄로 들려주세요. 잠, 두통, 소화, 호흡, 피부, 집중, 감정 — 어느 쪽이든 좋습니다.',
+      leadSym: function (sym, names) { return '‘' + sym + '’ 고민에 어울리는 조합을 골랐습니다. ' + names + ' — 세 가지 향으로 오늘을 정돈해 보세요.'; },
+      leadOil: function (names) { return '말씀하신 ' + names + ' 중심으로 조합을 정리했습니다. 향의 결에 맞춰 순서대로 겹쳐 보세요.'; },
+      leadGen: function (names) { return '말씀하신 상황에 어울리는 기본 조합입니다. ' + names + ' 세 가지로 가볍게 시작해 보세요.'; },
+      safety: '임신·수유·영유아·복용 중인 약과 관련된 질문은 안전이 먼저입니다. 아래 주의사항을 먼저 확인하시고, 사용 전에는 꼭 의사·약사와 상의해 주세요.',
+      recipeDefaultT: '기본 디퓨저 블렌드',
+      recipeDefaultS: ['라벤더 2방울 + 오렌지 2방울 + 프랑킨센스 1방울', '20분간 확산한 뒤 창문을 열어 환기'],
+      safetyLine: '에센셜 오일은 캐리어 오일에 희석해 사용하세요 — 성인 2~3%, 얼굴·민감 부위 1%, 어린이 0.5~1%.',
+      followGen: ['디퓨저 말고 다른 방법도 있나요?', '아이와 함께 써도 되나요?', '향이 너무 강하면 어떻게 하나요?'],
+      disclaimer: '웰니스 활용 가이드이며, 질병의 진단·치료를 대체하지 않습니다.',
+    },
+    en: {
+      greet: 'Hello, this is Power of Plants. Tell me how today feels — sleep, tension, digestion, breathing, skin, focus or mood, anything works.',
+      leadSym: function (sym, names) { return 'For “' + sym + '” I would start with ' + names + ' — three scents and one small ritual for today.'; },
+      leadOil: function (names) { return 'You asked about ' + names + '. Here is how I would layer them, in order.'; },
+      leadGen: function (names) { return 'A simple starting blend for what you described: ' + names + '.'; },
+      safety: 'Questions about pregnancy, breastfeeding, infants or medication come down to safety first. Please read the cautions below, and check with your doctor or pharmacist before use.',
+      recipeDefaultT: 'Everyday diffuser blend',
+      recipeDefaultS: ['2 lavender + 2 wild orange + 1 frankincense', 'Diffuse for 20 minutes, then open a window'],
+      safetyLine: 'Always dilute in a carrier oil — 2-3% for adults, 1% for face and sensitive areas, 0.5-1% for children.',
+      followGen: ['Is there an option without a diffuser?', 'Can I use this around children?', 'What if the scent feels too strong?'],
+      disclaimer: 'A wellness guide only — it does not replace diagnosis or treatment by a medical professional.',
+    },
+    ja: {
+      greet: 'こんにちは、植物の力です。今日のコンディションを一言で聞かせてください。睡眠、頭痛、消化、呼吸、肌、集中、気分——どれでも大丈夫です。',
+      leadSym: function (sym, names) { return '「' + sym + '」のお悩みですね。' + names + ' の3つで今日を整えてみましょう。'; },
+      leadOil: function (names) { return names + ' を中心に組み合わせを整えました。香りの質に合わせて順に重ねてみてください。'; },
+      leadGen: function (names) { return 'お話に合う基本の組み合わせは ' + names + ' です。'; },
+      safety: '妊娠・授乳・乳幼児・服薬に関わるご相談は、安全が最優先です。下の注意事項を確認し、使用前に医師・薬剤師へご相談ください。',
+      recipeDefaultT: '基本のディフューザーブレンド',
+      recipeDefaultS: ['ラベンダー2滴＋オレンジ2滴＋フランキンセンス1滴', '20分拡散したら窓を開けて換気'],
+      safetyLine: 'エッセンシャルオイルはキャリアオイルで希釈を — 大人2〜3%、顔・敏感な部位1%、子ども0.5〜1%。',
+      followGen: ['ディフューザー以外の使い方は？', '子どもと一緒に使えますか？', '香りが強すぎるときは？'],
+      disclaimer: 'ウェルネス活用ガイドであり、病気の診断・治療に代わるものではありません。',
+    }
+  };
+
+  var SAFETY = {
+    ko: ['임신', '임산부', '수유', '아기', '영유아', '신생아', '복용', '약을', '부작용', '알레르기', '아이', '어린이'],
+    en: ['pregnant', 'pregnancy', 'breastfeeding', 'baby', 'infant', 'medication', 'medicine', 'allergy', 'allergic', 'child', 'children', 'kid'],
+    ja: ['妊娠', '妊婦', '授乳', '赤ちゃん', '乳幼児', '新生児', '服薬', '薬', '副作用', 'アレルギー', '子ども', '子供']
+  };
+
+  var GREET = {
+    ko: ['안녕', '하이', '반가'],
+    en: ['hello', 'hi', 'hey', 'good morning', 'good evening'],
+    ja: ['こんにちは', 'こんばんは', 'おはよう', 'はじめまして', 'よろしく']
+  };
+
+  function detectLang(text) {
+    if (!text) return null;
+    if (/[\uac00-\ud7a3\u3131-\u318e]/.test(text)) return 'ko';
+    if (/[\u3040-\u309f\u30a0-\u30ff]/.test(text)) return 'ja';
+    if (/[a-zA-Z]/.test(text)) return 'en';
+    if (/[\u4e00-\u9fff]/.test(text)) return 'ja';
+    return null;
+  }
+
+  function norm(text) {
+    return ' ' + String(text || '').toLowerCase()
+      .replace(/[.,!?~\u2026\u00b7:;'"\u201c\u201d\u2018\u2019()\[\]{}<>\/\\\-_+=*&^%$#@|]/g, ' ')
+      .replace(/\s+/g, ' ') + ' ';
+  }
+
+  function isLatin(kw) { return /^[a-zA-Z ]+$/.test(kw); }
+
+  function hit(hay, kw) {
+    var k = String(kw).toLowerCase();
+    if (isLatin(k)) {
+      return hay.indexOf(' ' + k + ' ') > -1 ||
+        hay.indexOf(' ' + k + 's ') > -1 ||
+        hay.indexOf(' ' + k + 'es ') > -1;
+    }
+    return hay.indexOf(k) > -1;
+  }
+
+  function scoreKw(hay, kwMap) {
+    var total = 0, hits = [];
+    for (var i = 0; i < LANGS.length; i++) {
+      var list = kwMap[LANGS[i]] || [];
+      for (var j = 0; j < list.length; j++) {
+        if (hit(hay, list[j])) { total += 2; hits.push(list[j]); }
+      }
+    }
+    return { score: total, hits: hits };
+  }
+
+  function nameHit(hay, oil) {
+    return hit(hay, oil.name.ko) || hit(hay, oil.name.en.toLowerCase()) || hit(hay, oil.name.ja);
+  }
+
+  function joinNames(names, lang) {
+    var sep = lang === 'en' ? ', ' : (lang === 'ja' ? '・' : '·');
+    return names.join(sep);
+  }
+
+  function analyse(hay) {
+    var symScores = [], oilScores = [], i;
+    for (i = 0; i < SYMPTOMS.length; i++) {
+      var s = scoreKw(hay, SYMPTOMS[i].kw);
+      if (s.score > 0) symScores.push({ sym: SYMPTOMS[i], score: s.score, hits: s.hits });
+    }
+    for (i = 0; i < OILS.length; i++) {
+      var o = OILS[i];
+      var s2 = scoreKw(hay, o.kw);
+      if (nameHit(hay, o)) s2.score += 6;
+      if (s2.score > 0) oilScores.push({ id: o.id, score: s2.score, hits: s2.hits });
+    }
+    symScores.sort(function (a, b) { return b.score - a.score; });
+    oilScores.sort(function (a, b) { return b.score - a.score; });
+    return { symScores: symScores, oilScores: oilScores };
+  }
+
+  function pickOils(res) {
+    var best = res.symScores.length ? res.symScores[0].sym : null;
+    var scored = {}, picks = [];
+    res.oilScores.forEach(function (o) { scored[o.id] = o.score; });
+
+    if (best) {
+      best.oils.forEach(function (id) { if (scored[id] && picks.length < 3) picks.push(id); });
+      res.oilScores.forEach(function (o) { if (picks.length < 3 && picks.indexOf(o.id) < 0) picks.push(o.id); });
+      best.oils.forEach(function (id) { if (picks.length < 3 && picks.indexOf(id) < 0) picks.push(id); });
+    } else {
+      res.oilScores.slice(0, 3).forEach(function (o) { picks.push(o.id); });
+      if (picks.length < 2) {
+        var hero = oilById(picks[0]);
+        if (hero) {
+          hero.pairs.forEach(function (pid) { if (picks.length < 3 && picks.indexOf(pid) < 0) picks.push(pid); });
+        }
+      }
+    }
+    if (!picks.length) picks = ['lavender', 'frankincense', 'lemon'];
+    return { symptom: best, picks: picks };
+  }
+
+  function anyHit(hay, map) {
+    for (var i = 0; i < LANGS.length; i++) {
+      var list = map[LANGS[i]] || [];
+      for (var j = 0; j < list.length; j++) if (hit(hay, list[j])) return true;
+    }
+    return false;
+  }
+
+  function greetingish(text, hay) {
+    var t = String(text || '').trim();
+    if (t.length > 14) return false;
+    return anyHit(hay, GREET);
+  }
+
+  function answer(text, uiLang, forceLang) {
+    var baseLang = LANGS.indexOf(uiLang) > -1 ? uiLang : 'ko';
+    var lang = (LANGS.indexOf(forceLang) > -1) ? forceLang : (detectLang(text) || baseLang);
+    var hay = norm(text);
+    var res = analyse(hay);
+    var picked = pickOils(res);
+    var c = COPY[lang];
+    var safety = anyHit(hay, SAFETY);
+    var greet = greetingish(text, hay);
+
+    var oils = [], i;
+    for (i = 0; i < picked.picks.length; i++) {
+      var o = oilById(picked.picks[i]);
+      if (o) oils.push(o);
+    }
+    var names = joinNames(oils.map(function (x) { return x.name[lang]; }), lang);
+
+    var intent = 'general';
+    if (greet) intent = 'greeting';
+    else if (safety) intent = 'safety';
+    else if (picked.symptom) intent = 'symptom';
+    else if (res.oilScores.length) intent = 'oil';
+
+    var intro;
+    if (intent === 'greeting') intro = c.greet;
+    else if (intent === 'safety') intro = c.safety;
+    else if (intent === 'symptom') intro = c.leadSym(picked.symptom.name[lang], names);
+    else if (intent === 'oil') intro = c.leadOil(names);
+    else intro = c.leadGen(names);
+
+    var recipe = null;
+    if (intent === 'greeting') {
+      recipe = null;
+      oils = [];               /* 인사말에는 오일 카드를 붙이지 않는다 */
+    } else if (picked.symptom && intent !== 'oil') {
+      recipe = picked.symptom.blend[lang];
+    } else if (oils.length && oils[0].recipe[lang]) {
+      recipe = oils[0].recipe[lang];
+    }
+    if (!recipe && intent !== 'greeting') {
+      recipe = { t: c.recipeDefaultT, s: c.recipeDefaultS };
+    }
+
+    var cautions = [], seen = {};
+    function addCaution(line) {
+      if (!line || seen[line]) return;
+      seen[line] = 1; cautions.push(line);
+    }
+    if (picked.symptom && intent !== 'greeting') {
+      (picked.symptom.cautions[lang] || []).slice(0, 2).forEach(addCaution);
+    }
+    if (intent !== 'greeting') {
+      /* 증상 주의사항이 이미 차지한 만큼만 오일 주의사항을 더해 최대 4줄로 유지 */
+      var budget = Math.max(1, 3 - cautions.length);
+      for (i = 0; i < oils.length && i < budget; i++) {
+        var cl = (oils[i].cautions[lang] || []);
+        if (cl.length) addCaution(cl[0]);
+      }
+      addCaution(c.safetyLine);
+    }
+    cautions = cautions.slice(0, 4);
+
+    var follow = [];
+    if (picked.symptom && picked.symptom.follow[lang]) follow = picked.symptom.follow[lang].slice(0, 3);
+    else follow = c.followGen.slice(0, 3);
+
+    return {
+      mode: 'demo',
+      lang: lang,
+      intent: intent,
+      symptomId: picked.symptom ? picked.symptom.id : null,
+      oils: oils.map(function (xb) { return xb.id; }),
+      intro: intro,
+      recipe: recipe,
+      cautions: cautions,
+      followups: follow,
+      disclaimer: c.disclaimer
+    };
+  }
+
+  function greeting(lang) {
+    var l = LANGS.indexOf(lang) > -1 ? lang : 'ko';
+    return { mode: 'demo', lang: l, intent: 'greeting', oils: [], intro: COPY[l].greet, recipe: null, cautions: [], followups: [] };
+  }
+
+  return {
+    answer: answer,
+    greeting: greeting,
+    detectLang: detectLang,
+    normalise: norm,
+    symptoms: function () { return SYMPTOMS; },
+    copyFor: function (l) { return COPY[LANGS.indexOf(l) > -1 ? l : 'ko']; }
+  };
+})();
+
+/* =========================================================================
+   6. askAromaAI() — 어댑터. demo 엔진  <->  Supabase Edge Function(실제 LLM)
+   ========================================================================= */
+async function askAromaAI(query, opts) {
+  opts = opts || {};
+  var lang = opts.lang || state.lang;
+
+  if (CONFIG.apiBase) {
+    try {
+      var headers = { 'Content-Type': 'application/json' };
+      var token = getSessionToken();
+      if (token) headers.Authorization = 'Bearer ' + token;
+      var res = await fetch(CONFIG.apiBase, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ query: query, lang: lang, mode: 'rag' })
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      var data = await res.json();
+      if (!data || !data.intro) throw new Error('malformed response');
+      data.mode = 'live';
+      data.lang = data.lang || lang;
+      return data;
+    } catch (err) {
+      /* 무료 체험판이 빈 화면이 되지 않도록 로컬 엔진으로 내려간다.*/
+      if (window.console) console.warn('[aroma] live endpoint failed, using local engine', err);
+    }
+  }
+  return AromaEngine.answer(query, lang);
+}
+
+function getSessionToken() {
+  /* 실제 배포 시: Supabase Auth 세션의 access_token을 반환한다.
+     여기서는 토큰을 localStorage에 두지 않는다(보안). */
+  return (window.__AROMA_TOKEN__ || '');
+}
+
+/* =========================================================================
+   7. UI
+   ========================================================================= */
+var state = {
+  lang: 'ko',
+  view: 'chat',
+  filter: 'all',
+  query: '',
+  thread: [{ role: 'ai', kind: 'hello' }],
+  quota: { date: '', used: 0 },
+  busy: false
+};
+
+var el = {
+  main: document.getElementById('main'),
+  thread: document.getElementById('thread'),
+  chips: document.getElementById('chips'),
+  symlist: document.getElementById('symlist'),
+  libgrid: document.getElementById('libgrid'),
+  libempty: document.getElementById('libempty'),
+  libq: document.getElementById('libq'),
+  input: document.getElementById('askinput'),
+  form: document.getElementById('askform'),
+  send: document.getElementById('sendbtn'),
+  composer: document.getElementById('composer'),
+  quotaNum: document.getElementById('quota-num'),
+  quotaBar: document.getElementById('quota-bar'),
+  scrim: document.getElementById('scrim'),
+  sheet: document.getElementById('sheet'),
+  sbody: document.getElementById('sbody'),
+  toast: document.getElementById('toast')
+};
+
+function $(sel) { return document.querySelector(sel); }
+function $$(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+function pad2(n) { return (n < 10 ? '0' : '') + n; }
+function todayKey() {
+  var d = new Date();
+  return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+}
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+function escAttr(s) { return esc(s).replace(/'/g, '&#39;'); }
+function T(key, lang) {
+  var d = I18N[lang || state.lang] || I18N.ko;
+  if (d[key] !== undefined) return d[key];
+  if (I18N.ko[key] !== undefined) return I18N.ko[key];
+  return key;
+}
+function langName(l) { return l === 'en' ? 'EN' : (l === 'ja' ? '日本語' : '한국어'); }
+
+/* ---------- quota ---------- */
+function loadQuota() {
+  try {
+    var raw = localStorage.getItem('aroma.quota');
+    if (raw) {
+      var q = JSON.parse(raw);
+      if (q && q.date === todayKey()) { state.quota = q; return; }
+    }
+  } catch (e) { /* private mode */ }
+  state.quota = { date: todayKey(), used: 0 };
+}
+function saveQuota() {
+  try { localStorage.setItem('aroma.quota', JSON.stringify(state.quota)); } catch (e) {}
+}
+function remaining() { return Math.max(0, CONFIG.freePerDay - state.quota.used); }
+function renderQuota() {
+  var left = remaining();
+  el.quotaNum.textContent = left + '/' + CONFIG.freePerDay;
+  el.quotaBar.style.width = Math.round((left / CONFIG.freePerDay) * 100) + '%';
+}
+
+/* ---------- static i18n ---------- */
+function applyStatic() {
+  document.documentElement.lang = state.lang;
+  document.title = T('app.name') + ' · ' + T('app.tag');
+  $$('[data-i18n]').forEach(function (n) {
+    var v = T(n.getAttribute('data-i18n'));
+    if (typeof v === 'string') n.textContent = v;
+  });
+  $$('[data-i18n-html]').forEach(function (n) {
+    var v = T(n.getAttribute('data-i18n-html'));
+    if (typeof v === 'string') n.innerHTML = v;
+  });
+  $$('[data-i18n-ph]').forEach(function (n) {
+    var v = T(n.getAttribute('data-i18n-ph'));
+    if (typeof v === 'string') n.setAttribute('placeholder', v);
+  });
+  $$('.lang button').forEach(function (b) {
+    b.classList.toggle('on', b.getAttribute('data-lang') === state.lang);
+  });
+}
+
+/* ---------- helpers ---------- */
+function usesTags(oil, lang) {
+  var out = '<span class="tags">';
+  ['A', 'T', 'I'].forEach(function (u) {
+    var on = oil.uses.indexOf(u) > -1;
+    out += '<span class="tag' + (on ? '' : ' off') + '">';
+    out += '<span>' + u + '</span>·' + esc(T('use.' + u, lang)) + '</span>';
+  });
+  return out + '</span>';
+}
+function monogram(oil, lang) {
+  var n = oil.name[lang] || oil.name.ko;
+  return n.charAt(0);
+}
+function dotHTML(oil, lang) {
+  return '<div class="dot" style="background:linear-gradient(150deg,' + oil.tone[0] + ',' + oil.tone[1] + ')">' + esc(monogram(oil, lang)) + '</div>';
+}
+function scrollBottom() {
+  window.setTimeout(function () {
+    if (el.main) el.main.scrollTop = el.main.scrollHeight;
+  }, 60);
+}
+
+/* ---------- chat ---------- */
+function helloHTML() {
+  var lang = state.lang;
+  var picks = [SYMPTOMS[0], SYMPTOMS[1], SYMPTOMS[7]];
+  var out = '<div class="msg ai"><div class="who"><svg><use href="#i-leaf"></use></svg></div><div class="bubble">';
+  out += '<p class="lead">' + esc(T('chat.greet', lang)) + '</p>';
+  out += '<div class="follows" style="margin-top:11px">';
+  picks.forEach(function (s) {
+    out += '<button type="button" data-act="ask" data-q="' + escAttr(s.prompt[lang]) + '">' + esc(s.prompt[lang]) + '</button>';
+  });
+  out += '</div></div></div>';
+  return out;
+}
+
+function answerHTML(a) {
+  var L = a.lang;
+  var out = '<div class="msg ai"><div class="who"><svg><use href="#i-leaf"></use></svg></div><div class="bubble">';
+  if (L !== state.lang) {
+    out += '<div class="ans-lang">' + esc(langName(L)) + ' · ' + esc(T('chat.langnote', L)) + '</div>';
+  }
+  out += '<p class="lead">' + esc(a.intro) + '</p>';
+
+  if (a.oils && a.oils.length) {
+    for (var i = 0; i < a.oils.length; i++) {
+      var o = oilById(a.oils[i]);
+      if (!o) continue;
+      out += '<div class="oilrow" data-act="oil" data-id="' + escAttr(o.id) + '" style="cursor:pointer">' +
+        dotHTML(o, L) +
+        '<div class="oinfo"><div class="oname"><b>' + esc(o.name[L]) + '</b>' + usesTags(o, L) + '</div>' +
+        '<div class="latin">' + esc(o.latin) + '</div>' +
+        '<div class="whi">' + esc(o.eff[L]) + '</div></div></div>';
+    }
+  }
+
+  if (a.recipe) {
+    out += '<div class="block recipe"><div class="bt">' + esc(T('ans.recipe', L)) + '</div>';
+    if (a.recipe.t) out += '<p style="margin:0 0 5px;font-size:12px;font-weight:700;color:#5C4A28">' + esc(a.recipe.t) + '</p>';
+    out += '<ol>';
+    (a.recipe.s || []).forEach(function (s) { out += '<li>' + esc(s) + '</li>'; });
+    out += '</ol>';
+    if (a.recipe.dose) out += '<div style="margin-top:6px;font-size:9.5px;font-weight:700;color:#8A6C2E">' + esc(a.recipe.dose) + '</div>';
+    out += '</div>';
+  }
+
+  if (a.cautions && a.cautions.length) {
+    out += '<div class="block caution"><div class="bt">' + esc(T('ans.caution', L)) + '</div><ul>';
+    a.cautions.forEach(function (c) { out += '<li>' + esc(c) + '</li>'; });
+    out += '</ul></div>';
+  }
+
+  if (a.followups && a.followups.length) {
+    out += '<div class="follows">';
+    a.followups.forEach(function (f) {
+      out += '<button type="button" data-act="ask" data-q="' + escAttr(f) + '">' + esc(f) + '</button>';
+    });
+    out += '</div>';
+  }
+
+  out += '<div class="modebadge"><span><b>' + esc(T('ans.ai', L)) + '</b> · ' + esc(a.disclaimer || T('ans.disclaimer', L)) + '</span></div>';
+  out += '</div></div>';
+  return out;
+}
+
+function renderThread() {
+  var out = '';
+  state.thread.forEach(function (m) {
+    if (m.role === 'me') {
+      out += '<div class="msg me"><div class="bubble">' + esc(m.text) + '</div></div>';
+    } else if (m.kind === 'hello') {
+      out += helloHTML();
+    } else if (m.answer) {
+      out += answerHTML(m.answer);
+    }
+  });
+  el.thread.innerHTML = out;
+  if (state.view === 'chat') scrollBottom();
+}
+
+function relocalizeThread() {
+  state.thread.forEach(function (m) {
+    if (m.role === 'ai' && m.query) m.answer = AromaEngine.answer(m.query, state.lang, state.lang);
+  });
+}
+
+function typing(on) {
+  var node = document.getElementById('typing');
+  if (on) {
+    if (node) return;
+    node = document.createElement('div');
+    node.id = 'typing';
+    node.className = 'msg ai';
+    node.innerHTML = '<div class="who"><svg><use href="#i-leaf"></use></svg></div>' +
+      '<div class="bubble"><div class="typing"><i></i><i></i><i></i></div></div>';
+    el.thread.appendChild(node);
+    scrollBottom();
+  } else if (node && node.parentNode) {
+    node.parentNode.removeChild(node);
+  }
+}
+
+async function ask(text) {
+  text = String(text || '').trim();
+  if (!text || state.busy) return;
+  if (remaining() <= 0) { openLimit(); return; }
+
+  state.busy = true;
+  el.send.disabled = true;
+  el.input.value = '';
+
+  state.thread.push({ role: 'me', text: text });
+  state.quota.used += 1;
+  saveQuota();
+  renderQuota();
+  renderThread();
+  typing(true);
+
+  try {
+    var ans = await askAromaAI(text, { lang: state.lang });
+    typing(false);
+    state.thread.push({ role: 'ai', answer: ans, query: text });
+  } catch (e) {
+    typing(false);
+    state.thread.push({ role: 'ai', answer: AromaEngine.answer(text, state.lang), query: text });
+  }
+  state.busy = false;
+  el.send.disabled = false;
+  renderThread();
+}
+
+/* ---------- chips / symptoms ---------- */
+function renderChips() {
+  var out = '';
+  SYMPTOMS.forEach(function (s) {
+    out += '<button type="button" class="chip" data-act="ask" data-q="' + escAttr(s.prompt[state.lang]) + '">' +
+      esc(s.name[state.lang]) + '</button>';
+  });
+  el.chips.innerHTML = out;
+}
+
+function renderSymptoms() {
+  var out = '';
+  SYMPTOMS.forEach(function (s) {
+    out += '<button type="button" class="symcard" data-act="sym" data-id="' + escAttr(s.id) + '">' +
+      '<span class="sic"><svg><use href="#' + s.icon + '"></use></svg></span>' +
+      '<span class="stx"><b>' + esc(s.name[state.lang]) + '</b><span>' + esc(s.desc[state.lang]) + '</span></span>' +
+      '<span class="arr"><svg><use href="#i-arrow"></use></svg></span></button>';
+  });
+  el.symlist.innerHTML = out;
+}
+
+/* ---------- library ---------- */
+function renderLibrary() {
+  var q = (state.query || '').trim().toLowerCase();
+  var out = '';
+  var shown = 0;
+  OILS.forEach(function (o) {
+    if (state.filter !== 'all' && o.type !== state.filter) return;
+    if (q) {
+      var hay = (o.name.ko + ' ' + o.name.en + ' ' + o.name.ja + ' ' + o.latin).toLowerCase();
+      if (hay.indexOf(q) === -1) return;
+    }
+    shown++;
+    out += '<button type="button" class="olcard" data-act="oil" data-id="' + escAttr(o.id) + '">' +
+      '<span class="badge">' + esc(T(o.type === 'single' ? 'oil.single' : 'oil.blend')) + '</span>' +
+      '<span class="cap" style="background:linear-gradient(150deg,' + o.tone[0] + ',' + o.tone[1] + ')">' +
+      '<span>' + esc(monogram(o, state.lang)) + '</span></span>' +
+      '<span class="meta"><b>' + esc(o.name[state.lang]) + '</b><i>' + esc(o.latin) + '</i></span></button>';
+  });
+  el.libgrid.innerHTML = out;
+  el.libempty.hidden = shown > 0;
+}
+
+/* ---------- sheets ---------- */
+var sheetOpen = false;
+function openSheet(html) {
+  el.sbody.innerHTML = html;
+  el.sbody.scrollTop = 0;
+  el.scrim.classList.add('on');
+  el.sheet.classList.add('on');
+  sheetOpen = true;
+}
+function closeSheet() {
+  el.scrim.classList.remove('on');
+  el.sheet.classList.remove('on');
+  sheetOpen = false;
+}
+function toast(msg) {
+  el.toast.textContent = msg;
+  el.toast.classList.add('on');
+  window.clearTimeout(toast._t);
+  toast._t = window.setTimeout(function () { el.toast.classList.remove('on'); }, 1900);
+}
+
+function openOil(id) {
+  var o = oilById(id);
+  if (!o) return;
+  var L = state.lang;
+  var names = [];
+  ['ko', 'en', 'ja'].forEach(function (l) {
+    if (l !== L) names.push(o.name[l]);
+  });
+
+  var html = '<div class="oil-hero" style="background:linear-gradient(150deg,' + o.tone[0] + ',' + o.tone[1] + ')">' +
+    '<div class="oh-cap">' + esc(monogram(o, L)) + '</div>' +
+    '<div class="oh-tx"><b>' + esc(o.name[L]) + '</b><i>' + esc(o.latin) + '</i><em>' +
+    esc(T(o.type === 'single' ? 'oil.single' : 'oil.blend', L)) + ' · ' + esc(names.join(' / ')) + '</em></div></div>';
+
+  html += '<div class="uses">';
+  ['A', 'T', 'I'].forEach(function (u) {
+    var on = o.uses.indexOf(u) > -1;
+    html += '<div class="u' + (on ? ' on' : '') + '"><b>' + u + '</b>' + esc(T('use.' + u, L)) + '</div>';
+  });
+  html += '</div>';
+
+  html += '<div class="detail-sec"><h4>' + esc(T('oil.eff', L)) + '</h4><p>' + esc(o.eff[L]) + '</p></div>';
+
+  html += '<div class="detail-sec"><h4>' + esc(T('oil.how', L)) + '</h4><ul class="steps">';
+  (o.how[L] || []).forEach(function (h) { html += '<li>' + esc(h) + '</li>'; });
+  html += '</ul></div>';
+
+  html += '<div class="detail-sec"><h4>' + esc(T('oil.recipe', L)) + '</h4>';
+  html += '<div class="blendbox"><div class="bt">' + esc(o.recipe[L].t) + '</div><ol>';
+  (o.recipe[L].s || []).forEach(function (s) { html += '<li>' + esc(s) + '</li>'; });
+  html += '</ol></div></div>';
+
+  html += '<div class="detail-sec"><h4>' + esc(T('oil.caution', L)) + '</h4><ul class="warnlist">';
+  (o.cautions[L] || []).forEach(function (c) { html += '<li>' + esc(c) + '</li>'; });
+  html += '</ul></div>';
+
+  if (o.pairs && o.pairs.length) {
+    html += '<div class="detail-sec"><h4>' + esc(T('oil.pairs', L)) + '</h4><div class="pairstrip">';
+    o.pairs.forEach(function (pid) {
+      var p = oilById(pid);
+      if (!p) return;
+      html += '<button type="button" data-act="oil" data-id="' + escAttr(p.id) + '">' +
+        '<span class="pdot" style="background:linear-gradient(150deg,' + p.tone[0] + ',' + p.tone[1] + ')"></span>' +
+        esc(p.name[L]) + '</button>';
+    });
+    html += '</div></div>';
+  }
+
+  html += '<button type="button" class="btn-primary" data-act="ask" data-q="' +
+    escAttr(o.name[L] + ' ' + T('oil.ask', L)) + '"><svg><use href="#i-chat"></use></svg>' +
+    esc(T('oil.ask', L)) + '</button>';
+
+  openSheet(html);
+}
+
+function openSymptom(id) {
+  var s = null;
+  SYMPTOMS.forEach(function (x) { if (x.id === id) s = x; });
+  if (!s) return;
+  var L = state.lang;
+  var b = s.blend[L];
+
+  var html = '<div class="oil-hero" style="background:linear-gradient(150deg,' + s.tone[0] + ',' + s.tone[1] + ')">' +
+    '<div class="oh-cap"><svg style="width:26px;height:26px"><use href="#' + s.icon + '"></use></svg></div>' +
+    '<div class="oh-tx"><b>' + esc(s.name[L]) + '</b><i>' + esc(s.desc[L]) + '</i></div></div>';
+
+  html += '<div class="detail-sec"><h4>' + esc(T('sym.oils', L)) + '</h4><div class="pairstrip">';
+  s.oils.forEach(function (id2) {
+    var o = oilById(id2);
+    if (!o) return;
+    html += '<button type="button" data-act="oil" data-id="' + escAttr(o.id) + '">' +
+      '<span class="pdot" style="background:linear-gradient(150deg,' + o.tone[0] + ',' + o.tone[1] + ')"></span>' +
+      esc(o.name[L]) + '</button>';
+  });
+  html += '</div></div>';
+
+  html += '<div class="blendbox"><div class="bt">' + esc(T('sym.blend', L)) + ' · ' + esc(b.t) + '</div><ol>';
+  (b.s || []).forEach(function (x) { html += '<li>' + esc(x) + '</li>'; });
+  html += '</ol>';
+  if (b.dose) html += '<span class="dose">' + esc(T('sym.dose', L)) + ' · ' + esc(b.dose) + '</span>';
+  html += '</div>';
+
+  html += '<div class="detail-sec"><h4>' + esc(T('ans.caution', L)) + '</h4><ul class="warnlist">';
+  (s.cautions[L] || []).forEach(function (c) { html += '<li>' + esc(c) + '</li>'; });
+  html += '</ul></div>';
+
+  html += '<button type="button" class="btn-primary" data-act="ask" data-q="' + escAttr(s.prompt[L]) + '">' +
+    '<svg><use href="#i-chat"></use></svg>' + esc(T('sym.ask', L)) + '</button>';
+
+  openSheet(html);
+}
+
+function planBlock(name, price, items, opts) {
+  opts = opts || {};
+  var html = '<div class="plan' + (opts.hi ? ' hi' : '') + '">';
+  if (opts.now) html += '<span class="now-tag">' + esc(T('up.now')) + '</span>';
+  else if (opts.hi) html += '<span class="hm">' + esc(T('up.hot')) + '</span>';
+  html += '<div class="ptop"><b>' + esc(name) + '</b>' +
+    (price === null ? '' : '<span class="price">' + (price === 0 ? esc(T('up.free')) : '₩' + price.toLocaleString('ko-KR')) +
+    (price === 0 ? '' : '<small>' + esc(T('up.perMonth')) + '</small>') + '</span>') + '</div><ul>';
+  items.forEach(function (i) { html += '<li>' + esc(i) + '</li>'; });
+  html += '</ul></div>';
+  return html;
+}
+
+function openUpgrade() {
+  var L = state.lang;
+  var html = '<div class="up-head"><div class="crown"><svg><use href="#i-crown"></use></svg></div>' +
+    '<h3>' + esc(T('up.title', L)) + '</h3><p>' + esc(T('up.sub', L)) + '</p></div>';
+
+  html += planBlock(T('up.free', L), null, T('up.freeDesc', L), { now: true });
+  html += planBlock(T('up.plus', L), 9900, T('up.plusDesc', L), { hi: true });
+  html += planBlock(T('up.pro', L), 19900, T('up.proDesc', L), {});
+
+  html += '<button type="button" class="btn-primary" data-act="notify" style="margin-top:12px">' + esc(T('up.cta', L)) + '</button>';
+  html += '<p class="up-note">' + esc(T('up.note', L)) + '</p>';
+  openSheet(html);
+}
+
+function openLimit() {
+  var L = state.lang;
+  var html = '<div class="up-head"><div class="crown"><svg><use href="#i-crown"></use></svg></div>' +
+    '<h3>' + esc(T('limit.title', L)) + '</h3><p>' + esc(T('limit.body', L)) + '</p></div>';
+  html += '<button type="button" class="btn-primary" data-act="upgrade">' + esc(T('limit.upgrade', L)) + '</button>';
+  html += '<button type="button" class="btn-ghost" data-act="reset">' + esc(T('limit.reset', L)) + '</button>';
+  openSheet(html);
+}
+
+function openDisclaimer() {
+  var L = state.lang;
+  var body = T('disc.body', L);
+  var html = '<div class="up-head" style="padding-bottom:12px"><h3>' + esc(T('disc.title', L)) + '</h3></div>';
+  html += '<div class="detail-sec">';
+  (Array.isArray(body) ? body : [body]).forEach(function (p) {
+    html += '<p style="margin-bottom:9px">' + esc(p) + '</p>';
+  });
+  html += '</div>';
+  openSheet(html);
+}
+
+/* ---------- view switching ---------- */
+function goView(name) {
+  state.view = name;
+  $$('.view').forEach(function (v) { v.classList.remove('on'); });
+  var view = document.getElementById('view-' + name);
+  if (view) view.classList.add('on');
+  $$('.tab').forEach(function (t) { t.classList.toggle('on', t.getAttribute('data-view') === name); });
+  el.composer.classList.toggle('on', name === 'chat');
+  if (name === 'chat') scrollBottom();
+  else el.main.scrollTop = 0;
+}
+
+/* ---------- global events ---------- */
+function bindEvents() {
+  $$('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-lang');
+      if (l === state.lang) return;
+      state.lang = l;
+      try { localStorage.setItem('aroma.lang', l); } catch (e) {}
+      relocalizeThread();
+      renderAll();
+    });
+  });
+
+  $$('.tab').forEach(function (t) {
+    t.addEventListener('click', function () { goView(t.getAttribute('data-view')); });
+  });
+
+  el.form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    ask(el.input.value);
+  });
+
+  el.libq.addEventListener('input', function () {
+    state.query = el.libq.value;
+    renderLibrary();
+  });
+
+  $$('#libfilters button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      state.filter = b.getAttribute('data-f');
+      $$('#libfilters button').forEach(function (x) { x.classList.toggle('on', x === b); });
+      renderLibrary();
+    });
+  });
+
+  document.getElementById('probtn').addEventListener('click', openUpgrade);
+  document.getElementById('discbar').addEventListener('click', openDisclaimer);
+  el.scrim.addEventListener('click', closeSheet);
+  document.getElementById('sclose').addEventListener('click', closeSheet);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && sheetOpen) closeSheet();
+  });
+
+  /* delegated actions */
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('[data-act]') : null;
+    if (!t) return;
+    var act = t.getAttribute('data-act');
+
+    if (act === 'ask') {
+      var q = t.getAttribute('data-q') || '';
+      if (sheetOpen) closeSheet();
+      goView('chat');
+      ask(q);
+      return;
+    }
+    if (act === 'oil') {
+      openOil(t.getAttribute('data-id'));
+      return;
+    }
+    if (act === 'sym') {
+      openSymptom(t.getAttribute('data-id'));
+      return;
+    }
+    if (act === 'upgrade') { openUpgrade(); return; }
+    if (act === 'reset') {
+      state.quota = { date: todayKey(), used: 0 };
+      saveQuota();
+      renderQuota();
+      closeSheet();
+      toast(T('toast.reset'));
+      return;
+    }
+    if (act === 'notify') {
+      closeSheet();
+      toast(T('up.cta') + ' — ' + CONFIG.brand.handle);
+      return;
+    }
+  });
+}
+
+/* ---------- boot ---------- */
+function renderAll() {
+  applyStatic();
+  renderChips();
+  renderSymptoms();
+  renderLibrary();
+  renderQuota();
+  renderThread();
+}
+
+function boot() {
+  try {
+    var savedLang = localStorage.getItem('aroma.lang');
+    if (savedLang && I18N[savedLang]) state.lang = savedLang;
+  } catch (e) {}
+  loadQuota();
+  bindEvents();
+  renderAll();
+
+  /* PWA 바로가기(?view=lib|sym|chat) */
+  try {
+    var m = (location.search || '').match(/view=(chat|sym|lib)/);
+    if (m) goView(m[1]);
+  } catch (e) {}
+
+  if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    });
+  }
+}
+
+boot();
+</script>
+</body>
+</html>

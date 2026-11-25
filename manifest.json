@@ -1,0 +1,48 @@
+{
+  "name": "식물의 힘 · 도테라 AI 아로마 상담",
+  "short_name": "식물의 힘",
+  "description": "24가지 도테라 에센셜 오일을 한국어·English·日本語로 상담하는 프리미엄 아로마 웰니스 가이드",
+  "lang": "ko",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF7F2",
+  "theme_color": "#1E3A2F",
+  "categories": ["health", "lifestyle", "medical"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "AI 아로마 상담",
+      "short_name": "상담",
+      "url": "./?view=chat",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "오일 백과",
+      "short_name": "백과",
+      "url": "./?view=lib",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
