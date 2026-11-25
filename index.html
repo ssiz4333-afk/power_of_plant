@@ -33,6 +33,8 @@
   --clay:#B4695B;
   --r:22px;
   --shadow:0 20px 48px -24px rgba(24,48,36,.45);
+  --ease-spring:cubic-bezier(.22,1.24,.36,1);
+  --ease-soft:cubic-bezier(.33,.9,.3,1);
   --serif:"Cormorant Garamond","Noto Serif KR","Noto Serif JP",Georgia,"Times New Roman",serif;
   --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Hiragino Sans","Noto Sans JP",system-ui,"Segoe UI",sans-serif;
 }
@@ -89,8 +91,9 @@ a{color:inherit}
 .lang button{
   border:0;background:transparent;cursor:pointer;
   font-size:10.5px;font-weight:700;letter-spacing:.05em;
-  color:#7A897F;padding:5px 8px;border-radius:999px;transition:.18s;
+  color:#7A897F;padding:5px 8px;border-radius:999px;transition:.18s,transform .2s var(--ease-spring);
 }
+.lang button:active{transform:scale(.93)}
 .lang button.on{background:#fff;color:var(--forest);box-shadow:0 1px 4px rgba(30,58,47,.16)}
 
 /* ---------- status strip ---------- */
@@ -116,9 +119,11 @@ a{color:inherit}
 .main{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;position:relative}
 .main::-webkit-scrollbar{width:0}
 .view{display:none;padding-bottom:14px}
-.view.on{display:block;animation:viewin .32s ease both}
+.view.on{display:block;animation:viewfade .4s var(--ease-soft) both}
 #view-chat.on{display:flex;flex-direction:column;min-height:100%}
 @keyframes viewin{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+/* 탭 전환 — 콘텐츠가 부드럽게 페이드로 올라온다 */
+@keyframes viewfade{from{opacity:0;transform:translateY(9px)}60%{opacity:1}to{opacity:1;transform:none}}
 
 /* ---------- chat hero ---------- */
 .hero{position:relative;padding:12px 20px 16px;overflow:hidden}
@@ -151,14 +156,40 @@ a{color:inherit}
 .chips::-webkit-scrollbar{display:none}
 .chip{
   flex:0 0 auto;cursor:pointer;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:6px;
   border:1px solid rgba(30,58,47,.12);
-  background:rgba(255,255,255,.8);
+  background:rgba(255,255,255,.82);
   color:#33503F;border-radius:999px;
-  padding:8px 13px;font-size:12px;font-weight:600;
-  transition:.18s;box-shadow:0 1px 2px rgba(30,58,47,.04);
+  padding:6px 12px 6px 6px;font-size:12px;font-weight:600;
+  box-shadow:0 1px 2px rgba(30,58,47,.04);
+  transition:transform .22s var(--ease-spring),box-shadow .2s ease,border-color .18s ease,background .18s ease,color .18s ease;
 }
-.chip:active{transform:scale(.97)}
-.chip:hover{border-color:rgba(197,160,89,.55);background:#fff;color:var(--forest)}
+.chip:hover{border-color:rgba(197,160,89,.55);background:#fff;color:var(--forest);box-shadow:0 6px 14px -10px rgba(24,48,36,.5)}
+.chip:active{transform:scale(.96)}
+.chip .cic{
+  width:22px;height:22px;border-radius:8px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  background:#F0EEE7;color:#5B7B6B;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7);
+}
+.chip .cic svg{width:13px;height:13px}
+/* 증상 테마별 파스텔 틴트 */
+.c-sleep .cic{background:#EEE8F7;color:#7A6693;box-shadow:inset 0 0 0 1px rgba(122,102,147,.10)}
+.c-tension .cic{background:#E8EEF8;color:#4E6A94;box-shadow:inset 0 0 0 1px rgba(78,106,148,.10)}
+.c-digestion .cic{background:#F8EEDC;color:#9A7B45;box-shadow:inset 0 0 0 1px rgba(154,123,69,.12)}
+.c-breathing .cic{background:#E3F1F3;color:#46828C;box-shadow:inset 0 0 0 1px rgba(70,130,140,.12)}
+.c-vitality .cic{background:#F7EADA;color:#A06A3F;box-shadow:inset 0 0 0 1px rgba(160,106,63,.12)}
+.c-skin .cic{background:#FAE8EA;color:#B0717A;box-shadow:inset 0 0 0 1px rgba(176,113,122,.12)}
+.c-focus .cic{background:#E6F1E3;color:#4F7A56;box-shadow:inset 0 0 0 1px rgba(79,122,86,.12)}
+.c-emotion .cic{background:#F4E8F6;color:#8A5F96;box-shadow:inset 0 0 0 1px rgba(138,95,150,.12)}
+.chip.c-sleep{border-color:rgba(122,102,147,.16)}
+.chip.c-tension{border-color:rgba(78,106,148,.16)}
+.chip.c-digestion{border-color:rgba(154,123,69,.18)}
+.chip.c-breathing{border-color:rgba(70,130,140,.18)}
+.chip.c-vitality{border-color:rgba(160,106,63,.18)}
+.chip.c-skin{border-color:rgba(176,113,122,.18)}
+.chip.c-focus{border-color:rgba(79,122,86,.18)}
+.chip.c-emotion{border-color:rgba(138,95,150,.18)}
 .chips-label{padding:0 20px 7px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#93A099;font-weight:700}
 
 /* ---------- today's scent ---------- */
@@ -184,8 +215,17 @@ a{color:inherit}
 }
 .sc-card:after{
   content:"";position:absolute;inset:5px;border-radius:15px;
-  border:1px solid rgba(197,160,89,.16);pointer-events:none;
+  border:1px solid rgba(197,160,89,.16);pointer-events:none;z-index:1;
 }
+/* 은은한 빛결 — 카드 위를 아주 느리게 스치는 광택 */
+.sc-glow{
+  position:absolute;inset:-30% -55%;pointer-events:none;z-index:0;
+  background:linear-gradient(104deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.58) 50%,rgba(255,255,255,0) 62%);
+  opacity:.55;transform:translateX(-55%) rotate(6deg);
+  animation:scSheen 9s var(--ease-soft) infinite;
+}
+@keyframes scSheen{0%,55%{transform:translateX(-55%) rotate(6deg);opacity:0}
+  62%{opacity:.55}80%{transform:translateX(55%) rotate(6deg);opacity:.35}100%{transform:translateX(55%) rotate(6deg);opacity:0}}
 .sc-top{display:flex;align-items:center;gap:6px;margin-bottom:9px;position:relative;z-index:1}
 .sc-badge{
   display:inline-flex;align-items:center;gap:5px;
@@ -210,16 +250,27 @@ a{color:inherit}
   background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.14));
   border:1px solid rgba(255,255,255,.9);
   box-shadow:inset 0 0 0 1px rgba(197,160,89,.20),inset 0 10px 20px -14px rgba(255,255,255,.95),0 8px 16px -14px rgba(24,48,36,.6);
+  animation:archFloat 7.5s ease-in-out infinite;
 }
+/* 아치 유리 안쪽의 은은한 빛 */
+.sc-arch:after{
+  content:"";position:absolute;inset:1px;border-radius:53px 53px 13px 13px;pointer-events:none;
+  background:linear-gradient(158deg,rgba(255,255,255,.62),rgba(255,255,255,0) 48%);
+  animation:archGlow 6.4s ease-in-out infinite;
+}
+@keyframes archFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+@keyframes archGlow{0%,100%{opacity:.55}50%{opacity:.95}}
 .sc-arch:before{
   content:"";position:absolute;left:50%;bottom:10px;transform:translateX(-50%);
   width:72%;height:10px;border-radius:50%;
   background:radial-gradient(ellipse at center,rgba(24,48,36,.24),rgba(24,48,36,0) 72%);
 }
 .sc-arch img{position:absolute;display:block;width:auto;
-  filter:drop-shadow(0 5px 7px rgba(16,30,22,.26))}
-.sc-arch .b2{height:58px;right:5px;bottom:13px;opacity:.96}
-.sc-arch .b1{height:76px;left:7px;bottom:8px}
+  filter:drop-shadow(0 5px 7px rgba(16,30,22,.26));
+  animation:bottleFloat 6.8s ease-in-out infinite;}
+.sc-arch .b2{height:58px;right:5px;bottom:13px;opacity:.96;animation-duration:8.2s;animation-delay:-2.6s}
+.sc-arch .b1{height:76px;left:7px;bottom:8px;animation-delay:-1.2s}
+@keyframes bottleFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-3px) rotate(.5deg)}}
 .sc-acts{display:flex;gap:6px;margin-top:10px;position:relative;z-index:2}
 .sc-cta{
   flex:1;display:flex;align-items:center;justify-content:center;gap:5px;min-width:0;
@@ -227,14 +278,17 @@ a{color:inherit}
   font-size:11.5px;font-weight:700;letter-spacing:.01em;white-space:nowrap;
   background:linear-gradient(150deg,#2F5A48,#1E3A2F);color:#F5EDDB;
   box-shadow:0 12px 22px -16px rgba(20,40,30,.95);
+  transition:transform .22s var(--ease-spring),box-shadow .22s ease;
 }
-.sc-cta:active{transform:scale(.985)}
+.sc-cta:active{transform:scale(.975);box-shadow:0 6px 14px -12px rgba(20,40,30,.95)}
 .sc-cta svg{width:12px;height:12px;flex:0 0 auto}
 .sc-more{
   flex:0 0 auto;display:flex;align-items:center;gap:4px;cursor:pointer;
   border:1px solid rgba(30,58,47,.16);background:rgba(255,255,255,.6);color:#3F5A4B;
   border-radius:12px;padding:10px 11px;font-size:11px;font-weight:700;white-space:nowrap;
+  transition:transform .22s var(--ease-spring),background .18s ease,border-color .18s ease;
 }
+.sc-more:active{transform:scale(.975);background:rgba(255,255,255,.9)}
 .sc-more svg{width:11px;height:11px;opacity:.7}
 
 /* ---------- messages ---------- */
@@ -321,8 +375,10 @@ a{color:inherit}
 .follows button{
   border:1px dashed rgba(30,58,47,.2);background:rgba(255,255,255,.7);
   color:#4C6355;border-radius:999px;padding:5px 9px;font-size:10.5px;font-weight:600;cursor:pointer;
+  transition:transform .2s var(--ease-spring),border-color .18s ease,background .18s ease;
 }
 .follows button:hover{border-style:solid;border-color:rgba(197,160,89,.6)}
+.follows button:active{transform:scale(.96);background:#fff}
 .modebadge{
   display:flex;align-items:flex-start;gap:5px;margin-top:10px;
   font-size:9px;line-height:1.5;letter-spacing:.005em;font-weight:600;color:#A2ADA6;
@@ -330,12 +386,50 @@ a{color:inherit}
 .modebadge:before{content:"";width:4px;height:4px;border-radius:50%;background:var(--sage2);flex:0 0 auto;margin-top:5px}
 .modebadge b{font-weight:800;color:#8E9A93}
 
-/* typing */
+/* ---------- 답변 모션 ---------- */
+.msg.ai .bubble{animation:bubbleRise .42s var(--ease-soft) backwards}
+@keyframes bubbleRise{from{opacity:0;transform:translateY(12px) scale(.986)}to{opacity:1;transform:none}}
+.bubble .oilrow{
+  transition:transform .22s var(--ease-spring),box-shadow .22s ease,border-color .2s ease;
+  animation:oilIn .44s var(--ease-spring) backwards;
+  animation-delay:var(--sd,0ms);
+}
+.bubble .oilrow:active{transform:scale(.975);box-shadow:0 6px 14px -14px rgba(24,48,36,.8)}
+@keyframes oilIn{from{opacity:0;transform:translateY(9px) scale(.97)}to{opacity:1;transform:none}}
+.bubble .block{animation:bubbleRise .42s var(--ease-soft) backwards;animation-delay:var(--sd,0ms)}
+
+/* 향을 고르는 중 — 보태니컬 펄스 + 도트 */
 .typing{display:flex;gap:4px;padding:4px 2px}
 .typing i{width:5px;height:5px;border-radius:50%;background:var(--sage2);animation:bl 1.2s infinite}
 .typing i:nth-child(2){animation-delay:.16s}
 .typing i:nth-child(3){animation-delay:.32s}
 @keyframes bl{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.pick{display:flex;align-items:center;gap:9px;padding:11px 14px 11px 12px}
+.pick-orb{
+  position:relative;width:24px;height:24px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;
+  background:radial-gradient(circle at 34% 28%,#FCFDF9,#E6EEE6 78%,#DCE7DE);
+  box-shadow:inset 0 0 0 1px rgba(91,123,107,.18),0 3px 7px -5px rgba(24,48,36,.7);
+}
+.pick-orb:before{
+  content:"";position:absolute;inset:-3px;border-radius:50%;
+  border:1px solid rgba(197,160,89,.46);
+  animation:pickRing 2s ease-out infinite;
+}
+.pick-orb:after{
+  content:"";position:absolute;inset:-2px;border-radius:50%;
+  background:radial-gradient(circle,rgba(91,123,107,.20),rgba(91,123,107,0) 70%);
+  animation:pickPulse 2s ease-out infinite;
+}
+.pick-dots{display:flex;gap:3px;position:relative;z-index:1}
+.pick-dots i{width:3.5px;height:3.5px;border-radius:50%;background:#6E8E7B;opacity:.4;animation:pickDot 1.35s ease-in-out infinite}
+.pick-dots i:nth-child(2){animation-delay:.18s}
+.pick-dots i:nth-child(3){animation-delay:.36s}
+@keyframes pickDot{0%,100%{opacity:.35;transform:translateY(0)}45%{opacity:1;transform:translateY(-1.5px)}}
+.pick-tx{font-size:11.5px;line-height:1.4;color:#6C7A70;letter-spacing:.005em;animation:pickText 2s ease-in-out infinite}
+@keyframes pickPulse{0%{transform:scale(.6);opacity:.75}75%{transform:scale(1.35);opacity:0}100%{opacity:0}}
+@keyframes pickRing{0%{transform:scale(.72);opacity:0}30%{opacity:.85}100%{transform:scale(1.22);opacity:0}}
+@keyframes pickText{0%,100%{opacity:.66}50%{opacity:1}}
 
 /* ---------- composer ---------- */
 .composer{
@@ -390,8 +484,9 @@ a{color:inherit}
   flex:1;border:0;background:none;cursor:pointer;
   display:flex;flex-direction:column;align-items:center;gap:3px;
   padding:5px 0 3px;color:#93A09A;font-size:9.5px;font-weight:700;letter-spacing:.03em;
-  transition:color .18s;position:relative;
+  transition:color .18s,transform .2s var(--ease-spring);position:relative;
 }
+.tab:active{transform:scale(.94)}
 .tab .tabic{
   width:30px;height:24px;border-radius:9px;display:flex;align-items:center;justify-content:center;transition:.2s;
 }
@@ -412,16 +507,26 @@ a{color:inherit}
   border:1px solid rgba(30,58,47,.085);border-radius:16px;
   padding:12px 13px;
   box-shadow:0 10px 22px -24px rgba(20,40,30,.9);
-  transition:.2s;
+  transition:transform .24s var(--ease-spring),border-color .2s ease,box-shadow .22s ease;
 }
 .symcard:hover{border-color:rgba(197,160,89,.45);transform:translateY(-1px);box-shadow:0 14px 26px -22px rgba(20,40,30,.7)}
+.symcard:active{transform:scale(.975);box-shadow:0 4px 12px -12px rgba(20,40,30,.85)}
 .symcard .sic{
   width:36px;height:36px;border-radius:12px;flex:0 0 auto;
   display:flex;align-items:center;justify-content:center;
   background:linear-gradient(150deg,rgba(91,123,107,.16),rgba(197,160,89,.14));
   color:#41604F;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);
 }
 .symcard .sic svg{width:19px;height:19px}
+.symcard.c-sleep .sic{background:linear-gradient(150deg,#F2ECFA,#E7DFF4);color:#6E5A8C}
+.symcard.c-tension .sic{background:linear-gradient(150deg,#ECF1FA,#DFE8F6);color:#44618C}
+.symcard.c-digestion .sic{background:linear-gradient(150deg,#FBF2E1,#F5E6CD);color:#8E7040}
+.symcard.c-breathing .sic{background:linear-gradient(150deg,#E9F4F6,#D9EBEE);color:#3C7A85}
+.symcard.c-vitality .sic{background:linear-gradient(150deg,#FBEFE1,#F5E3CD);color:#966037}
+.symcard.c-skin .sic{background:linear-gradient(150deg,#FCEDEF,#F7E0E3);color:#A5666F}
+.symcard.c-focus .sic{background:linear-gradient(150deg,#EBF4E7,#DEF0D9);color:#46704D}
+.symcard.c-emotion .sic{background:linear-gradient(150deg,#F7ECF9,#EFDFF3);color:#7F568B}
 .symcard .stx{flex:1;min-width:0}
 .symcard .stx b{display:block;font-size:13.5px;font-weight:700;color:var(--forest);letter-spacing:.005em;margin-bottom:1px}
 .symcard .stx span{display:block;font-size:11px;color:#7C8A81;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -441,8 +546,10 @@ a{color:inherit}
 .filters{display:flex;gap:5px;padding:0 16px 11px}
 .filters button{
   border:1px solid rgba(30,58,47,.12);background:rgba(255,255,255,.7);color:#5C6B61;
-  border-radius:999px;padding:6px 11px;font-size:11px;font-weight:700;cursor:pointer;transition:.18s;
+  border-radius:999px;padding:6px 11px;font-size:11px;font-weight:700;cursor:pointer;
+  transition:transform .2s var(--ease-spring),background .18s ease,color .18s ease,border-color .18s ease;
 }
+.filters button:active{transform:scale(.96)}
 .filters button.on{background:var(--forest);border-color:var(--forest);color:#F4EEE1}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 16px 8px}
 .olcard{
@@ -450,9 +557,11 @@ a{color:inherit}
   background:#fff;border:1px solid rgba(30,58,47,.075);border-radius:16px;
   padding:9px 9px 11px;
   box-shadow:0 10px 22px -24px rgba(20,40,30,.9);
-  transition:.2s;display:flex;flex-direction:column;gap:7px;
+  transition:transform .24s var(--ease-spring),border-color .2s ease,box-shadow .22s ease;
+  display:flex;flex-direction:column;gap:7px;
 }
 .olcard:hover{transform:translateY(-2px);box-shadow:0 16px 28px -22px rgba(20,40,30,.7);border-color:rgba(197,160,89,.4)}
+.olcard:active{transform:scale(.975);box-shadow:0 4px 12px -12px rgba(20,40,30,.85);border-color:rgba(197,160,89,.5)}
 .olcard .cap{
   height:122px;border-radius:12px;position:relative;overflow:hidden;
   display:flex;align-items:flex-end;justify-content:center;
@@ -567,7 +676,9 @@ a{color:inherit}
   display:inline-flex;align-items:center;gap:5px;cursor:pointer;
   border:1px solid rgba(30,58,47,.1);background:#fff;border-radius:999px;padding:4px 9px 4px 4px;
   font-size:10.5px;font-weight:600;color:#3F5A4B;
+  transition:transform .2s var(--ease-spring),border-color .18s ease;
 }
+.pairstrip button:active{transform:scale(.96)}
 .pairstrip .pdot{
   width:16px;height:26px;display:inline-flex;align-items:center;justify-content:center;
 }
@@ -579,13 +690,17 @@ a{color:inherit}
   background:linear-gradient(150deg,#30604E,#1E3A2F);color:#F6EFDD;
   font-size:13px;font-weight:700;letter-spacing:.01em;
   box-shadow:0 14px 26px -18px rgba(20,40,30,.9);margin-top:6px;
+  transition:transform .22s var(--ease-spring),box-shadow .22s ease;
 }
+.btn-primary:active{transform:scale(.975);box-shadow:0 6px 14px -14px rgba(20,40,30,.9)}
 .btn-primary svg{width:15px;height:15px}
 .btn-ghost{
   display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
   border:1px solid rgba(30,58,47,.16);border-radius:15px;padding:12px;cursor:pointer;
   background:transparent;color:var(--forest);font-size:12.5px;font-weight:700;margin-top:8px;
+  transition:transform .22s var(--ease-spring),background .18s ease;
 }
+.btn-ghost:active{transform:scale(.975);background:rgba(30,58,47,.04)}
 
 /* symptoms sheet blend */
 .blendbox{
@@ -706,7 +821,15 @@ a{color:inherit}
   .hero p{font-size:11.5px;line-height:1.62}
 }
 @media(prefers-reduced-motion:reduce){
-  *{animation-duration:.001s!important;transition-duration:.001s!important}
+  *,*:before,*:after{
+    animation-duration:.001s!important;animation-delay:0s!important;
+    transition-duration:.001s!important;transition-delay:0s!important;
+  }
+  /* 부유감·광택·순차 등장은 끄고 내용만 즉시 보여 준다 */
+  .sc-arch,.sc-arch:after,.sc-arch img,.sc-glow,
+  .msg.ai .bubble,.bubble .oilrow,.bubble .block,
+  .pick-orb:before,.pick-orb:after,.pick-dots i,.pick-tx{animation:none!important}
+  .sc-glow{display:none}
 }
 </style>
 </head>
@@ -892,7 +1015,7 @@ var CONFIG = {
   apiBase: '',
 
   freePerDay: 5,
-  version: '1.3.0-trial'
+  version: '1.4.0-trial'
 };
 
 var I18N = {
@@ -918,7 +1041,7 @@ var I18N = {
     'chat.send': '보내기',
     'chat.greet': '안녕하세요, 식물의 힘입니다. 오늘의 컨디션을 한 줄로 들려주세요. 향으로 풀어 볼 수 있는 조합을 찾아 드릴게요.',
     'chat.try': '이렇게 물어보세요',
-    'chat.typing': '향을 고르는 중',
+    'chat.typing': '오늘의 향을 고르는 중...',
     'chat.langnote': '입력하신 언어로 답변했어요',
     'chat.answerInKo': '한국어로 보기',
     'ans.recipe': '함께 쓰는 레시피',
@@ -1005,7 +1128,7 @@ var I18N = {
     'chat.send': 'Send',
     'chat.greet': 'Hello, this is Power of Plants. Tell me how today feels — I will find a scent ritual that fits.',
     'chat.try': 'Try asking',
-    'chat.typing': 'Choosing scents',
+    'chat.typing': 'Choosing today\u2019s scent...',
     'chat.langnote': 'Answered in the language you wrote in',
     'chat.answerInKo': '한국어로 보기',
     'ans.recipe': 'Recipe',
@@ -1092,7 +1215,7 @@ var I18N = {
     'chat.send': '送信',
     'chat.greet': 'こんにちは、植物の力です。今日のコンディションを一言で聞かせてください。香りで整える組み合わせをご提案します。',
     'chat.try': 'こんなふうに聞いてみてください',
-    'chat.typing': '香りを選んでいます',
+    'chat.typing': '今日の香りを選んでいます...',
     'chat.langnote': '入力された言語でお答えしました',
     'chat.answerInKo': '한국어로 보기',
     'ans.recipe': 'おすすめレシピ',
@@ -2821,6 +2944,7 @@ function scentCardHTML(sc, L) {
   var a = oilById(sc.oils[0]);
   var b = oilById(sc.oils[1]);
   var out = '<div class="sc-card">';
+  out += '<span class="sc-glow" aria-hidden="true"></span>';
   out += '<div class="sc-top"><span class="sc-badge">' + esc(T('scent.badge', L)) + '</span>' +
     '<span class="sc-when">' + esc(scentWhen(new Date(), L)) + '</span></div>';
   out += '<div class="sc-body"><div class="sc-tx">' +
@@ -2870,20 +2994,22 @@ function answerHTML(a) {
   }
   out += '<p class="lead">' + esc(a.intro) + '</p>';
 
+  var seq = 0;
   if (a.oils && a.oils.length) {
     for (var i = 0; i < a.oils.length; i++) {
       var o = oilById(a.oils[i]);
       if (!o) continue;
-      out += '<div class="oilrow" data-act="oil" data-id="' + escAttr(o.id) + '" style="cursor:pointer">' +
+      out += '<div class="oilrow" data-act="oil" data-id="' + escAttr(o.id) + '" style="--sd:' + (seq * 70) + 'ms;cursor:pointer">' +
         dotHTML(o, L) +
         '<div class="oinfo"><div class="oname"><b>' + esc(o.name[L]) + '</b>' + usesTags(o, L) + '</div>' +
         '<div class="latin">' + esc(o.latin) + '</div>' +
         '<div class="whi">' + esc(o.eff[L]) + '</div></div></div>';
+      seq += 1;
     }
   }
 
   if (a.recipe) {
-    out += '<div class="block recipe"><div class="bt">' + esc(T('ans.recipe', L)) + '</div>';
+    out += '<div class="block recipe" style="--sd:' + (seq * 70 + 40) + 'ms"><div class="bt">' + esc(T('ans.recipe', L)) + '</div>';
     if (a.recipe.t) out += '<p style="margin:0 0 5px;font-size:12px;font-weight:700;color:#5C4A28">' + esc(a.recipe.t) + '</p>';
     out += '<ol>';
     (a.recipe.s || []).forEach(function (s) { out += '<li>' + esc(s) + '</li>'; });
@@ -2893,7 +3019,7 @@ function answerHTML(a) {
   }
 
   if (a.cautions && a.cautions.length) {
-    out += '<div class="block caution"><div class="bt">' + esc(T('ans.caution', L)) + '</div><ul>';
+    out += '<div class="block caution" style="--sd:' + (seq * 70 + 110) + 'ms"><div class="bt">' + esc(T('ans.caution', L)) + '</div><ul>';
     a.cautions.forEach(function (c) { out += '<li>' + esc(c) + '</li>'; });
     out += '</ul></div>';
   }
@@ -2940,14 +3066,26 @@ function typing(on) {
     node = document.createElement('div');
     node.id = 'typing';
     node.className = 'msg ai';
+    node.setAttribute('aria-live', 'polite');
     node.innerHTML = '<div class="who"><svg><use href="#i-leaf"></use></svg></div>' +
-      '<div class="bubble"><div class="typing"><i></i><i></i><i></i></div></div>';
+      '<div class="bubble pick">' +
+      '<span class="pick-orb" aria-hidden="true"><span class="pick-dots"><i></i><i></i><i></i></span></span>' +
+      '<span class="pick-tx">' + esc(T('chat.typing', state.lang)) + '</span>' +
+      '</div>';
     el.thread.appendChild(node);
     scrollBottom();
   } else if (node && node.parentNode) {
     node.parentNode.removeChild(node);
   }
 }
+
+function rest(ms) {
+  return new Promise(function (r) { window.setTimeout(r, ms); });
+}
+
+/* '오늘의 향을 고르는 중...' — 답변이 너무 빨리 튀어나오지 않게 400ms의 결을 준다.
+   (로컬 엔진은 즉시 끝나므로 체감 지연은 0.4초, 라이브 응답이 더 느리면 그대로 기다린다) */
+var THINK_MIN = 400;
 
 async function ask(text) {
   text = String(text || '').trim();
@@ -2965,14 +3103,18 @@ async function ask(text) {
   renderThread();
   typing(true);
 
+  var started = Date.now();
+  var ans = null;
   try {
-    var ans = await askAromaAI(text, { lang: state.lang });
-    typing(false);
-    state.thread.push({ role: 'ai', answer: ans, query: text });
+    ans = await askAromaAI(text, { lang: state.lang });
   } catch (e) {
-    typing(false);
-    state.thread.push({ role: 'ai', answer: AromaEngine.answer(text, state.lang), query: text });
+    ans = AromaEngine.answer(text, state.lang);
   }
+  var left = THINK_MIN - (Date.now() - started);
+  if (left > 0) await rest(left);
+
+  typing(false);
+  state.thread.push({ role: 'ai', answer: ans, query: text });
   state.busy = false;
   el.send.disabled = false;
   renderThread();
@@ -2982,7 +3124,8 @@ async function ask(text) {
 function renderChips() {
   var out = '';
   SYMPTOMS.forEach(function (s) {
-    out += '<button type="button" class="chip" data-act="ask" data-q="' + escAttr(s.prompt[state.lang]) + '">' +
+    out += '<button type="button" class="chip c-' + escAttr(s.id) + '" data-act="ask" data-q="' + escAttr(s.prompt[state.lang]) + '">' +
+      '<span class="cic" aria-hidden="true"><svg><use href="#' + s.icon + '"></use></svg></span>' +
       esc(s.name[state.lang]) + '</button>';
   });
   el.chips.innerHTML = out;
@@ -2991,7 +3134,7 @@ function renderChips() {
 function renderSymptoms() {
   var out = '';
   SYMPTOMS.forEach(function (s) {
-    out += '<button type="button" class="symcard" data-act="sym" data-id="' + escAttr(s.id) + '">' +
+    out += '<button type="button" class="symcard c-' + escAttr(s.id) + '" data-act="sym" data-id="' + escAttr(s.id) + '">' +
       '<span class="sic"><svg><use href="#' + s.icon + '"></use></svg></span>' +
       '<span class="stx"><b>' + esc(s.name[state.lang]) + '</b><span>' + esc(s.desc[state.lang]) + '</span></span>' +
       '<span class="arr"><svg><use href="#i-arrow"></use></svg></span></button>';
