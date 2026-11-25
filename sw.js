@@ -1,6 +1,6 @@
 /* 식물의 힘 — service worker (offline shell)
    배포 시 CACHE 값을 올리면 앱이 새 버전으로 갱신됩니다. */
-var CACHE = 'aroma-ai-v1.4.0';
+var CACHE = 'aroma-ai-v1.5.0';
 var SHELL = [
   './',
   './index.html',
