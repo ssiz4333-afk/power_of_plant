@@ -161,6 +161,82 @@ a{color:inherit}
 .chip:hover{border-color:rgba(197,160,89,.55);background:#fff;color:var(--forest)}
 .chips-label{padding:0 20px 7px;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#93A099;font-weight:700}
 
+/* ---------- today's scent ---------- */
+.scent{
+  margin:0 16px 12px;position:relative;
+  max-height:340px;opacity:1;
+  transition:max-height .36s ease,opacity .3s ease,margin .36s ease;
+}
+.scent[hidden]{display:none}
+.scent.fold{max-height:0;opacity:0;margin-top:0;margin-bottom:0;overflow:hidden;pointer-events:none}
+.sc-card{
+  position:relative;overflow:hidden;border-radius:20px;
+  padding:12px 13px 11px;
+  background:
+    radial-gradient(130% 100% at 86% -20%,rgba(255,255,255,.95),rgba(255,255,255,0) 62%),
+    linear-gradient(158deg,#FDFAF5 0%,#F7F0E2 55%,#EFE3CD 100%);
+  border:1px solid rgba(197,160,89,.34);
+  box-shadow:0 22px 40px -34px rgba(24,48,36,.85),0 2px 6px -4px rgba(24,48,36,.14),inset 0 1px 0 rgba(255,255,255,.9);
+}
+.sc-card:before{
+  content:"";position:absolute;left:-46px;top:-70px;width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(143,168,154,.26),rgba(143,168,154,0) 70%);pointer-events:none;
+}
+.sc-card:after{
+  content:"";position:absolute;inset:5px;border-radius:15px;
+  border:1px solid rgba(197,160,89,.16);pointer-events:none;
+}
+.sc-top{display:flex;align-items:center;gap:6px;margin-bottom:9px;position:relative;z-index:1}
+.sc-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:8.4px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#8A6C2E;background:rgba(197,160,89,.14);border:1px solid rgba(197,160,89,.34);
+  border-radius:999px;padding:4px 8px 4px 7px;white-space:nowrap;
+}
+.sc-badge:before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+.sc-when{margin-left:auto;font-size:8.4px;letter-spacing:.1em;text-transform:uppercase;color:#9BA697;font-weight:700;white-space:nowrap}
+.sc-body{display:flex;gap:10px;align-items:center;position:relative;z-index:1}
+.sc-tx{flex:1;min-width:0}
+.sc-title{
+  font-family:var(--serif);font-size:20.5px;font-weight:500;line-height:1.2;letter-spacing:-.005em;
+  color:var(--forest);margin:0 0 5px;
+}
+.sc-mood{margin:0 0 9px;font-size:11px;line-height:1.6;color:#5E6E63}
+.sc-recipe{font-size:9.8px;line-height:1.5;color:#6F5E38;font-weight:600;display:flex;flex-direction:column;gap:2px}
+.sc-recipe b{font-size:8.2px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#A3854A}
+.sc-arch{
+  position:relative;flex:0 0 auto;width:92px;height:98px;align-self:center;
+  border-radius:54px 54px 14px 14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.14));
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:inset 0 0 0 1px rgba(197,160,89,.20),inset 0 10px 20px -14px rgba(255,255,255,.95),0 8px 16px -14px rgba(24,48,36,.6);
+}
+.sc-arch:before{
+  content:"";position:absolute;left:50%;bottom:10px;transform:translateX(-50%);
+  width:72%;height:10px;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(24,48,36,.24),rgba(24,48,36,0) 72%);
+}
+.sc-arch img{position:absolute;display:block;width:auto;
+  filter:drop-shadow(0 5px 7px rgba(16,30,22,.26))}
+.sc-arch .b2{height:58px;right:5px;bottom:13px;opacity:.96}
+.sc-arch .b1{height:76px;left:7px;bottom:8px}
+.sc-acts{display:flex;gap:6px;margin-top:10px;position:relative;z-index:2}
+.sc-cta{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:5px;min-width:0;
+  border:0;cursor:pointer;border-radius:12px;padding:10px 8px;
+  font-size:11.5px;font-weight:700;letter-spacing:.01em;white-space:nowrap;
+  background:linear-gradient(150deg,#2F5A48,#1E3A2F);color:#F5EDDB;
+  box-shadow:0 12px 22px -16px rgba(20,40,30,.95);
+}
+.sc-cta:active{transform:scale(.985)}
+.sc-cta svg{width:12px;height:12px;flex:0 0 auto}
+.sc-more{
+  flex:0 0 auto;display:flex;align-items:center;gap:4px;cursor:pointer;
+  border:1px solid rgba(30,58,47,.16);background:rgba(255,255,255,.6);color:#3F5A4B;
+  border-radius:12px;padding:10px 11px;font-size:11px;font-weight:700;white-space:nowrap;
+}
+.sc-more svg{width:11px;height:11px;opacity:.7}
+
 /* ---------- messages ---------- */
 .thread{padding:2px 16px 4px;display:flex;flex-direction:column;gap:13px;margin-top:auto}
 .msg{display:flex;gap:8px;align-items:flex-start;animation:viewin .3s ease both}
@@ -263,11 +339,15 @@ a{color:inherit}
 
 /* ---------- composer ---------- */
 .composer{
-  flex:0 0 auto;padding:8px 14px 6px;
-  background:linear-gradient(to top,var(--ivory) 62%,rgba(250,247,242,0));
+  position:relative;flex:0 0 auto;padding:10px 14px 6px;
+  background:linear-gradient(to top,var(--ivory) 72%,rgba(250,247,242,.72) 88%,rgba(250,247,242,0));
   display:none;
 }
 .composer.on{display:block}
+.composer:before{
+  content:"";position:absolute;left:0;right:0;top:-24px;height:24px;pointer-events:none;
+  background:linear-gradient(to top,var(--ivory) 12%,rgba(250,247,242,0));
+}
 .composer form{
   display:flex;align-items:flex-end;gap:7px;
   background:#fff;border:1px solid rgba(30,58,47,.13);border-radius:19px;
@@ -604,6 +684,27 @@ a{color:inherit}
   .stage-brand h2{font-size:36px}
   .sb-list li:nth-child(3){display:none}
 }
+@media(max-width:390px){
+  .scent{margin:0 14px 10px}
+  .sc-card{padding:10px 12px 10px;border-radius:18px}
+  .sc-top{margin-bottom:7px}
+  .sc-badge{font-size:8px;letter-spacing:.12em}
+  .sc-when{font-size:8px}
+  .sc-title{font-size:18px}
+  .sc-mood{font-size:10.4px;line-height:1.58;margin-bottom:7px}
+  .sc-recipe{font-size:9.2px;line-height:1.45}
+  .sc-arch{width:78px;height:86px;border-radius:44px 44px 12px 12px}
+  .sc-arch .b1{height:64px;left:6px;bottom:7px}
+  .sc-arch .b2{height:48px;right:4px;bottom:11px}
+  .sc-acts{margin-top:9px}
+  .sc-cta{font-size:11px;padding:9px 6px}
+  .sc-more{font-size:10.5px;padding:9px 9px}
+}
+@media(max-width:430px) and (max-height:820px){
+  .hero{padding:9px 20px 12px}
+  .hero h1{font-size:26px;margin-bottom:7px}
+  .hero p{font-size:11.5px;line-height:1.62}
+}
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001s!important;transition-duration:.001s!important}
 }
@@ -689,6 +790,7 @@ a{color:inherit}
           </div>
           <div class="chips-label" data-i18n="chat.chipsLabel">자주 찾는 고민</div>
           <div class="chips" id="chips"></div>
+          <div class="scent" id="scent" hidden></div>
           <div class="thread" id="thread"></div>
         </section>
 
@@ -774,6 +876,7 @@ a{color:inherit}
      2. I18N              — ko / en / ja UI strings
      3. OILS              — 24-oil knowledge DB (14 singles + 10 blends)
      4. SYMPTOMS          — 8 symptom categories + blend recipes
+     4b. SCENTS           — 'today\u2019s scent' curation presets (time/season/weekday)
      5. AromaEngine       — local matching engine (mode: 'demo')
      6. askAromaAI()      — adapter: demo engine  <->  Supabase Edge Function
      7. UI                — views, chat, sheets, quota, PWA
@@ -789,7 +892,7 @@ var CONFIG = {
   apiBase: '',
 
   freePerDay: 5,
-  version: '1.0.0-trial'
+  version: '1.3.0-trial'
 };
 
 var I18N = {
@@ -806,6 +909,11 @@ var I18N = {
     'chat.h1': '오늘, 어떤 <em>향</em>이<br>필요하세요?',
     'chat.sub': '증상이나 기분을 편하게 적어 주세요. 24가지 도테라 오일 가운데 지금 필요한 조합과 레시피를 골라 드립니다.',
     'chat.chipsLabel': '자주 찾는 고민',
+    'scent.badge': "TODAY'S SCENT · 오늘의 향기",
+    'scent.recipeLabel': '오늘의 레시피',
+    'scent.cta': '이 향으로 상담하기',
+    'scent.oil': '오일 보기',
+    'scent.ask': '{a}와 {b}로 오늘의 향을 추천해 줘',
     'chat.ph': '예) 잠이 잘 안 와요',
     'chat.send': '보내기',
     'chat.greet': '안녕하세요, 식물의 힘입니다. 오늘의 컨디션을 한 줄로 들려주세요. 향으로 풀어 볼 수 있는 조합을 찾아 드릴게요.',
@@ -888,6 +996,11 @@ var I18N = {
     'chat.h1': 'Which <em>scent</em><br>does today need?',
     'chat.sub': 'Tell me how you feel in one line. I will pick the blend and the recipe you need from 24 dōTERRA oils.',
     'chat.chipsLabel': 'Popular concerns',
+    'scent.badge': "TODAY'S SCENT · Daily Pick",
+    'scent.recipeLabel': "Today's recipe",
+    'scent.cta': 'Consult with this scent',
+    'scent.oil': 'View oils',
+    'scent.ask': 'Recommend a scent blend with {a} and {b}',
     'chat.ph': 'e.g. I cannot fall asleep',
     'chat.send': 'Send',
     'chat.greet': 'Hello, this is Power of Plants. Tell me how today feels — I will find a scent ritual that fits.',
@@ -970,6 +1083,11 @@ var I18N = {
     'chat.h1': '今日は、どんな<em>香り</em>が<br>必要ですか。',
     'chat.sub': '症状や気分をそのまま書いてください。24種類のドテラオイルから、今必要な組み合わせとレシピをお選びします。',
     'chat.chipsLabel': 'よくあるお悩み',
+    'scent.badge': "TODAY'S SCENT · 今日の香り",
+    'scent.recipeLabel': '今日のレシピ',
+    'scent.cta': 'この香りで相談する',
+    'scent.oil': 'オイルを見る',
+    'scent.ask': '{a}と{b}で今日の香りを提案して',
     'chat.ph': '例）なかなか眠れない',
     'chat.send': '送信',
     'chat.greet': 'こんにちは、植物の力です。今日のコンディションを一言で聞かせてください。香りで整える組み合わせをご提案します。',
@@ -2076,6 +2194,185 @@ var SYMPTOMS = [
 ];
 
 /* =========================================================================
+   4b. SCENTS — '오늘의 향기' 큐레이션
+   시간대(아침/오후/저녁/밤) · 계절 · 요일에 따라 7가지 프리셋 중 1장을 고른다.
+   같은 날에는 같은 큐레이션이 뜨고, 날짜가 바뀌면 후보군 안에서 돌아가며 바뀐다.
+   ========================================================================= */
+var SCENTS = [
+  {
+    id: 'morning-refresh',
+    oils: ['lemon', 'wild-orange'],
+    slots: ['morning'], seasons: ['spring', 'summer'], weekdays: [],
+    title: { ko: '아침을 여는 시트러스', en: 'Citrus to Open the Day', ja: '朝をひらくシトラス' },
+    mood: {
+      ko: '레몬과 와일드오렌지의 밝은 산들바람. 창을 열기 전, 방 안의 공기부터 가볍게 깨워 보세요.',
+      en: 'Bright air of lemon and wild orange — wake the room before you open the window.',
+      ja: 'レモンとワイルドオレンジの明るい風。窓を開ける前に、部屋の空気から軽やかに。'
+    },
+    recipe: {
+      ko: '디퓨저에 레몬 2방울 + 와일드오렌지 2방울, 15분',
+      en: '2 drops lemon + 2 drops wild orange, diffuse 15 minutes',
+      ja: 'ディフューザーにレモン2滴＋ワイルドオレンジ2滴、15分'
+    }
+  },
+  {
+    id: 'afternoon-focus',
+    oils: ['rosemary', 'peppermint'],
+    slots: ['day'], seasons: [], weekdays: [],
+    title: { ko: '오후의 초점', en: 'Afternoon Focus', ja: '午後のフォーカス' },
+    mood: {
+      ko: '로즈마리와 페퍼민트의 맑은 바람. 오후 두 시, 흐트러진 생각을 한 줄로 모아 줍니다.',
+      en: 'Clear air of rosemary and peppermint — gathers scattered thoughts into one line.',
+      ja: 'ローズマリーとペパーミントの澄んだ風。午後、散らかった思考を一本の線に。'
+    },
+    recipe: {
+      ko: '손바닥에 페퍼민트 1방울 + 로즈마리 1방울, 코로 세 번 깊게',
+      en: '1 drop peppermint + 1 drop rosemary on the palms, three deep breaths',
+      ja: '手のひらにペパーミント1滴＋ローズマリー1滴、鼻から3回深呼吸'
+    }
+  },
+  {
+    id: 'evening-unwind',
+    oils: ['bergamot', 'lavender'],
+    slots: ['evening', 'night'], seasons: [], weekdays: [],
+    title: { ko: '하루를 닫는 향', en: 'Closing the Day', ja: '一日を閉じる香り' },
+    mood: {
+      ko: '베르가못의 부드러운 껍질과 라벤더의 낮은 숨결. 저녁의 속도를 한 칸 늦춰 드립니다.',
+      en: 'The soft peel of bergamot and the low breath of lavender — one step slower for the evening.',
+      ja: 'ベルガモットの柔らかな皮とラベンダーの低い息づかい。夕暮れの速度をひとつゆるめて。'
+    },
+    recipe: {
+      ko: '롤온에 라벤더 2방울 + 베르가못 2방울 + 캐리어 오일 10mL, 손목에',
+      en: '2 drops lavender + 2 drops bergamot + 10mL carrier oil, roll on the wrists',
+      ja: 'ロールオンにラベンダー2滴＋ベルガモット2滴＋キャリアオイル10mL、手首に'
+    }
+  },
+  {
+    id: 'deep-sleep',
+    oils: ['lavender', 'cedarwood'],
+    slots: ['night'], seasons: [], weekdays: [],
+    title: { ko: '깊은 잠의 결', en: 'The Grain of Deep Sleep', ja: '深い眠りのきめ' },
+    mood: {
+      ko: '라벤더와 시더우드. 불을 끄기 전 침실에 남겨 두면 좋은, 가장 조용한 조합입니다.',
+      en: 'Lavender and cedarwood — the quietest blend to leave in the bedroom before the lights go out.',
+      ja: 'ラベンダーとシダーウッド。明かりを消す前に寝室へ残しておきたい、いちばん静かな組み合わせ。'
+    },
+    recipe: {
+      ko: '취침 30분 전, 디퓨저에 라벤더 3방울 + 시더우드 1방울',
+      en: '30 minutes before bed, 3 drops lavender + 1 drop cedarwood in the diffuser',
+      ja: '就寝30分前にディフューザーへラベンダー3滴＋シダーウッド1滴'
+    }
+  },
+  {
+    id: 'seasonal-breath',
+    oils: ['eucalyptus', 'breathe'],
+    slots: ['morning'], seasons: ['spring', 'autumn'], weekdays: [], onlySeasons: ['spring', 'autumn'],
+    title: { ko: '환절기의 숨', en: 'Breath of the Turning Season', ja: '季節の変わり目の呼吸' },
+    mood: {
+      ko: '유칼립투스와 이지에어. 차고 건조한 공기에 지친 코와 목을 시원하게 열어 줍니다.',
+      en: 'Eucalyptus and Breathe — opens a nose and throat tired of cold, dry air.',
+      ja: 'ユーカリとブリーズ。冷たく乾いた空気に疲れた鼻とのどを、すっと開きます。'
+    },
+    recipe: {
+      ko: '디퓨저에 유칼립투스 2방울 + 이지에어 2방울, 잠들기 전 20분',
+      en: '2 drops eucalyptus + 2 drops Breathe in the diffuser, 20 minutes before bed',
+      ja: 'ディフューザーにユーカリ2滴＋ブリーズ2滴、就寝前20分'
+    }
+  },
+  {
+    id: 'winter-warmth',
+    oils: ['on-guard', 'wild-orange'],
+    slots: ['evening'], seasons: ['winter'], weekdays: [], onlySeasons: ['winter'],
+    title: { ko: '겨울의 온기', en: 'Winter Warmth', ja: '冬のぬくもり' },
+    mood: {
+      ko: '온가드의 따뜻한 향신료와 와일드오렌지의 단맛. 돌아온 저녁, 몸의 온도를 올려 드립니다.',
+      en: 'Warm spice of On Guard and the sweetness of wild orange — brings the body back to temperature.',
+      ja: 'オングァードの温かなスパイスとワイルドオレンジの甘さ。冷えた夜、体の温度を戻します。'
+    },
+    recipe: {
+      ko: '디퓨저에 온가드 2방울 + 와일드오렌지 2방울, 20분',
+      en: '2 drops On Guard + 2 drops wild orange in the diffuser, 20 minutes',
+      ja: 'ディフューザーにオングァード2滴＋ワイルドオレンジ2滴、20分'
+    }
+  },
+  {
+    id: 'weekend-reset',
+    oils: ['frankincense', 'bergamot'],
+    slots: ['morning', 'day'], seasons: [], weekdays: [0, 6],
+    title: { ko: '주말의 정돈', en: 'Weekend Reset', ja: '週末の整え' },
+    mood: {
+      ko: '프랑킨센스의 수지와 베르가못의 햇살. 한 주를 내려놓는 오후의 의식입니다.',
+      en: 'The resin of frankincense and the sunlight of bergamot — an afternoon ritual for setting the week down.',
+      ja: 'フランキンセンスの樹脂とベルガモットの陽だまり。一週間を手放す午後の儀式。'
+    },
+    recipe: {
+      ko: '디퓨저에 프랑킨센스 2방울 + 베르가못 2방울, 20분',
+      en: '2 drops frankincense + 2 drops bergamot in the diffuser, 20 minutes',
+      ja: 'ディフューザーにフランキンセンス2滴＋ベルガモット2滴、20分'
+    }
+  }
+];
+
+var SCENT_WHEN = {
+  ko: {
+    wd: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+    slot: { morning: '아침', day: '오후', evening: '저녁', night: '밤' }
+  },
+  en: {
+    wd: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    slot: { morning: 'morning', day: 'afternoon', evening: 'evening', night: 'night' }
+  },
+  ja: {
+    wd: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'],
+    slot: { morning: '朝', day: '午後', evening: '夕方', night: '夜' }
+  }
+};
+
+function scentSlot(h) {
+  if (h >= 5 && h < 11) return 'morning';
+  if (h >= 11 && h < 17) return 'day';
+  if (h >= 17 && h < 21) return 'evening';
+  return 'night';
+}
+function scentSeason(m) {
+  if (m >= 3 && m <= 5) return 'spring';
+  if (m >= 6 && m <= 8) return 'summer';
+  if (m >= 9 && m <= 11) return 'autumn';
+  return 'winter';
+}
+function dayIndexOf(d) {
+  var start = new Date(d.getFullYear(), 0, 1);
+  return Math.floor((d.getTime() - start.getTime()) / 86400000);
+}
+/* 오늘에 맞는 큐레이션 1장 — 점수(시간대 3 · 계절 2 · 요일 1)가 가장 높은 후보 중
+   날짜 순번으로 돌아가며 고른다(같은 날 = 같은 카드). */
+function pickScent(now) {
+  var d = now || new Date();
+  var slot = scentSlot(d.getHours());
+  var season = scentSeason(d.getMonth() + 1);
+  var wd = d.getDay();
+  var best = -1;
+  var pool = [];
+  SCENTS.forEach(function (s) {
+    /* 요일·계절 지정 프리셋은 그때에만 후보가 된다 */
+    if (s.weekdays.length && s.weekdays.indexOf(wd) < 0) return;
+    if (s.onlySeasons && s.onlySeasons.indexOf(season) < 0) return;
+    var sc = 0;
+    if (s.slots.indexOf(slot) > -1) sc += 3;
+    if (s.seasons.indexOf(season) > -1) sc += 2;
+    if (s.weekdays.indexOf(wd) > -1) sc += 1;
+    if (sc > best) { best = sc; pool = [s]; }
+    else if (sc === best) { pool.push(s); }
+  });
+  if (!pool.length) return SCENTS[dayIndexOf(d) % SCENTS.length];
+  return pool[dayIndexOf(d) % pool.length];
+}
+function scentWhen(d, lang) {
+  var w = SCENT_WHEN[lang] || SCENT_WHEN.ko;
+  return w.wd[d.getDay()] + ' ' + w.slot[scentSlot(d.getHours())];
+}
+
+/* =========================================================================
    5. AromaEngine — 질문 언어 자동 감지 + 3개국어 로컬 지식 매칭
    mode: 'demo' (브라우저에서 바로 동작, 서버·API 키 불필요)
    ========================================================================= */
@@ -2374,6 +2671,7 @@ var state = {
   filter: 'all',
   query: '',
   thread: [{ role: 'ai', kind: 'hello' }],
+  scent: null,
   quota: { date: '', used: 0 },
   busy: false
 };
@@ -2382,6 +2680,7 @@ var el = {
   main: document.getElementById('main'),
   thread: document.getElementById('thread'),
   chips: document.getElementById('chips'),
+  scent: document.getElementById('scent'),
   symlist: document.getElementById('symlist'),
   libgrid: document.getElementById('libgrid'),
   libempty: document.getElementById('libempty'),
@@ -2510,6 +2809,59 @@ function helloHTML() {
   return out;
 }
 
+/* ---------- 오늘의 향기 카드 ---------- */
+function scentAsk(sc, L) {
+  var a = oilById(sc.oils[0]);
+  var b = oilById(sc.oils[1]);
+  var out = T('scent.ask', L);
+  out = out.replace('{a}', a ? a.name[L] : '').replace('{b}', b ? b.name[L] : '');
+  return out;
+}
+function scentCardHTML(sc, L) {
+  var a = oilById(sc.oils[0]);
+  var b = oilById(sc.oils[1]);
+  var out = '<div class="sc-card">';
+  out += '<div class="sc-top"><span class="sc-badge">' + esc(T('scent.badge', L)) + '</span>' +
+    '<span class="sc-when">' + esc(scentWhen(new Date(), L)) + '</span></div>';
+  out += '<div class="sc-body"><div class="sc-tx">' +
+    '<h3 class="sc-title">' + esc(sc.title[L]) + '</h3>' +
+    '<p class="sc-mood">' + esc(sc.mood[L]) + '</p>' +
+    '<div class="sc-recipe"><b>' + esc(T('scent.recipeLabel', L)) + '</b><span>' + esc(sc.recipe[L]) + '</span></div>' +
+    '</div>';
+  out += '<div class="sc-arch">';
+  if (b) out += '<img class="b2" src="' + OIL_IMG + escAttr(b.id) + '.webp" alt="' + escAttr(b.name[L]) + '" data-oil="1" decoding="async">';
+  if (a) out += '<img class="b1" src="' + OIL_IMG + escAttr(a.id) + '.webp" alt="' + escAttr(a.name[L]) + '" data-oil="1" decoding="async">';
+  out += '</div></div>';
+  out += '<div class="sc-acts">' +
+    '<button type="button" class="sc-cta" data-act="ask" data-q="' + escAttr(scentAsk(sc, L)) + '">' +
+    '<svg><use href="#i-sparkle"></use></svg>' + esc(T('scent.cta', L)) + '</button>' +
+    '<button type="button" class="sc-more" data-act="oil" data-id="' + escAttr(sc.oils[0]) + '">' +
+    '<svg><use href="#i-drop"></use></svg>' + esc(T('scent.oil', L)) + '</button>' +
+    '</div></div>';
+  return out;
+}
+/* 대화가 시작되면 접혀서 사라지고, 첫 화면(초기 상태)으로 돌아오면 다시 펼쳐진다. */
+function renderScent() {
+  if (!el.scent) return;
+  if (state.thread.length > 1) {
+    if (!el.scent.hidden && !el.scent.classList.contains('fold')) {
+      el.scent.classList.add('fold');
+      window.setTimeout(function () {
+        if (state.thread.length > 1) el.scent.hidden = true;
+      }, 340);
+    }
+    return;
+  }
+  if (!state.scent) state.scent = pickScent();
+  el.scent.innerHTML = scentCardHTML(state.scent, state.lang);
+  if (el.scent.hidden) {
+    el.scent.hidden = false;
+    el.scent.classList.add('fold');
+    void el.scent.offsetHeight;
+  }
+  el.scent.classList.remove('fold');
+}
+
 function answerHTML(a) {
   var L = a.lang;
   var out = '<div class="msg ai"><div class="who"><svg><use href="#i-leaf"></use></svg></div><div class="bubble">';
@@ -2571,7 +2923,8 @@ function renderThread() {
     }
   });
   el.thread.innerHTML = out;
-  if (state.view === 'chat') scrollBottom();
+  renderScent();
+  if (state.view === 'chat' && state.thread.length > 1) scrollBottom();
 }
 
 function relocalizeThread() {
@@ -2837,7 +3190,7 @@ function goView(name) {
   if (view) view.classList.add('on');
   $$('.tab').forEach(function (t) { t.classList.toggle('on', t.getAttribute('data-view') === name); });
   el.composer.classList.toggle('on', name === 'chat');
-  if (name === 'chat') scrollBottom();
+  if (name === 'chat' && state.thread.length > 1) scrollBottom();
   else el.main.scrollTop = 0;
 }
 
@@ -2939,6 +3292,7 @@ function boot() {
     if (savedLang && I18N[savedLang]) state.lang = savedLang;
   } catch (e) {}
   loadQuota();
+  state.scent = pickScent();
   bindEvents();
   renderAll();
 
