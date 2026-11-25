@@ -39,8 +39,8 @@
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "오일 백과",
-      "short_name": "백과",
+      "name": "식물 도감",
+      "short_name": "도감",
       "url": "./?view=lib",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     }
